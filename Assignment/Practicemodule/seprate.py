@@ -1,0 +1,1 @@
+print("hi","Hello","It's python" , sep="--")
