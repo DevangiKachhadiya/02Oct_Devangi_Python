@@ -10,4 +10,3 @@ else :
     for i in range(1,number + 1):
         Factorial = Factorial * i
     print("Factorial of",number,"is",Factorial)
-
