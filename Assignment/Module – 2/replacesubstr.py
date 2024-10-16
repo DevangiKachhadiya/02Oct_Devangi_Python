@@ -4,5 +4,4 @@
 
 
 str=input("enter a string: ")
-x=str.replace('not poor','good')
-print(x)
+print(str.replace('not poor','good'))
