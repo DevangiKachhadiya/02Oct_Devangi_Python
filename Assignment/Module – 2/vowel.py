@@ -1,10 +1,9 @@
 #Write a Python program to test whether a passed letter is a vowel or not.
 
-char = input("Enter any character : ")
+x = input("Enter any character : ")
+vowels ='a','e','i','o','u','A','E','I','O','U'
 
-vowels = ['a','e','i','o','u','A','E','I','O','U']
-
-if char in vowels :
-    print(f"The Character '{char}' is a Vowel")
+if x in vowels :
+    print(f"Character {x} is a Vowel")
 else :
-    print(f"The Character '{char}' is a Not Vowel it's a Consonant")
+    print(f"Character {x} is a Not Vowel")
