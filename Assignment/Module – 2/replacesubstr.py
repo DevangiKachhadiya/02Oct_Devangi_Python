@@ -2,6 +2,5 @@
 #from a given string, if 'not' follows the 'poor', replace the whole 'not'...'poor' 
 #substring with 'good'. Return the resulting string.
 
-
 str=input("enter a string: ")
 print(str.replace('not poor','good'))
