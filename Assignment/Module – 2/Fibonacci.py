@@ -8,7 +8,7 @@ for i in range(2,num):
   n1 = n2
   n2 = n3
   print(n3, end=" ")
-print( )
+
 
 
 
