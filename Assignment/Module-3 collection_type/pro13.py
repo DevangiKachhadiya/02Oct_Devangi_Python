@@ -1,5 +1,5 @@
 # Write a Python program to select an item randomly from a list.
+import random
 
-n = int(input("Enter index no.: "))
 list = ['html','css','js','python','c','c++']
-print(list[n])
+print(random.choice(list))

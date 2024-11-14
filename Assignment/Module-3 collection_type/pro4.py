@@ -1,14 +1,18 @@
 #Write a Python function to get the largest number, smallest num and sum of all from a list.
+list=[23,19,27,16,10,66,99,37]
+print("original list:",list)
+list.sort()
+print("sorted list:",list)
 
-my_list=[1,2,3,4,5,6,7,8,9,10]
-largest=max(my_list)
-smallest=min(my_list)
-sum=0   
-for i in my_list:
-    sum+=i
-print("sum of my_list:",sum)
-print("Largest num is :",largest)
-print("smallest num is:",smallest)
-
-
+def getlist(sum,smallest,largest):
+    print("sum of all is :",sum)
+    print("smallest number is :",smallest)
+    print("largest number is :",largest)
    
+smallest=(list[0])
+largest=(list[-1])
+sum=0
+for i in list:
+    sum+=i
+
+getlist(sum,smallest,largest)

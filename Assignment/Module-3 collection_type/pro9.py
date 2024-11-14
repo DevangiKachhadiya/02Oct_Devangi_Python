@@ -10,6 +10,7 @@ def Number(list1,list2):
 list1 = [1,2,3,4]
 list2 = [3,7,9,6]
 
-answer = Number(list1,list2)
-print(answer)
+ans=Number(list1,list2)
+print(ans)
+
 

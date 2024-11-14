@@ -3,6 +3,6 @@
 tuple=(2004,16.6,'vivek',True,['b','d'])
 print(tuple)
 for i in tuple:
-    print(i,"type is",type(i))
+    print(f"{i} 'type is:'{type(i)}")
 
 

@@ -1,7 +1,7 @@
 '''open("record.txt","w")
 print("file is created")'''
 
-f1=open("record.txt","w")
+f1=open("record.txt","a")
 
 data=int(input("Enter number of student: "))
 
