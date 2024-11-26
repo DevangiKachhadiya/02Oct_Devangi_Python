@@ -2,7 +2,7 @@
 #should be at least 3). If the given string already ends with 'ing' then add
 #'ly' instead if the string length of the given string is less than 3, leave it unchanged.
 
-my_str= "raining"
+my_str=input("Enter string: ") 
 
 print(len(my_str))
 if len(my_str)>2:

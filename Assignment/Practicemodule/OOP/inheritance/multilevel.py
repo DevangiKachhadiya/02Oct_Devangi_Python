@@ -22,4 +22,22 @@ class hitesh(ashok):
         self.hid=input("Enter Hitesh's ID:")
         self.htech=input("Enter Hitesh's Tech.: ")
 
-class tops()
+class tops(hitesh):
+    def print_data(self):
+        print("-----------Sanket's Data-------------")
+        print("Sanket's ID:",self.sid)
+        print("Sanket's TEch:",self.stech)
+        print("-----------Ashok's Data--------------")
+        print("Ashok's ID:",self.aid)
+        print("Ashok's Tech:",self.atech)
+        print("-----------Hitesh's Data--------------")
+        print("Hitesh's ID:",self.hid)
+        print("Hitesh's Tech:",self.htech)
+
+tp=tops
+tp.s_getdata()
+tp.a_getdata()
+tp.h_getdata()
+tp.print_data()
+
+
