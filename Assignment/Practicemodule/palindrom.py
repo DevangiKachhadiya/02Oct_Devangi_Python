@@ -7,4 +7,4 @@ for i in str:
 if str==str[::-1]:
     print("str is palindrom")
 else:
-    print("str is not palindrom")
+    print("str is not palindrom") 
