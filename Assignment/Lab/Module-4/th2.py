@@ -1,3 +1,5 @@
+#Creating and executing SQL queries from Python using these connectors.
+
 import pymysql
 
 try:
@@ -8,6 +10,7 @@ except Exception as e:
 
 print("\nChoose any option")
 print("\t1.Create Table")
+
 print("\t2.Record Insert")
 print("\t3.Record Update")
 print("\t4.Record Delete")
