@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataBase Operations</title>
+    <style>
+        body {
+            background-color: rgb(108, 108, 107);
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        h1 {
+            text-align: center;
+            color: rgb(0, 0, 0);
+        }
+
+        form {
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(70, 70, 70);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        input,
+        textarea {
+            width: 478px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: lightblue;
+            color: black;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: rgb(40, 116, 166);
+            color: white;            
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center;"> Welcome To The Database </h1>
+    <hr>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Name"> <br> <br>
+        <input type="text" name="city" placeholder="City"> <br> <br>
+        <input type="email" name="email" placeholder="Email"> <br> <br>
+        <input type="date" name="dob"> <br> <br>
+        <input type="number" name="mobile" placeholder="Mobile"> <br> <br>
+        <textarea placeholder="Address" name="address"></textarea> <br> <br>
+        <input type="submit" value="Save">
+    </form>
+    <hr>
+    <a href="/showdata"> Showdata </a>
+
+    <hr>
+    <a href="/login"> LOGIN </a>
+
+</body>
+
+</html>
