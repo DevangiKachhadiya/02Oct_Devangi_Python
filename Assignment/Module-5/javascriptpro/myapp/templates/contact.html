@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Form</title>
+    <script>
+        function validateForm() {
+            let name = document.forms["contactForm"]["name"].value;
+            let email = document.forms["contactForm"]["email"].value;
+            let message = document.forms["contactForm"]["message"].value;
+            if (name == "" || email == "" || message == "") {
+                alert("All fields must be filled out");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form name="contactForm" method="POST" onsubmit="return validateForm()">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

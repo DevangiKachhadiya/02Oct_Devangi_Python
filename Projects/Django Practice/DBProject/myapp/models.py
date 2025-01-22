@@ -9,3 +9,4 @@ class studinfo(models.Model):
     dob=models.DateField()
     mobile=models.BigIntegerField()
     address=models.TextField()
+

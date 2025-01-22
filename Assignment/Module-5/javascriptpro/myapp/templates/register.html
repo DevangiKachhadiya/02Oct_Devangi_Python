@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patient Registration</title>
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+            let email = document.getElementById("id_email").value;
+            fetch("/validate_email/", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({email: email})
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (!data.valid) {
+                    alert(data.message);
+                } else {
+                    document.getElementById("registerForm").submit();
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <h2>Register Patient</h2>
+    <form id="registerForm" method="post" onsubmit="validateForm(event)">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>
+

@@ -1,0 +1,59 @@
+DataBase
+
+
+Create Tables:
+--> CREATE TABLE TABLENAME (FIELD NAME , DATATYPE ,SIZE)
+
+INSERT RECORDS IN TABLE
+--> INSERT INTO TABLE VALUES(" "," ")
+
+UPDATE RECORDS IN TABLES
+--> UPDATE TABLE SET city='rajkot' WHERT CONDITION(id=1)
+-->  update tablename condition;
+--> UPDATE studinfo SET subject='Python';
+
+DELETE RECORDS
+--> DELETE FROM STUD WHERE ID=1;
+
+SELECT RECORDS:
+
+--> SELECT * FROM  stud WHERE name LIKE  'S%';   -->Start's with 's'
+--> SELECT name FROM stud WHERE id=1;
+--> SELECT * FROM stud WHERE city LIKE  '%R';	--> End's with 'r'
+last letter 'r' hoy aeva record
+
+
+
+ALTER :-
+
+-->    alter table tablename add column subject varchar(20);
+
+-->   alter table tablename modify column subject text;
+
+--> alter table tablename drop column subject;
+
+TRUNCATE :-
+
+-->  TRUNCATE TABLE student;
+
+DROP :- 
+-->  DROP TABLE tablename  [full table delete thase]
+--> DROP TABLE database
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

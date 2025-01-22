@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | Login</title>
+    
+    <style>
+        p {
+            margin: 0;
+            display: inline;
+        }
+
+        #main {
+            border: 2px solid rgba(255, 255, 255, 20);
+            width: 500px;
+            height: 280px;
+            text-align: center;
+            margin: auto;
+            background-color: transparent;
+            margin-top: 250px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            margin: 0;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        body {
+            margin: 0;
+            background-color: coral;
+            color: white;
+            background: url(https://collegexpad.com/wp-content/uploads/2024/04/image.jpg);
+            /* background-position: center; */
+            background-size: cover;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        #login {
+            border: none;
+            margin-top: 5px;
+            border-radius: 25px;
+            width: 300px;
+            height: 35px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        #chk {
+            display: inline-block;
+        }
+
+        .links {
+            text-decoration: none;
+            color: white;
+            font-weight: 900;
+        }
+
+        .in {
+            height: 30px;
+            width: 300px;
+            border-radius: 20px;
+            text-indent: 7px;
+            margin-bottom: 10px;
+            background-color: transparent;
+            border: 1px solid white;
+            color: white;
+        }
+
+        .in::placeholder {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <H1>Login</H1>
+        {% if msg %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Error!</strong> {{msg}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        <form method="post" >
+            {% csrf_token %}
+            <input class="in" name="username" type="text" placeholder="Enter name"><br>
+            <input class="in" name="password" type="password" placeholder="Password"><br>
+            <div id="chk">
+                <input type="checkbox" value="verify">
+                <p>Remember Me</p>
+            </div>
+            <a class="links" href="/" style="margin-left: 40px;">Forgot Password?</a><br>
+            <input id="login" type="submit" value="Login"><br>
+            <P>Don't Have an account?</P>
+            <a class="links" href="/signup">Signup</a>
+        </form>
+    </div>
+</body>
+
+<!-- <body style="background-color: rgb(229, 175, 202);">
+    <h1 style="text-align: center;"> Welcome to Authproject </h1>
+    <hr>
+    <h2 style="text-align: center;"> Login </h2>
+    <hr>
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address / Username</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-danger">Login</button>
+        </form>
+        <hr>
+        <a href="/signup"> Signup </a>
+    </div>
+
+</body> -->
+
+</html>

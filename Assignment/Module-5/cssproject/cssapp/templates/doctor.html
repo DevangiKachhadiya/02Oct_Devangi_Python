@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Profiles</title>
+   
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .profile-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        .doctor-profile {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #444;
+        }
+
+        p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        strong {
+            color: #000;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body style="background-color: lightblue;">
+    <div class="profile-container">
+        <h1 style="background-color: lightgreen;">Doctor Profiles</h1>
+        <hr>
+        {% for doctor in doctors %}
+        <div class="doctor-profile">
+            <h2>{{ doctor.name }}</h2>
+            <p><strong>Specialization:</strong> {{ doctor.specialization }}</p>
+            <p><strong>Experience:</strong> {{ doctor.experience }}</p>
+            <p><strong>Hospital:</strong> {{ doctor.hospital }}</p>
+            <p><strong>Contact:</strong> {{ doctor.contact }}</p>
+            <p><strong>Email:</strong> {{ doctor.email }}</p>
+        </div>
+        <hr>
+        {% endfor %}
+    </div>
+</body>
+
+</html>
