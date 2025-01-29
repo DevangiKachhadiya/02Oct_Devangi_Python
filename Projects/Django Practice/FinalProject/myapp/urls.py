@@ -10,4 +10,6 @@ urlpatterns = [
     path('About/',views.About,name='About'),
     path('Contact/',views.Contact,name='Contact'),
     path('userlogout/',views.userlogout),
+    path('optverify/',views.otpverify,name='optverify'),
 ]
+
