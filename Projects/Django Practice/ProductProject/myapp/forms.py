@@ -6,7 +6,7 @@ class productForm(forms.ModelForm):
         model=product
         fields='__all__'
 
-class subcategoryFrom(forms.ModelForm):
+class subcateFrom(forms.ModelForm):
     class Meta:
         model=subcategory
-        fields='__all__'
+        fields=['modelname','price']

@@ -37,7 +37,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Notes</a>
+                        <a class="nav-link active" aria-current="page" href="/Notes">Notes</a>
                     </li>
 
                     <li class="nav-item">
@@ -53,11 +53,11 @@
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success mx-2" type="submit">Search</button>
                 </form>
-
                 {% if user is none %}
                 <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
                 <a href="/signup" class="btn btn-primary mx-2">Signup</a>
                 {% else %}
+                <!-- <a href="/userlogout" class="btn btn-danger">Logout</a> -->
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
@@ -66,14 +66,15 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/Profile">Update Profile</a></li>
                         <li><a class="dropdown-item" href="/userlogout">Logout</a></li>
+
                     </ul>
                 </div>
                 {% endif %}
-
             </div>
         </div>
     </nav>
     <!-- Navbar End -->
+
 
     <!-- Model Start -->
 

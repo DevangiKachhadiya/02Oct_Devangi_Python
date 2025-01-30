@@ -1,0 +1,11 @@
+1).Create project
+2).migrate - python .\manage.py migrate
+3).superuser create - python .\manage.py createsuperuser
+===========================
+4).create app - python manage.py startapp myapp
+5).regi. your app in settings.py
+6).create "templates" folder in your app
+==============================================
+7).design your first html page - index.html
+8).go to views.py - create a view (function)
+9).go to urls.py - set your path

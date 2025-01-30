@@ -5,5 +5,5 @@ from myapp import views
 urlpatterns = [
     path('',views.index),
     path('products/',views.products),
-    path('subcategory/',views.subcategory),
+    path('subcategorys/',views.subcategorys),
 ]

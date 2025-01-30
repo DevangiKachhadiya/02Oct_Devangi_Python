@@ -50,14 +50,30 @@
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success  mx-2" type="submit">Search</button>
+          <button class="btn btn-outline-success mx-2" type="submit">Search</button>
         </form>
-        <button class="btn btn-primary mx-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
-        <a href="/signup" class="btn btn-primary">Signup<a>
+        {% if user is none %}
+        <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+        <a href="/signup" class="btn btn-primary mx-2">Signup</a>
+        {% else %}
+        <!-- <a href="/userlogout" class="btn btn-danger">Logout</a> -->
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            {{user}}
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/Profile">Update Profile</a></li>
+            <li><a class="dropdown-item" href="/userlogout">Logout</a></li>
+
+          </ul>
+        </div>
+        {% endif %}
       </div>
     </div>
   </nav>
   <!-- Navbar End -->
+
 
   <!-- Model Start -->
 
@@ -111,7 +127,7 @@
 
     <form method="post" class="row g-3 needs-validation" novalidate>
       {% csrf_token %}
-      
+
       <div class="col-md-3">
         <label for="validationCustom05" class="form-label">Your OTP</label>
         <input type="number" name="otp" class="form-control" id="validationCustom05">
@@ -121,7 +137,7 @@
       </div>
       <div class="col-12">
         <button class="btn btn-dark" type="submit">Verify</button>
-    </div>
+      </div>
     </form>
   </div>
   <!-- Signup Form End -->
