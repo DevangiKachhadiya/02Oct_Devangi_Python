@@ -21,7 +21,7 @@ urlpatterns = [
    path('dashboard/',views.admindash),
    path('adddoctor/',views.adddoctor, name='adddoctor'),
    path('showdoctors/',views.showdoctors,name='showdoctors'),
-   path('otpverify/',views.otpverify, name='otpverify'),
+   # path('otpverify/',views.otpverify, name='otpverify'),
    path('forgotpass/',views.forgotpass, name='forgotpass'),
    path('adminn/',views.adminn),
 ]

@@ -24,7 +24,7 @@ def signup(request):
             otp = random.randint(111111, 999999)
             
             sub = "YOUR ONE TIME PASSWORD!"
-            msg = f"Hello User! \n\n Your Registration is Confirm!:) \n\n Thanks for registration/Connecting with us! Your one time password is:{otp}.\n\n Thanks & Regards! \nHealthify:) "
+            msg = f"Hello User! \n\n Your Registration is Confirm!:) \n\n Thanks for registration/Connecting with us!\n\n Thanks & Regards! \nHealthify:) "
             from_email = settings.EMAIL_HOST_USER
             to_email = [request.POST["email"]]
 
@@ -32,29 +32,26 @@ def signup(request):
                 subject=sub, message=msg, from_email=from_email, recipient_list=to_email
             )
             newuser.save()
-            return redirect('otpverify')
-        
-            # print("Signup Successfully!")
-            # return redirect("/login")
+            return redirect("/login")
         else:
             print(newuser.errors)
             msg = "Error! Something Went Wrong"
     return render(request,'signup.html',{'msg':msg, 'user':user})
 
-def otpverify(request):
-    user = request.session.get('user')
-    msg = ""
+# def otpverify(request):
+#     user = request.session.get('user')
+#     msg = ""
 
-    #USE Session to store OTP instead of a global variable
+#     #USE Session to store OTP instead of a global variable
 
-    if request.method == "POST":
-        if request.POST['otp'] == str(otp): 
-            print("Verification Done!")
-            return redirect("/")
-        else:
-            print("Error! Invalid OTP")
-            msg = "Error! Invalid OTP"
-    return render(request, 'otpverify.html', {'msg':msg, 'user':user})
+#     if request.method == "POST":
+#         if request.POST['otp'] == str(otp): 
+#             print("Verification Done!")
+#             return redirect("/")
+#         else:
+#             print("Error! Invalid OTP")
+#             msg = "Error! Invalid OTP"
+#     return render(request, 'otpverify.html', {'msg':msg, 'user':user})
 
 def login(request):
     user = request.session.get('user')
@@ -137,6 +134,7 @@ def adddoctor(request):
             ad.save()
             print("Record Inserted Successfully!")
             msg="Record Inserted Successfully!"
+            return redirect('/showdoctors')
         else:
             print(ad.errors)
             msg="Error! Something went Wrong..  Please try again!"
@@ -146,21 +144,6 @@ def showdoctors(request):
     user = request.session.get('user')
     sd=Doctors.objects.all()
     return render(request, 'showdoctors.html',{'sd':sd, 'user':user})
-
-
-# def addpatient(request):
-#     user = request.session.get('user')
-#     users = Usersignup.objects.all()
-#     patients = Patient.objects.all()
-
-#     if request.method == "POST":
-#         username = Usersignup.objects.get(id=request.POST['user'])
-#         age = request.POST['age']
-#         contact = request.POST['age']
-        
-#         Patient.objects.create(users=users, age=age, contact=contact)
-
-#     return render(request, 'addpatient.html', {'users':users, 'patients': patients}, {'user':user})
 
 
 def contact(request):
