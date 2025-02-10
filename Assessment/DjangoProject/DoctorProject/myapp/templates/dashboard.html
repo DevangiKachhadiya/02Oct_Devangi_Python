@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Healthify</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+        }
+
+        .header {
+            width: 100%;
+            background-color: #343a40;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        .sidebar {
+            height: 100vh;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            background-color: #343a40;
+            color: white;
+            padding-top: 20px;
+            overflow-y: auto;
+            width: 250px;
+        }
+
+        .sidebar .nav-link {
+            color: white;
+            padding: 10px 20px;
+            display: block;
+            border-radius: 5px;
+        }
+
+        .sidebar .nav-link:hover {
+            background-color: #495057;
+        }
+
+        .content {
+            margin-top: 60px;
+            margin-left: 250px;
+            width: calc(100% - 250px);
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Full Header -->
+    <div class="header">
+        <div class="d-flex align-items-center">
+            <img src="/static/images/logo.png" alt="Healthify Logo" width="40" height="30" class="me-2">
+            <h4 class="m-0">Healthify</h4>
+        </div>
+        
+        
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h5 class="text-center">Dashboard</h5>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="/">
+                    <i class="bi bi-house-door"></i> Home
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Appointment">
+                    <i class="bi bi-calendar-check"></i> Appointments
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/doctor">
+                    <i class="bi bi-person-badge"></i> Doctors
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/patient">
+                    <i class="bi bi-people"></i> Patients
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contact">
+                    <i class="bi bi-envelope"></i> Contact
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/reports">
+                    <i class="bi bi-file-text"></i> Reports
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/settings">
+                    <i class="bi bi-gear"></i> Settings
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">
+                    <i class="bi bi-box-arrow-right"></i> Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <h2>Welcome to Healthify Dashboard</h2>
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card bg-primary text-white mb-4">
+                    <div class="card-body">
+                        <h5>Total Doctors</h5>
+                        <h3>120</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-success text-white mb-4">
+                    <div class="card-body">
+                        <h5>Total Patients</h5>
+                        <h3>350</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-warning text-dark mb-4">
+                    <div class="card-body">
+                        <h5>Upcoming Appointments</h5>
+                        <h3>45</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">Recent Appointments</div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">John Doe - Dr. Smith</li>
+                            <li class="list-group-item">Jane Roe - Dr. Brown</li>
+                            <li class="list-group-item">Alice Green - Dr. White</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">Quick Links</div>
+                    <div class="card-body">
+                        <a href="/Appointment" class="btn btn-primary btn-block mb-2">View Appointments</a>
+                        <a href="/doctor" class="btn btn-secondary btn-block mb-2">Manage Doctors</a>
+                        <a href="/patient" class="btn btn-info btn-block">Manage Patients</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

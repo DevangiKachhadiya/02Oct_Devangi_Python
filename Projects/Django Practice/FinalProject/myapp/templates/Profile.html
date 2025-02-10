@@ -46,12 +46,11 @@
 
 <body style="background-color: lightblue;">
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
-                <img src="/static/images/notesapp_logo.png" alt="Logo" width="45" height="35"
-                    class="d-inline-block align-text-top">
-                NotesApp
+                <img src="/static/images/notesapp_logo.png" alt="Logo" width="50" height="50" class="d-inline-block">
+                <strong>NotesApp</strong>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -60,41 +59,27 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/Notes">Notes</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/About">About</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/Contact">Contact</a>
-                    </li>
-
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Notes">Notes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/About">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Contact">Contact</a></li>
                 </ul>
-                <form class="d-flex" role="search">
+                <form class="d-flex me-3" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success mx-2" type="submit">Search</button>
+                    <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
                 {% if user is none %}
                 <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
                 <a href="/signup" class="btn btn-primary mx-2">Signup</a>
                 {% else %}
-                <!-- <a href="/userlogout" class="btn btn-danger">Logout</a> -->
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        {{user}}
+                        {{ user }}
                     </button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/Profile">Update Profile</a></li>
                         <li><a class="dropdown-item" href="/userlogout">Logout</a></li>
-
                     </ul>
                 </div>
                 {% endif %}

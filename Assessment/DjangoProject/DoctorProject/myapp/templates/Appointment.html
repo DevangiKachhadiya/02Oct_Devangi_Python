@@ -4,177 +4,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Appoinment</title>
+    <meta name="description" content="Manage doctor and patient appointments effortlessly.">
+    <title>Appointment Management</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #343a40;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #343a40;
+        }
 
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-        <div class="container-fluid">
-            <!-- <a class="navbar-brand" href="#">NotesApp</a> -->
-            <a class="navbar-brand" href="/">
-                <img src="/static/images/logo.png" alt="TOPS" width="40" height="30"
-                    class="d-inline-block align-text-top">
-                Healthify
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/Appointment">Appointment</a>
-                    </li>
+        h1 {
+            text-align: center;
+            color: #343a40;
+            margin-bottom: 20px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
 
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/contact">Contact</a>
-                    </li>
-                </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success mx-2" type="submit">Search</button>
-                </form>
+        /* Form Styling */
+        form {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #343a40;
+        }
 
-                <a href="/login" type="button" class="btn btn-warning mx-2">Login</a>
-                <a href="/signup" type="button" class="btn btn-danger">Sign Up</a>
-                <!-- {% if user is none %}
-                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
-                <a href="/signup" class="btn btn-primary mx-2">Signup</a>
-                {% else %} -->
-                <!-- <a href="/userlogout" class="btn btn-danger">Logout</a> -->
+        form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #343a40;
+        }
 
+        form input,
+        form select,
+        form button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #343a40;
+            border-radius: 5px;
+            font-size: 14px;
+            background-color: #ffffff;
+            color: #343a40;
+        }
 
-            </div>
-            {% endif %}
-        </div>
-        </div>
-    </nav>
-    <!-- Navbar End -->
+        form input::placeholder {
+            color: #6c757d;
+        }
 
+        form button {
+            background-color: #343a40;
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        form button:hover {
+            background-color: #6c757d;
+        }
+
+        /* Accessibility Enhancements */
+        select:focus,
+        input:focus,
+        button:focus {
+            outline: 2px solid #6c757d;
+            outline-offset: 2px;
+        }
+
+        /* Message Alert Styling */
+        .alert {
+            background-color: #f8d7da;
+            color: #842029;
+            border: 1px solid #f5c2c7;
+            border-radius: 5px;
+            padding: 10px 15px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-close {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #842029;
+        }
+    </style>
 </head>
 
-<body style="background-color:lightpink">
-
-    <div class="container my-5">
-        <h2
-            style="text-align: center; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
-            Appointment </h2>
-        <hr>
+<body>
+    <div class="container">
+        <h1>
+            <i class="fas fa-calendar-alt"></i> Book Appointment 
+        </h1>
 
         {% if msg %}
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>{{msg}}</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <div class="alert">
+            <strong>{{ msg }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">&times;</button>
         </div>
         {% endif %}
-        <form method="post" class="row g-3 needs-validation" novalidate>
-            {%csrf_token%}
 
-            <div class="col-md-6">
-                <label for="validationCustom01" class="form-label">First name</label>
-                <input type="text" class="form-control" name="firstname" value="{{cid.firstname}}"
-                    id="validationCustom01">
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-            <div class="col-md-6">
-                <label for="validationCustom02" class="form-label">Last name</label>
-                <input type="text" class="form-control" name="lastname" value="{{cid.lastname}}"
-                    id="validationCustom02">
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-            <div class="col-md-6">
-                <label for="validationCustomUsername" class="form-label">Email / Username</label>
-                <div class="input-group has-validation">
-                    <span class="input-group-text" id="inputGroupPrepend">@</span>
-                    <input type="email" value="{{cid.username}}" class="form-control" id="validationCustomUsername"
-                        name="username" aria-describedby="inputGroupPrepend">
-                    <div class="invalid-feedback">
-                        Please choose a username/Email.
-                    </div>
-                </div>
-            </div>
+        <!-- Add Appointment Form -->
+        <form method="POST">
+            {% csrf_token %}
 
-            <div class="col-md-6">
-                <label for="validationCustom02" class="form-label">Password</label>
-                <input type="password" class="form-control" value="{{cid.password}}" name="password"
-                    id="validationCustom02">
-                <div class="valid-feedback">
-                    Please provide a valid password.
-                </div>
-            </div>
+            <!-- Patient Name -->
+            <label for="patient_name">Patient Name:</label>
+            <input type="text" name="name" id="patient_name" placeholder="Enter patient name" required>
 
-            <div class="col-md-3">
-                <label for="validationCustom03" class="form-label">City</label>
-                <input type="text" class="form-control" name="city" value="{{cid.city}}" id="validationCustom03">
-                <div class="invalid-feedback">
-                    Please provide a valid city.
-                </div>
-            </div>
+            <!-- Patient Age -->
+            <label for="patient_age">Patient Age:</label>
+            <input type="number" name="age" id="patient_age" placeholder="Enter patient age" required>
 
-            <div class="col-md-3">
-                <label for="validationCustom04" class="form-label">Doctors</label>
-                <select name="opt" class="form-select" id="validationCustom04" required>
-                    <option value="Surgeon">Dr.Ava Chen</option>
-                    <option value="Cardiologist">Dr.Vivian Luo </option>
-                    <option value="Neurologist">Dr.Josh Chen</option>
-                    <option value="Dentist">Dr.Dante Russo</option>
-                    <option value="Gynecologist">Dr.Morana Vitalio</option>
-                    <option value="Family Doctor">Dr.Tristan Caine</option>
-                    <option value="Other">Dainn Blackthorn</option>
-                    <option value="Other">Other</option>
-                </select>
-            </div>
+            <!-- Patient Address -->
+            <label for="patient_address">Patient Address:</label>
+            <input type="text" name="address" id="patient_address" placeholder="Enter patient address" required>
 
-            <div class="col-md-3">
-                <label for="validationCustom04" class="form-label">Specialty</label>
-                <select name="opt" class="form-select" id="validationCustom04" required>
-                    <option value="Surgeon">Surgeon</option>
-                    <option value="Cardiologist">Cardiologist</option>
-                    <option value="Neurologist">Neurologist</option>
-                    <option value="Dentist">Dentist</option>
-                    <option value="Gynecologist">Gynecologist</option>
-                    <option value="Other">Therapist</option>
-                    <option value="Family Doctor">Family Doctor</option>
-                    <option value="Family Doctor">Dermatology</option>
-                    <option value="Other">Other</option>
-                </select>
-                <div class="invalid-feedback">
-                    Please select a valid option.
-                </div>
-            </div>
+            <!-- Patient Contact -->
+            <label for="patient_contact">Patient Contact:</label>
+            <input type="tel" name="contact" id="patient_contact" placeholder="Enter patient contact" required>
 
-            <div class="col-md-3">
-                <label for="validationCustom05" class="form-label">Mobile No.</label>
-                <input type="number" class="form-control" name="mobile" value="{{cid.mobile}}" id="validationCustom05">
-                <div class="invalid-feedback">
-                    Please provide a valid Mobile Number.
-                </div>
-            </div>
+            <!-- Appointment Date and Time -->
+            <label for="date">Appointment Date and Time:</label>
+            <input type="datetime-local" name="dt" id="date" required>
 
-            <div class="col-12">
-                <button class="btn btn-success" type="submit">Submit</button>
-            </div>
+            <!-- Submit Button -->
+            <button type="submit">
+                <i class="fas fa-check-circle"></i> Book Appointment
+            </button>
         </form>
     </div>
-
 </body>
-
-
 
 </html>

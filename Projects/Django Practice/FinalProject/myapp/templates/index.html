@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
+    <title>Welcome | NotesApp</title>
     <!-- Favicon Start -->
     <link rel="shortcut icon" href="/static/images/favicon.png" type="image/x-icon">
     <!-- Favicon end -->
@@ -18,40 +18,79 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            background-color: #F9F9FB;
+        }
+
+        .navbar {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand img {
+            border-radius: 50%;
         }
 
         .footer {
             background-color: #333;
-            color: white;
+            color: #fff;
             text-align: center;
-            padding: 20px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            padding: 15px 20px;
         }
 
         .footer a {
-            color: #f8b400;
+            color: #F8B400;
             text-decoration: none;
             margin: 0 10px;
+            font-weight: bold;
         }
 
         .footer a:hover {
             text-decoration: underline;
         }
+
+        .hero {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin: 15px 0;
+        }
+
+        .btn-custom {
+            background-color: #f8b400;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-custom:hover {
+            background-color: #ffa500;
+            color: white;
+        }
     </style>
 
 </head>
 
-<body style="background-color:#EDE6F3;">
+<body>
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
-                <img src="/static/images/notesapp_logo.png" alt="Logo" width="45" height="35"
-                    class="d-inline-block align-text-top">
-                NotesApp
+                <img src="/static/images/notesapp_logo.png" alt="Logo" width="50" height="50" class="d-inline-block">
+                <strong>NotesApp</strong>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -60,47 +99,34 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/Notes">Notes</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/About">About</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/Contact">Contact</a>
-                    </li>
-
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Notes">Notes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/About">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Contact">Contact</a></li>
                 </ul>
-                <form class="d-flex" role="search">
+                <form class="d-flex me-3" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success mx-2" type="submit">Search</button>
+                    <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
                 {% if user is none %}
                 <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
                 <a href="/signup" class="btn btn-primary mx-2">Signup</a>
                 {% else %}
-                <!-- <a href="/userlogout" class="btn btn-danger">Logout</a> -->
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        {{user}}
+                        {{ user }}
                     </button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/Profile">Update Profile</a></li>
                         <li><a class="dropdown-item" href="/userlogout">Logout</a></li>
-
                     </ul>
                 </div>
                 {% endif %}
             </div>
         </div>
     </nav>
+
     <!-- Navbar End -->
 
     {% if msg %}
@@ -110,8 +136,7 @@
     </div>
     {% endif %}
 
-    <!-- Model Start -->
-
+    <!-- Modal -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -123,7 +148,7 @@
                     <form method="post">
                         {% csrf_token %}
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Email address / UserName</label>
+                            <label for="exampleInputEmail1" class="form-label">Email address / Username</label>
                             <input type="email" name="username" class="form-control" id="exampleInputEmail1"
                                 aria-describedby="emailHelp">
                             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
@@ -147,13 +172,75 @@
         </div>
     </div>
 
+    <!-- Hero Section Start -->
+    <div class="hero">
+        <h1>Welcome to NotesApp</h1>
+        <p>Organize your thoughts, save ideas, and track your progress with ease.</p>
+        <a href="/Notes" class="btn btn-custom">Add a New Note</a>
+    </div>
+    <!-- Hero Section End -->
+
+    {% if msg %}
+    <div class="alert alert-danger alert-dismissible fade show m-3" role="alert">
+        <strong>{{ msg }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 20px;">
+        <div>
+            <img src="/static/images/notes.jpg" style="width: 150px; height: auto;" alt="...">
+        </div>
+        <div>
+            <img src="/static/images/n8.jpg" style="width: 150px; height: auto;" alt="...">
+        </div>
+        <div>
+            <img src="/static/images/n1.jpg" style="width: 150px; height: auto;" alt="...">
+        </div>
+        <div>
+            <img src="/static/images/notes3.jpg" style="width: 150px; height: auto;" alt="...">
+        </div>
+        <div>
+            <img src="/static/images/n2.jpg" style="width: 150px; height: auto;" alt="...">
+        </div>
+        <div>
+            <img src="/static/images/n6.jpg" style="width: 150px; height: auto;" alt="...">
+        </div>
+        <div>
+            <img src="/static/images/n4.jpg" style="width: 150px; height: auto;" alt="...">
+        </div>
+        <div>
+            <img src="/static/images/n5.jpg" style="width: 150px; height: auto;" alt="...">
+        </div>
+        <div>
+            <img src="/static/images/n7.jpg" style="width: 150px; height: auto;" alt="...">
+        </div>
+        <div>
+            <img src="/static/images/n3.jpg" style="width: 150px; height: auto;" alt="...">
+        </div>
+        <div>
+            <img src="/static/images/notes4.jpg" style="width: 150px; height: auto;" alt="...">
+        </div>
+        <!-- <div> 
+            <img src="/static/images/n10.jpg" style="width: 150px; height: auto;" alt="...">
+        </div> -->
+        <div>
+            <img src="/static/images/n11.jpg" style="width: 150px; height: auto;" alt="...">
+        </div>
+        <div>
+            <img src="/static/images/n12.jpg" style="width: 150px; height: auto;" alt="...">
+        </div>
+    </div>
+
+    <!-- Model start -->
+
     <!-- Model End -->
 
-    <h1 style="text-align: center; font-family: Arial, Helvetica, sans-serif;"> Welcome To Home</h1>
-    <hr>
-    <div class="footer">
-        <p>&copy; 2025 Your Company | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-    </div>
+    <!-- Footer Start -->
+    <footer class="footer mt-5">
+        <p>&copy;NotesApp | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+    <!-- Footer End -->
 
 </body>
 

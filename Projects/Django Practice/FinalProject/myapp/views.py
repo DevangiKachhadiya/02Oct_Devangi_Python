@@ -4,6 +4,7 @@ from django.contrib.auth import logout
 from django.core.mail import send_mail
 from FinalProject import settings
 import random
+import requests
 
 # Create your views here.
 
@@ -33,34 +34,40 @@ def signup(request):
     msg=""
     if request.method=='POST':
         newuser=signupForm(request.POST)
+        username= ""
         if newuser.is_valid():
-
-            #OTP Email Sending
-            global otp
-            otp = random.randint(111111, 999999)
+            #Username Verification
+            try:
+                username = newuser.cleaned_data.get("username")
+                userSignup.objects.get(username=username)
+                print("Username is already exists!")
+                msg = "Username is already exists!"
+            except userSignup.DoesNotExist:
+                #OTP Email Sending
+                global otp
+                otp = random.randint(111111, 999999)
             
-            sub = "Your one time password!"
-            msg = f"Hello User!\n\nThanks for registration with us!\n\nForm account verification, Your one time password is :{otp}.\n\nThanks & Regards!\nNotesApp\nTOPS Technologies Pvt.Ltd"
-            from_email = settings.EMAIL_HOST_USER
-            to_email = [request.POST["username"]]
+                sub = "Your one time password!"
+                msg = f"Hello User!\n\nThanks for registration with us!\n\nForm account verification, Your one time password is :{otp}.\n\nThanks & Regards!\nNotesApp\nTOPS Technologies Pvt.Ltd"
+                from_email = settings.EMAIL_HOST_USER
+                to_email = [request.POST["username"]]
 
-            send_mail(
-                subject=sub, message=msg, from_email=from_email, recipient_list=to_email
-            )
-            newuser.save()
-            return redirect('optverify')
-        else:
-            print(newuser.errors)
-            msg="Error! Something Went Wrong"
+                send_mail(
+                    subject=sub, message=msg, from_email=from_email, recipient_list=to_email
+                )
+                newuser.save()
+                return redirect('optverify')
+            else:
+                print(newuser.errors)
+                msg="Error! Something Went Wrong"
     return render(request,'signup.html',{'msg':msg})
 
-from django.shortcuts import render, redirect
 
 def otpverify(request):
     msg = ""
-    
+    global otp
+
     # Use session to store OTP instead of a global variable
-  
     if request.method == "POST":
         if request.POST["otp"] == str(otp):  # Use .get() to prevent KeyError
             print("Verification done!")
@@ -94,7 +101,7 @@ def Notes(request):
             print(newnote.errors)
             msg="Error! Something Went Wrong..."
             
-    return render(request,'Notes.html',{'user':user,'msg':msg, 'username': username})
+    return render(request,'Notes.html', {'user':user,'msg':msg, 'username': username})
 
 def Profile(request):
     user=request.session.get('user')
@@ -113,7 +120,8 @@ def Profile(request):
     return render(request,'Profile.html',{'user':user,'cid':cid})
 
 def About(request):
-    return render(request,'About.html')
+    user=request.session.get("user")
+    return render(request,'About.html',{'user':user})
 
 def Contact(request):
     user=request.session.get("user")
