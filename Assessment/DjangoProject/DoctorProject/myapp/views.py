@@ -166,9 +166,9 @@ def about(request):
     user = request.session.get('user')
     return render(request,'about.html', {'user':user})
 
-def admindash(request):
-    user = request.session.get('user')
-    return render(request, 'dashboard.html', {'user':user})
+# def admindash(request):
+#     user = request.session.get('user')
+#     return render(request, 'dashboard.html', {'user':user})
 
 
 # def deldoctdata(request,id):
@@ -218,4 +218,5 @@ def forgotpass(request):
     return render(request, 'forgotpass.html', {'user': user, 'fp':fp})
 
 def adminn(request):
-    return render(request, 'adminn.html')
+    user = request.session.get('user')
+    return render(request, 'adminn.html', {'user':user})
