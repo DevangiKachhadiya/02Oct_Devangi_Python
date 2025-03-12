@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add House</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            /* background-image: url("https://i.natgeofe.com/n/10fbdedb-70d8-4d1e-bac3-173e5f2f2682/bund-shanghai-china.jpg?w=2560&h=1706"); */
+            background-color: #FAACA8;
+            background-image: linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+        }
+
+        input,
+        select {
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            transition: 0.3s;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #6a5acd;
+            background: #ffffff;
+            outline: none;
+        }
+
+        .submit-btn {
+            background: #6a5acd;
+            color: white;
+            transition: 0.3s ease-in-out;
+        }
+
+        .submit-btn:hover {
+            background: #4b39a5;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+        {% if msg %}
+        <div class="bg-red-100 text-red-700 p-3 rounded-lg mb-4 text-center">
+            <strong>{{ msg }}</strong>
+        </div>
+        {% endif %}
+
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">🏡 Add a New House</h2>
+        <hr class="mb-6">
+
+        <form class="grid grid-cols-1 md:grid-cols-2 gap-6" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div>
+                <label class="block font-semibold text-gray-700 mb-2">🏠 House Name</label>
+                <input type="text" name="title" class="w-full p-3 rounded-lg" placeholder="Enter house name" required>
+            </div>
+
+            <div>
+                <label class="block font-semibold text-gray-700 mb-2">🏢 Property Type</label>
+                <select name="property_type" class="w-full p-3 rounded-lg">
+                    <option>Apartment</option>
+                    <option>Villa</option>
+                    <option>Bungalow</option>
+                    <option>Studio</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block font-semibold text-gray-700 mb-2">📜 Listing Type</label>
+                <select name="listing_type" class="w-full p-3 rounded-lg">
+                    <option>For Sale</option>
+                    <option>For Rent</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block font-semibold text-gray-700 mb-2">💰 Price</label>
+                <input type="number" name="price" class="w-full p-3 rounded-lg" placeholder="500000" required>
+            </div>
+
+            <div class="col-span-2">
+                <label class="block font-semibold text-gray-700 mb-2">📍 Address</label>
+                <input type="text" name="address" class="w-full p-3 rounded-lg" placeholder="Street, City, State, Zip"
+                    required>
+            </div>
+
+            <div>
+                <label class="block font-semibold text-gray-700 mb-2">📏 Area (sq ft)</label>
+                <input type="number" name="area" class="w-full p-3 rounded-lg" placeholder="1500" required>
+            </div>
+
+            <div>
+                <label class="block font-semibold text-gray-700 mb-2">🛏 Bedrooms</label>
+                <input type="number" name="bedrooms" class="w-full p-3 rounded-lg" placeholder="3" required>
+            </div>
+
+            <div>
+                <label class="block font-semibold text-gray-700 mb-2">🛁 Bathrooms</label>
+                <input type="number" name="bathrooms" class="w-full p-3 rounded-lg" placeholder="2" required>
+            </div>
+
+            <div>
+                <label class="block font-semibold text-gray-700 mb-2">🏗 Floors</label>
+                <input type="number" name="floors" class="w-full p-3 rounded-lg" placeholder="2" required>
+            </div>
+
+            <div class="col-span-2">
+                <label class="block font-semibold text-gray-700 mb-2">📸 House Image</label>
+                <input type="file" name="main_image" multiple name="images"  class="w-full p-3 rounded-lg bg-white text-black" accept="image/*"
+                    required>
+            </div><br><br>
+
+            <div class="col-span-2 text-center">
+                <button type="submit" class="submit-btn py-3 px-6 rounded-lg shadow-md">
+                    ➕ Submit
+                </button>
+            </div>
+        </form>
+        
+    </div>
+
+</body>
+
+</html>
