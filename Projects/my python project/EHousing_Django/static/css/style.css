@@ -61,7 +61,7 @@
     border-radius: 9999px;
     background-color: var(--background-light-gray);
 }
-#eh-navbar .nav-link
+#eh-navbar .nav-links
 {
     /* margin-right: 10px; */
     padding-left: 1.50rem;
@@ -74,7 +74,7 @@
         /* font-size: .75rem; */
         line-height: 1rem;
 }
-#eh-navbar .nav-link:hover
+#eh-navbar .nav-links:hover
 {
     color: var(--color-white);
     background-color: var(--background-color-black);
@@ -90,7 +90,7 @@
     display: inline-block;
     margin-right: 1.25rem
 }
-#eh-account a
+#eh-account .account-link
 {
     text-decoration: none;
 }
@@ -260,17 +260,37 @@ main
 
 }
 
+/* trending slider section css */
+.trend-slider
+{
+    width: 100%;
+    height: 70vh;
+}
+.eh-hm-slider-btn
+{
+    padding: 0rem 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.trend-btns span
+{
+    background-color: black;
+    border-radius: 50%;
+    padding: 10px;
+}
+
 
 /* this is home /index page css end */
-/* this is login and register page css starts */
+/* this is login and register and add home page css starts */
 
-.sl-main
+.sl-main ,.add-home-main
 {
     width: 100%;
     height: 100%;
     /* position: relative; */
 }
-#eh-sl-main
+#eh-sl-main ,#eh-addhm-main
 {
     position: absolute;
     width: 100%;
@@ -278,6 +298,7 @@ main
 }
 .sl-container
 {
+
     max-width: 420px;
     margin: auto;
     border-radius: 10px;
@@ -286,7 +307,16 @@ main
     padding: 1.5rem;
     background-color: var(--background-color-white);
 }
-.sl-logo
+.add-hm-container {
+    max-width: 600px; /* Increased width for better view */
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    padding: 1.5rem;
+    background-color: var(--background-color-white);
+}
+.sl-logo ,.add-hm-logo
 {
     width: 3rem;
     height: 3rem;
@@ -296,27 +326,28 @@ main
     place-content: center;
     display: grid;
 }
-.sl-heading
+.add-hm-logo > svg
+{
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 200px;
+}
+.sl-heading ,.add-hm-heading
 {
     margin-top: 1.25rem;
 }
-.sl-heading h1
+.sl-heading h1,.add-hm-heading h1
 {
     font-weight: 600;
     line-height: 2;
     font-size: 1.5rem;
 }
-#lin-form ,#sin-form
+#lin-form ,#sin-form ,#add-home-form
 {
     margin-top: 1.25rem;
 }
-/* .lin-email ,.lin-pswrd
-{
-    width: 100%;
-    display: grid;
-    align-items: center;
-} */
-.sl-label
+
+.sl-label ,.add-hm-label
 {
 line-height: 1.8;
 font-size: .875rem;
@@ -337,18 +368,17 @@ align-items: center;
     border-radius: .75rem;
     border-width: 0;
     background-color: rgb(247 248 250);
-    padding: .75rem 1.25rem;
+    padding: .50rem 1.25rem;
     font-size: 1rem;
-margin-bottom: .25rem;
+    margin-bottom: .25rem;
     line-height: 1.5rem;
-    --tw-text-opacity: 1;
     color: var(--color-black);
 }
 .form-input:focus-visible
 {
     outline: 2px solid rgba(59,130,246,.5);
 }
-.lin-in a
+.lin-in .sl-forgot-link
 {
     color: var(--color-gray);
     text-decoration: none;
@@ -356,7 +386,7 @@ margin-bottom: .25rem;
     border-bottom: 1px solid var(--color-gray);
     margin-top: .75rem;
 }
-#lin-form button , #sin-form  button
+#lin-form .btn-sl , #sin-form  .btn-sl ,#add-home-form .btn-sl
 {
     width: 100%;
     border-radius: 12px;
@@ -372,7 +402,7 @@ margin-bottom: .25rem;
     gap: 2;
     cursor: pointer;
 }
-#lin-form button:hover , #sin-form  button:hover
+#lin-form .btn-sl:hover , #sin-form  .btn-sl:hover ,#add-home-form .btn-sl:hover
 {
     box-shadow: 0 4px 14px 0 rgba(255, 93, 7, .3);;
 }
@@ -388,7 +418,7 @@ margin-bottom: .25rem;
     align-items: center;
     justify-content: center;
 }
-.sl-link a
+.sl-link .sl-links
 {
     text-decoration: none;
     color: var(--color-black);
@@ -396,26 +426,148 @@ margin-bottom: .25rem;
     font-weight: 700;
     margin-left: .25rem;
 }
-.sl-link a:hover
+.sl-link .sl-links:hover
 {
     color: var(--color-orange);
     font-weight: 700;
 }
-/* .pswrd-eye
-{
-    place-content: center;
-    position: absolute;
-    top: 55%;
-    right: .75rem;
-    display: grid;
-    transform: translateY(-50%);
+/*---------->> add home page css */
+.image-preview {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 15px;
 }
-.pswrd-eye button
+
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.remove-image-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(255, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.image-preview-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* this is login and register page and add home page css ends */
+
+
+/* this is buy and rent page css starts */
+.eh-br-main
+{
+    width: 100%;
+    height: auto;
+    background-color: var(--background-light-gray);
+}
+.br-filter-bar{
+    background-color: var(--background-color-white);
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+.br-search{
+    margin-left: 1rem;
+    position: relative;
+    width: 20%;
+}
+.br-search input
+{   
+    background-color: var(--background-light-gray);
+    text-indent: 25px;
+    display: inline-block;
+}
+.br-search input:focus-visible
+{
+    outline: 2px solid var(--color-black);
+}
+.br-filter-hover:hover
+{
+    background-color: #ecedef;
+}
+.br-search-icon
+{
+    width: 1.5rem;
+    height: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    /* display: inline-block; */
+}
+.br-search-icon:hover
 {
     cursor: pointer;
-    background-color: transparent;
-    border: none;
-} */
+}
+/* this is product card section of buy and rent page*/
+.card {
+    width: 18rem;
+    margin: 20px;
+    position: relative;
+    border-radius: 20px; /* Rounded corners for the card */
+    overflow: hidden;
+}
+.carousel-inner img {
+    width: 100%;
+    height: 200px;
+    border-radius: 20px; /* Rounded corners for the image */
+    padding: 10px;
+}
+.carousel-indicators li
+{
+    width: 5px !important;
+    height: 5px !important;
+    border-radius: 100%;
+}
+/* Hide the indicators and controls by default */
+.carousel-control-prev,
+.carousel-control-next {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
 
+/* Show indicators and controls on hover */
+.card:hover .carousel-control-prev,
+.card:hover .carousel-control-next {
+    opacity: 1;
+}
+.card-foot
+{
+    color: var(--color-gray);
+    width: 100%;
+    height: auto;
+    font-size: .8rem;
+    padding: .5rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+}
+.card-body p{
+    color: var(--color-gray);
+}
+.hm-area ,.hm-ldk ,.hm-beds
+{
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+.rent-title
+{
+    color: var(--color-gray);
+    font-size: 1rem;
+}
 
-/* this is login and register page css ends */
+/* this is buy and rent page css ends */

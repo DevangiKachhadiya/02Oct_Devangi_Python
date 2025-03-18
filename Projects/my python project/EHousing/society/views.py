@@ -56,20 +56,35 @@ def login(request):
         unm = request.POST["email"]
         pas = request.POST["pwd"]
 
-        user = usersignup.objects.filter(email=unm, pwd=pas)
-        userid = usersignup.objects.get(email=unm)
-        print("UserID:", userid.id)
-        if user: #TRUE
+        try:
+            user = usersignup.objects.get(email=unm, pwd=pas)
+            request.session["user"] = user.username  # Session
+            request.session["userid"] = user.id
+            print("UserID:", user.id)
             print("Login Successfull!")
             msg = "Login Successfully!"
-            request.session["user"] = unm #session
-            request.session["userid"] = userid.id
             return redirect("/")
-        else:
+        except usersignup.DoesNotExist:
             print("Error!Login Faild! Please try again...")
             msg = "Error!Login Faild! Please try again..."
 
     return render(request, 'login.html',{"msg":msg, "user":user})
+        
+        #     user = usersignup.objects.filter(email=unm, pwd=pas)
+        #     userid = usersignup.objects.get(email=unm)
+        #     print("UserID:", userid.id)
+        # if user: #TRUE
+        #     print("Login Successfull!")
+        #     msg = "Login Successfully!"
+        #     request.session["user"] = unm #session
+        #     request.session["userid"] = userid.id
+        #     return redirect("/")
+        
+        # else:
+        #     print("Error!Login Faild! Please try again...")
+        #     msg = "Error!Login Faild! Please try again..."
+
+    # return render(request, 'login.html',{"msg":msg, "user":user})
 
 def signup(request):
     msg = ""
