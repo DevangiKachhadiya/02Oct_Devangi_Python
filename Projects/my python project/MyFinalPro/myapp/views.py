@@ -134,7 +134,8 @@ def reset_password(request):
     return render(request, 'reset_password.html')
 
 def show_home(request):
-    return render(request, 'show_home.html')
+    home = AddHome.objects.prefetch_related('images').all()
+    return render(request, 'show_home.html',{'home':home})
 
 def page404(request):
     return render(request, 'page404.html')

@@ -91,11 +91,11 @@ class addhomeForm(forms.ModelForm):
     def clean(self):
         cleaned_data = super().clean()
         htype = cleaned_data.get('htype')
-        price = cleaned_data.get('price')
+        price = cleaned_data.get('sprice')
         rprice = cleaned_data.get('rprice')
 
         if htype == 'sell' and not price:
-            self.add_error('price', "Selling price is required for homes listed for sale.")
+            self.add_error('sprice', "Selling price is required for homes listed for sale.")
         elif htype == 'rent' and not rprice:
             self.add_error('rprice', "Rent price is required for homes listed for rent.")
         return cleaned_data
