@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Rent Home</title>
+</head>
+
+<body>
+    <div class="eh-body">
+        <!-- Header Section -->
+        <header>
+            <div id="eh-header">
+                <div id="eh-logo">
+                    <a class="eh-logo-link" href="/">
+                        <img src="/static/images/m2PU182hr5-1721715715718.svg" alt="">
+                    </a>
+                </div>
+                <div id="eh-navbar">
+                    <a class="nav-links" href="/">Home</a>
+                    <a class="nav-links" href="/buy_home">Buy</a>
+                    <a class="nav-links active-link" href="/rent_home">Rent</a>
+                    <a class="nav-links" href="/contact_us">Contact Us</a>
+                    <a class="nav-links" href="/about_us">About</a>
+                </div>
+                <div id="eh-account">
+                    <a class="account-link" href="/login">
+                        <button class="account-btn">
+                            <svg class="h-6 w-6" width="25" height="24" viewBox="0 0 25 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.62 12.78C12.55 12.77 12.46 12.77 12.38 12.78C10.62 12.72 9.22 11.28 9.22 9.50998C9.22 7.69998 10.68 6.22998 12.5 6.22998C14.31 6.22998 15.78 7.69998 15.78 9.50998C15.77 11.28 14.38 12.72 12.62 12.78Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M19.24 19.3801C17.46 21.0101 15.1 22.0001 12.5 22.0001C9.90001 22.0001 7.54001 21.0101 5.76001 19.3801C5.86001 18.4401 6.46001 17.5201 7.53001 16.8001C10.27 14.9801 14.75 14.9801 17.47 16.8001C18.54 17.5201 19.14 18.4401 19.24 19.3801Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M12.5 22C18.0228 22 22.5 17.5228 22.5 12C22.5 6.47715 18.0228 2 12.5 2C6.97715 2 2.5 6.47715 2.5 12C2.5 17.5228 6.97715 22 12.5 22Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg>
+                            <span>My account</span>
+                        </button>
+                    </a>
+                    <!-- profile button -->
+                    <div class="dropdown">
+                        <button class="profile-btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <svg class="h-6 w-6" width="25" height="24" viewBox="0 0 25 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.62 12.78C12.55 12.77 12.46 12.77 12.38 12.78C10.62 12.72 9.22 11.28 9.22 9.50998C9.22 7.69998 10.68 6.22998 12.5 6.22998C14.31 6.22998 15.78 7.69998 15.78 9.50998C15.77 11.28 14.38 12.72 12.62 12.78Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M19.24 19.3801C17.46 21.0101 15.1 22.0001 12.5 22.0001C9.90001 22.0001 7.54001 21.0101 5.76001 19.3801C5.86001 18.4401 6.46001 17.5201 7.53001 16.8001C10.27 14.9801 14.75 14.9801 17.47 16.8001C18.54 17.5201 19.14 18.4401 19.24 19.3801Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M12.5 22C18.0228 22 22.5 17.5228 22.5 12C22.5 6.47715 18.0228 2 12.5 2C6.97715 2 2.5 6.47715 2.5 12C2.5 17.5228 6.97715 22 12.5 22Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                        <!-- Dropdown Menu -->
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Section -->
+        <main class="eh-br-main">
+            
+        </main>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+
+</html>
+</body>
+</html>

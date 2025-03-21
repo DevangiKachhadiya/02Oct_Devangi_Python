@@ -17,7 +17,6 @@ def login(request):
     if request.method == 'POST':
         unm = request.POST["email"]
         password = request.POST['pas']
-
         user = userSignup.objects.filter(email=unm, pas=password)
         userid = userSignup.objects.get(email=unm)
         print("UserID:", userid.id)
@@ -29,7 +28,7 @@ def login(request):
         else:
             print("Error! Login Faild...PLZ Try Again...")
             msg = "Error! Login Faild...PLZ Try Again..."
-    return render(request, 'login.html', {'msg':msg, "user": user})
+    return render(request, 'log_in.html', {'msg':msg, "user": user})
 
 def signUp(request):
     msg = ''
@@ -45,9 +44,71 @@ def signUp(request):
                 msg = 'Email is already exists!'
             except userSignup.DoesNotExist:
                 newuser.save()
-                return redirect('/login')
+                return redirect('/log_in')
             
         else:
             print(newuser.errors)
             msg = "Error! Somethings went wrong..."
     return render(request, 'signUp.html', {'msg': msg})
+
+def add_homee(request):
+    msg = ""
+    errors = []
+    
+    if request.method == 'POST':
+        form = addhomeForm(request.POST)
+        images = request.FILES.getlist('image')
+
+        # Form validation
+        if form.is_valid():
+            # Image Validation
+            if not images:
+                errors.append("Please upload at least one image.")
+            elif len(images) > 10:
+                errors.append("You can upload a maximum of 10 images.")
+            else:
+                for image in images:
+                    if image.size > 5 * 1024 * 1024:  # 5MB limit
+                        errors.append(f"Image {image.name} exceeds 5MB size limit.")
+                    if not image.content_type.startswith('image/'):
+                        errors.append(f"File {image.name} is not a valid image.")
+            
+            if not errors:
+                home_instance = form.save()
+
+                # Save images
+                for image in images:
+                    HomeImage.objects.create(home=home_instance, image=image)
+                
+                msg = 'Added home successfully with images'
+            else:
+                msg = 'Error in image upload. Please check the image files.'
+        else:
+            errors.extend(form.errors.values())
+            msg = 'Form has errors. Please check the fields.'
+
+    else:
+        form = addhomeForm()
+
+    return render(request, "add_homee.html", {'msg': msg, 'errors': errors, 'form': form})
+
+def buy_home(request):
+    return render(request, "buy_home.html")
+
+def rent_home(request):
+    return render(request, 'rent_home.html')
+
+def show_home(request):
+    return render(request, 'show_home.html')
+
+def extra(request):
+    return render(request, 'extra.html')
+
+def latest_extra(request):
+    return render(request, 'latest_extra.html')
+
+def searchbar(request):
+    return render(request, 'searchbar.html')
+
+def slider_section(request):
+    return render(request, 'slider_section.html')

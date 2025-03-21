@@ -1,0 +1,826 @@
+:root
+{
+    --background-color-white: rgb(255,255,255);
+    --color-white: rgb(255,255,255);
+    --background-light-gray: rgb(243, 244, 245);
+    --color-light-gray: rgb(243, 244, 245);
+    --background-color-black: rgb(35, 35, 35);
+    --color-black: rgb(35, 35, 35);
+    --background-color-gray:rgb(98 ,98 ,98);
+    --color-gray:rgb(98 ,98 ,98);
+    --background-light-orange:rgba(255, 93, 7, .1);
+    --color-light-orange:rgba(255, 93, 7, .1);
+    --background-color-orange:rgb(255 93 7 );
+    --color-orange:rgb(255 93 7 );
+
+    --border-light-gray:rgb(229, 229, 229);
+    --border-dark-gray:rgb(191 186 186);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* this is css of header section */
+.eh-body
+{
+    width: 100%;
+    height: 100%;
+}
+.eh-body header
+{
+    width: 100%;
+    height: 12vh;
+    position: sticky !important;
+    top: 0;
+    z-index: 10;
+    background-color: var(--background-color-white);
+}
+#eh-header
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom:1px solid rgba(35, 35, 35, .1) !important;
+}
+#eh-logo
+{
+    
+    display: inline-block;
+    margin-left: 2.50rem;
+}
+#eh-logo-link
+{
+    text-decoration: none;
+}
+#eh-navbar
+{
+    display: inline-block;
+    padding: 1rem .25rem;
+    border-radius: 9999px;
+    background-color: var(--background-light-gray);
+}
+#eh-navbar .nav-links
+{
+    /* margin-right: 10px; */
+    padding-left: 1.50rem;
+    padding-right: 1.50rem;
+    color: var(--color-black);
+    text-decoration: none;
+    border-radius: 9999px;
+        padding-top: .75rem;
+        padding-bottom: .75rem;
+        /* font-size: .75rem; */
+        line-height: 1rem;
+}
+#eh-navbar .nav-links:hover
+{
+    color: var(--color-white);
+    background-color: var(--background-color-black);
+}
+.active-link
+{
+    background-color: var(--background-color-black);
+    font-weight: 600;
+    color: var(--color-white) !important;
+}
+#eh-account
+{
+    display: inline-block;
+    margin-right: 1.25rem
+}
+#eh-account .account-link
+{
+    text-decoration: none;
+}
+#eh-account .account-btn
+{
+
+    width: 11vw;
+    height: 7vh;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    border-radius: 999px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    background-color: transparent;
+    border:1px solid var(--border-light-gray);
+    cursor: pointer;
+    color: var(--color-black);
+    /* display: none; */
+}
+.dropdown .profile-btn
+{
+    width: 50px;
+    height: 50px;
+    border-radius: 999px;
+    /* padding: .25rem; */
+    background-color: transparent;
+    border:1px solid var(--border-dark-gray);
+    cursor: pointer;
+    color: var(--color-black);
+    display: none;
+}
+.dropdown-menu .dropdown-item:hover
+{
+    background-color: rgba(255, 93, 7, .1);
+    font-weight: 500;
+    color: var(--color-orange);
+}
+.dropdown .profile-btn:hover
+{
+    /* font-size: 2rem; */
+    background-color: rgba(255, 93, 7, .1);
+    font-weight: 700;
+    color: var(--color-orange);
+}
+#eh-account .account-btn:hover
+{
+    border:1px solid var(--border-dark-gray);
+
+}
+#eh-account .account-btn:focus
+{
+    border: 2px solid var(--background-color-black);
+}
+
+main
+{
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    position: relative;
+    /* background-color: var(--background-light-gray); */
+
+}
+/* this is home /index page css start */
+/* this is css of banner from main section of index / home page  */
+#eh-hm-main
+{
+    width: 100%;
+    height: 100%;
+}
+#eh-banner
+{
+    width: 100%;
+    height: 110%;
+    background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(/static/images/eh-banner.webp);
+    background-position: bottom;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    color: var(--color-white) !important;
+}
+.banner-text
+{
+    margin-top: 10%;
+    display: inline-block;
+    /* border: 2px solid blue; */
+    width: 50%;
+    text-align: center;
+}
+.banner-text h1
+{
+    display: inline-block;
+    /* border: 1px solid salmon; */
+    /* text-align: center; */
+    width: 100%;
+    font-size: 60px;
+    line-height: 1.5;
+}
+    .search-links .button1
+    {
+        padding-left: 1.50rem;
+        padding-right: 1.50rem;
+        padding-top: .75rem;
+            padding-bottom: .75rem;
+            border-radius: 9999px;
+            background-color: transparent;
+            border: none;
+            color: var(--color-white);
+            font-weight: 700;
+    }
+    .search-links
+    {
+        text-align: center;
+        margin-top: 2rem;
+    }
+    .search-links .active-btn
+    {
+        color: var(--color-black);
+        background-color: var(--background-color-white);
+    }
+    .search-links .btns-hover:hover
+    {
+        background-color: hsla(0, 0%, 100%, .1);
+    }
+    .search-area
+    {
+        width: 50%;
+    }
+.search-form
+{
+    margin-top: 1.27rem;
+    width: 100%;
+    padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        padding-top: 1.75rem;
+        padding-bottom: 1.75rem;
+        border-radius: 20px;
+    display: inline-block;
+    background-color: var(--background-color-white);
+    color: var(--color-black);
+}
+.form-searchbar
+{
+    display: flex;
+    
+    align-items: center;
+    column-gap: 3rem;
+}
+.options
+{
+    width: 20%;
+    display: inline-block;
+}
+.dpdw-btn
+{
+    /* border: 1px solid salmon; */
+    margin-top: .5rem;
+}
+
+.dpdw-btn button
+{
+    width: 100%;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* gap: 2.6rem; */
+    background-color: var(--background-color-white);
+    border: none;
+}
+
+.line
+{
+    width: .1rem;
+    height: 70px;
+    border: .1px solid var(--color-gray);
+    display: inline-block;
+}
+.search-button button
+{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 14px;
+    background-color: var(--background-color-orange);
+    display: grid;
+    place-content: center;
+    color: var(--color-white);
+    border: none;
+}
+.search-button button:hover
+{
+    box-shadow: 0 4px 14px 0 rgba(255, 93, 7, .3);;
+
+}
+
+/* trending section css */
+.trend
+{
+    /* width: 100%; */
+    height: auto;
+    background-image: linear-gradient(to bottom, white, var(--background-light-gray));
+}
+.trend-inner ,.city-heading
+{
+    padding: 0rem 4rem;
+}
+.trend-homes
+{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+}
+.city-temp-wrapper
+{
+    width: 100%;
+    background-color: var(--background-light-gray);
+}
+.city-temp
+{
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+    padding: 0rem 4rem;
+}
+.city
+{
+    padding-top: 3.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    position: relative;
+    color: var(--color-white);
+}
+.city1
+{
+    background-image: linear-gradient(to bottom, #00000000, rgba(35, 35, 35, .3), rgba(35, 35, 35, .6)),url(/static/images/city1.webp);
+}
+.city2
+{
+    background-image: linear-gradient(to bottom, #00000000, rgba(35, 35, 35, .3), rgba(35, 35, 35, .6)),url(/static/images/bengaluru.jpg);
+}
+.city3
+{
+    background-image: linear-gradient(to bottom, #00000000, rgba(35, 35, 35, .3), rgba(35, 35, 35, .6)),url(/static/images/hyderabad.jpg);
+}
+.city4
+{
+    background-image: linear-gradient(to bottom, #00000000, rgba(35, 35, 35, .3), rgba(35, 35, 35, .6)),url(/static/images/delhi.jpg);
+}
+.city5
+{
+    background-image: linear-gradient(to bottom, #00000000, rgba(35, 35, 35, .3), rgba(35, 35, 35, .6)),url(/static/images/city5.webp);
+}
+.city6
+{
+    background-image: linear-gradient(to bottom, #00000000, rgba(35, 35, 35, .3), rgba(35, 35, 35, .6)),url(/static/images/udaipur.jpg);
+}
+.city-links
+{
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 1.5rem;
+}
+.service-container
+{
+    background-color: var(--background-light-gray);
+    margin-bottom: 10rem;
+}
+.service-container > h2
+{
+    margin-top: 5rem;
+    margin-left: 4rem;
+}
+.serve-card
+{
+    border-radius: 1rem;
+    padding: 30px;
+    
+    background-color: var(--background-color-white);
+}
+.serve-body
+{
+    margin-top: 3rem;
+}
+.logos
+{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    place-content: center;
+    display: grid;
+}
+.serve-name
+{
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-top: .75rem;
+}
+.color-orange
+{
+    color: var(--color-orange);
+    background-color: var(--background-light-orange);
+}
+.serve-body > p
+{
+    text-align: justify;
+}
+.services
+{
+    margin-top: 2rem;
+    padding: 2rem 4rem;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: .75rem;
+    column-gap: 1rem;
+    margin-bottom: 5rem;
+}
+/* this is home /index page css end */
+/* this is login and register and add home page css starts */
+
+.sl-main ,.add-home-main
+{
+    width: 100%;
+    height: 100vh;
+    /* position: relative; */
+}
+#eh-sl-main ,#eh-addhm-main
+{
+    position: absolute;
+    width: 100%;
+    height: auto;
+    background-color: var(--background-light-gray);
+}
+.width-100
+{
+
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--background-light-gray);
+    
+}
+.sl-container
+{
+
+    max-width: 420px;
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    padding: 1.5rem;
+    background-color: var(--background-color-white);
+}
+.add-hm-container {
+    max-width: 600px; /* Increased width for better view */
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    padding: 1.5rem;
+    background-color: var(--background-color-white);
+}
+.sl-logo ,.add-hm-logo
+{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    color: var(--color-orange);
+    background-color: rgba(255, 93, 7, .1);
+    place-content: center;
+    display: grid;
+}
+.add-hm-logo > svg
+{
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 200px;
+}
+.sl-heading ,.add-hm-heading
+{
+    margin-top: 1.25rem;
+}
+.sl-heading h1,.add-hm-heading h1
+{
+    font-weight: 600;
+    line-height: 2;
+    font-size: 1.5rem;
+}
+#lin-form ,#sin-form ,#add-home-form
+{
+    margin-top: 1.25rem;
+}
+
+.sl-label ,.add-hm-label
+{
+line-height: 1.8;
+font-size: .875rem;
+color: var(--color-gray);
+margin-bottom: .25rem;
+display: flex;
+column-gap: .25rem;
+align-items: center;
+}
+.sl-in-pos-rel
+{
+    position: relative;
+}
+.form-input
+{
+    display: block;
+    width: 100%;
+    border-radius: .75rem;
+    border-width: 0;
+    background-color: rgb(247 248 250);
+    padding: .50rem 1.25rem;
+    font-size: 1rem;
+    margin-bottom: .25rem;
+    line-height: 1.5rem;
+    color: var(--color-black);
+}
+.form-input:focus-visible
+{
+    outline: 2px solid rgba(59,130,246,.5);
+}
+.lin-in .sl-forgot-link
+{
+    color: var(--color-gray);
+    text-decoration: none;
+    display: inline-block;
+    border-bottom: 1px solid var(--color-gray);
+    margin-top: .75rem;
+}
+.lin-in .sl-forgot-link:hover
+{
+    color: var(--color-orange);
+}
+#lin-form .btn-sl , #sin-form  .btn-sl ,#add-home-form .btn-sl ,.modal-body .btn-sl ,#contact-form .btn-sl
+{
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 2rem;
+    padding: .75rem;
+    border: none;
+    font-size: 1.25rem;
+    display: flex;
+    justify-content: center;
+    background-color: var(--background-color-orange);
+    color: var(--color-white);
+    font-weight: 500;
+    gap: 2;
+    cursor: pointer;
+}
+#lin-form .btn-sl:hover , #sin-form  .btn-sl:hover ,#add-home-form .btn-sl:hover ,.modal-body .btn-sl:hover ,#contact-form .btn-sl:hover
+{
+    box-shadow: 0 4px 14px 0 rgba(255, 93, 7, .3);;
+}
+.sl-link
+{
+    margin-top: 2rem;
+    color: rgb(17 24 39);
+    font-size: .875rem;
+    line-height: 1.25rem;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.sl-link .sl-links
+{
+    text-decoration: none;
+    color: var(--color-black);
+    border-bottom: 1px solid;
+    font-weight: 700;
+    margin-left: .25rem;
+}
+.sl-link .sl-links:hover
+{
+    color: var(--color-orange);
+    font-weight: 700;
+}
+/*---------->> add home page css */
+.image-preview {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 15px;
+}
+
+.lin-images ::-webkit-file-upload-button{
+
+    border-radius: 12px;
+    padding: .75rem;
+    border: none;
+    font-size: 1.25rem;
+    margin-right: 2rem;
+    background-color: var(--background-color-orange);
+    color: var(--color-white);
+    font-weight: 500;
+    cursor: pointer;
+}
+.lin-images ::-webkit-file-upload-button:hover
+{
+    box-shadow: 0 4px 14px 0 rgba(255, 93, 7, .3);
+}
+
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.remove-image-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(255, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.image-preview-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* this is login and register page and add home page css ends */
+
+
+/* this is buy and rent page css starts */
+.eh-br-main
+{
+    width: 100%;
+    height: auto;
+    background-color: var(--background-light-gray);
+}
+.br-filter-bar{
+    background-color: var(--background-color-white);
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+.br-search{
+    margin-left: 1rem;
+    position: relative;
+    width: 20%;
+}
+.br-search input
+{   
+    background-color: var(--background-light-gray);
+    text-indent: 25px;
+    display: inline-block;
+}
+.br-search input:focus-visible
+{
+    outline: 2px solid var(--color-black);
+}
+.br-filter-hover:hover
+{
+    background-color: #ecedef;
+}
+.br-search-icon
+{
+    width: 1.5rem;
+    height: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    /* display: inline-block; */
+}
+.br-search-icon:hover
+{
+    cursor: pointer;
+}
+/* this is product card section of buy and rent page*/
+.card {
+    display: inline-block;
+    width: 18rem;
+    margin: 20px;
+    position: relative;
+    border-radius: 20px; /* Rounded corners for the card */
+    overflow: hidden;
+    border: none;
+}
+.card:hover{
+box-shadow: 0 25px 50px -12px rgba(0, 0, 0, .25);
+}
+.carousel-inner img {
+    width: 100%;
+    height: 200px;
+    border-radius: 20px; /* Rounded corners for the image */
+    padding: 10px;
+}
+.carousel-indicators li
+{
+    width: 5px !important;
+    height: 5px !important;
+    border-radius: 100%;
+}
+/* Hide the indicators and controls by default */
+.carousel-control-prev,
+.carousel-control-next {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Show indicators and controls on hover */
+.card:hover .carousel-control-prev,
+.card:hover .carousel-control-next {
+    opacity: 1;
+}
+.card-foot
+{
+    color: var(--color-gray);
+    width: 100%;
+    height: auto;
+    font-size: .8rem;
+    padding: .5rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+}
+.card-body p{
+    color: var(--color-gray);
+}
+.hm-area ,.hm-ldk ,.hm-beds
+{
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+.rent-title
+{
+    color: var(--color-gray);
+    font-size: 1rem;
+}
+.card .redirect-sh
+{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+/* this is buy and rent page css ends */
+
+/* contact form page css starts */
+#contact-form
+{
+    
+    /* position: absolute; */
+    width: 99%;
+    height: auto;
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 1rem;
+    border: 2px solid var(--border-light-gray);
+    background-color: var(--background-light-gray);
+}
+.contact-inner
+{
+    margin: auto;
+    margin-top: 10%;
+    margin-bottom: 3%;
+}
+.cont-us-label
+{
+line-height: 1.8;
+font-size: .875rem;
+color: var(--color-black);
+margin-bottom: .25rem;
+display: flex;
+column-gap: .25rem;
+align-items: center;
+}
+.cont-us-pos-rel
+{
+    position: relative;
+}
+.cont-us-form-input
+{
+    display: block;
+    width: 100%;
+    border-radius: .75rem;
+    border-width: 0;
+    background-color: var(--background-color-white);
+    padding: .50rem 1.25rem;
+    font-size: 1rem;
+    margin-bottom: .25rem;
+    line-height: 1.5rem;
+    color: var(--color-black);
+}
+.cont-us-form-input:focus-visible
+{
+    background-color: transparent;
+    outline: 2px solid rgba(59,130,246,.5);
+}
+.must-have
+{
+    position: absolute;
+    top: 0;
+    right: .75rem;
+    font-weight: 700;
+    color: #e06a59;
+}
+.contact-details
+{
+    display: flex;
+    gap: 2rem;
+}
+/* contact page css ends */

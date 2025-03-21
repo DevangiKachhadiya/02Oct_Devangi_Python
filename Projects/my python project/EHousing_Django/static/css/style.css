@@ -110,6 +110,32 @@
     border:1px solid var(--border-light-gray);
     cursor: pointer;
     color: var(--color-black);
+    /* display: none; */
+}
+.dropdown .profile-btn
+{
+    width: 50px;
+    height: 50px;
+    border-radius: 999px;
+    /* padding: .25rem; */
+    background-color: transparent;
+    border:1px solid var(--border-dark-gray);
+    cursor: pointer;
+    color: var(--color-black);
+    display: none;
+}
+.dropdown-menu .dropdown-item:hover
+{
+    background-color: rgba(255, 93, 7, .1);
+    font-weight: 500;
+    color: var(--color-orange);
+}
+.dropdown .profile-btn:hover
+{
+    /* font-size: 2rem; */
+    background-color: rgba(255, 93, 7, .1);
+    font-weight: 700;
+    color: var(--color-orange);
 }
 #eh-account .account-btn:hover
 {
@@ -120,6 +146,7 @@
 {
     border: 2px solid var(--background-color-black);
 }
+
 main
 {
     width: 100%;
@@ -166,36 +193,36 @@ main
     font-size: 60px;
     line-height: 1.5;
 }
-.search-links button
-{
-    padding-left: 1.50rem;
-    padding-right: 1.50rem;
-    padding-top: .75rem;
-        padding-bottom: .75rem;
-        border-radius: 9999px;
-        background-color: transparent;
-        border: none;
-        color: var(--color-white);
-        font-weight: 700;
-}
-.search-links
-{
-    text-align: center;
-    margin-top: 2rem;
-}
-.search-links .active-btn
-{
-    color: var(--color-black);
-    background-color: var(--background-color-white);
-}
-.search-links .btn:hover
-{
-    background-color: hsla(0, 0%, 100%, .1);
-}
-.search-area
-{
-    width: 50%;
-}
+    .search-links .button1
+    {
+        padding-left: 1.50rem;
+        padding-right: 1.50rem;
+        padding-top: .75rem;
+            padding-bottom: .75rem;
+            border-radius: 9999px;
+            background-color: transparent;
+            border: none;
+            color: var(--color-white);
+            font-weight: 700;
+    }
+    .search-links
+    {
+        text-align: center;
+        margin-top: 2rem;
+    }
+    .search-links .active-btn
+    {
+        color: var(--color-black);
+        background-color: var(--background-color-white);
+    }
+    .search-links .btns-hover:hover
+    {
+        background-color: hsla(0, 0%, 100%, .1);
+    }
+    .search-area
+    {
+        width: 50%;
+    }
 .search-form
 {
     margin-top: 1.27rem;
@@ -223,8 +250,10 @@ main
 }
 .dpdw-btn
 {
-    margin-top: 1.5rem;
+    /* border: 1px solid salmon; */
+    margin-top: .5rem;
 }
+
 .dpdw-btn button
 {
     width: 100%;
@@ -240,7 +269,7 @@ main
 {
     width: .1rem;
     height: 70px;
-    border: 1px solid var(--color-gray);
+    border: .1px solid var(--color-gray);
     display: inline-block;
 }
 .search-button button
@@ -264,22 +293,52 @@ main
 .trend-slider
 {
     width: 100%;
-    height: 70vh;
+    border: 1px solid saddlebrown;
+    height: auto;
+    background-image: linear-gradient(to bottom, white, var(--background-light-gray));
 }
-.eh-hm-slider-btn
+.trend-slider-btn
 {
     padding: 0rem 6rem;
+    border: 1px solid green;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.trend-btns span
+.trend-btns
 {
-    background-color: black;
-    border-radius: 50%;
-    padding: 10px;
+    width: 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-
+.trend-btns i
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-color-black);
+    color: var(--color-white);
+    font-size: 1.2rem;
+    border-radius: 50%;
+    padding: 5px;
+}
+.trendhome-wrapper
+{   width: 100%;
+    max-width: 1500px;
+    height: auto;
+    /* display: flex; */
+    /* flex-direction: row; */
+    border: 3px solid tomato;
+}
+.trendhome-wrapper .carousel1
+{
+ display: grid;
+ grid-auto-flow: column;
+ grid-auto-columns: calc((100% / 3.5) - 45px);
+ /* gap: 5px; */
+ overflow: hidden;
+}
 
 /* this is home /index page css end */
 /* this is login and register and add home page css starts */
@@ -287,14 +346,23 @@ main
 .sl-main ,.add-home-main
 {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     /* position: relative; */
 }
 #eh-sl-main ,#eh-addhm-main
 {
     position: absolute;
     width: 100%;
+    height: auto;
     background-color: var(--background-light-gray);
+}
+.width-100
+{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--background-light-gray);
+
 }
 .sl-container
 {
@@ -386,6 +454,10 @@ align-items: center;
     border-bottom: 1px solid var(--color-gray);
     margin-top: .75rem;
 }
+.lin-in .sl-forgot-link:hover
+{
+    color: var(--color-orange);
+}
 #lin-form .btn-sl , #sin-form  .btn-sl ,#add-home-form .btn-sl
 {
     width: 100%;
@@ -437,6 +509,23 @@ align-items: center;
     width: 100%;
     height: 100%;
     margin-bottom: 15px;
+}
+
+.lin-images ::-webkit-file-upload-button{
+
+    border-radius: 12px;
+    padding: .75rem;
+    border: none;
+    font-size: 1.25rem;
+    margin-right: 2rem;
+    background-color: var(--background-color-orange);
+    color: var(--color-white);
+    font-weight: 500;
+    cursor: pointer;
+}
+.lin-images ::-webkit-file-upload-button:hover
+{
+    box-shadow: 0 4px 14px 0 rgba(255, 93, 7, .3);
 }
 
 .image-preview img {
@@ -515,11 +604,16 @@ align-items: center;
 }
 /* this is product card section of buy and rent page*/
 .card {
+    display: inline-block;
     width: 18rem;
     margin: 20px;
     position: relative;
     border-radius: 20px; /* Rounded corners for the card */
     overflow: hidden;
+    border: none;
+}
+.card:hover{
+box-shadow: 0 25px 50px -12px rgba(0, 0, 0, .25);
 }
 .carousel-inner img {
     width: 100%;
@@ -569,5 +663,10 @@ align-items: center;
     color: var(--color-gray);
     font-size: 1rem;
 }
-
+.card .redirect-sh
+{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
 /* this is buy and rent page css ends */

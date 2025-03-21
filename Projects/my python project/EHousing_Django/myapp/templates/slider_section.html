@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location and Bedroom Dropdown</title>
+    <!-- Bootstrap CSS (Add this in the head tag) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-4">
+    <div class="row">
+        <!-- Location Dropdown -->
+        <div class="col-md-6">
+            <div class="sr-location options">
+                <label for="location" class="form-label">Location</label>
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary" type="button" id="locationButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        Rajkot
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="locationButton">
+                        <li><a class="dropdown-item" href="#" data-location="Rajkot">Rajkot</a></li>
+                        <li><a class="dropdown-item" href="#" data-location="Surat">Surat</a></li>
+                        <li><a class="dropdown-item" href="#" data-location="Ahmedabad">Ahmedabad</a></li>
+                        <li><a class="dropdown-item" href="#" data-location="Vadodara">Vadodara</a></li>
+                        <li><a class="dropdown-item" href="#" data-location="Gandhinagar">Gandhinagar</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bedroom Dropdown -->
+        <div class="col-md-6">
+            <div class="sr-bedroom options">
+                <label for="bedroom" class="form-label">Number of Bedrooms</label>
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="bedroomButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        1 Bedroom
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="bedroomButton">
+                        <li><a class="dropdown-item" href="#" data-bedroom="1">1 Bedroom</a></li>
+                        <li><a class="dropdown-item" href="#" data-bedroom="2">2 Bedrooms</a></li>
+                        <li><a class="dropdown-item" href="#" data-bedroom="3">3 Bedrooms</a></li>
+                        <li><a class="dropdown-item" href="#" data-bedroom="4">4 Bedrooms</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS (Include this at the end of the body) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Update location button text
+    const locationItems = document.querySelectorAll('.dropdown-item[data-location]');
+    const locationButton = document.getElementById('locationButton');
+
+    locationItems.forEach(item => {
+        item.addEventListener('click', function(event) {
+            const selectedLocation = event.target.dataset.location;
+            locationButton.textContent = selectedLocation;
+        });
+    });
+
+    // Update bedroom button text
+    const bedroomItems = document.querySelectorAll('.dropdown-item[data-bedroom]');
+    const bedroomButton = document.getElementById('bedroomButton');
+
+    bedroomItems.forEach(item => {
+        item.addEventListener('click', function(event) {
+            const selectedBedroom = event.target.dataset.bedroom;
+            bedroomButton.textContent = selectedBedroom + (selectedBedroom === "1" ? " Bedroom" : " Bedrooms");
+        });
+    });
+</script>
+
+</body>
+</html>
