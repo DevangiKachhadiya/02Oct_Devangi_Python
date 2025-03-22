@@ -111,3 +111,8 @@ class contactForm(forms.ModelForm):
         model = Contact
         fields = '__all__'
 
+class apply_ownerForm(forms.ModelForm):
+    class Meta:
+        model = Owner
+        fields = ['name', 'email', 'number']
+

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rent Home</title>
+    <title>Search City</title>
 </head>
 
 <body>
@@ -24,7 +24,7 @@
 
         <!-- Custom CSS -->
         <link rel="stylesheet" href="/static/css/style.css">
-        <title>Rent Home</title>
+        <title>Search City</title>
     </head>
 
     <body>
@@ -119,9 +119,10 @@
               
                 <form action="" method="get">
                 <div class="container-fluid mt-3 p-3">
-                    <h2 style="text-align: center;">You searched for Rent </h2>
+                   
                     <div class="row">
-                        {% for i in shome %}
+                        {% for i in homes %}
+                        <h2 style="text-align: center;">You searched for {{i.city}}  </h2>
                       
                        
                         <div class="col-lg-3 col-md-4 col-sm-6 mb-3">

@@ -8,7 +8,7 @@ class UserSignUp(models.Model):
     password = models.CharField(max_length=12)
     confpass = models.CharField(max_length=12)
     created = models.DateTimeField(auto_now_add=True)
-
+    reset_pwd = models.CharField(max_length=10, blank=True, null=True)
 
 class AddHome(models.Model):
     HOME_TYPE_CHOICES = [
@@ -37,3 +37,14 @@ class Contact(models.Model):
     email = models.EmailField()
     phoneno = models.BigIntegerField()
     imessage = models.TextField() 
+
+class Owner(models.Model):
+    STATUS_CHOICE = [
+            ('Pending','Pending'),
+            ('Approved','Approved'),
+            ('Rejected','Rejected'),
+    ]
+    name = models.CharField(max_length=200)
+    email = models.EmailField()
+    number = models.BigIntegerField()
+    is_approved = models.CharField(choices = STATUS_CHOICE, default= 'Pending', max_length=50)

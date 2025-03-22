@@ -45,7 +45,79 @@
                     
                 </div>
                 <!-- this is for account button -->
+               
+                 {% if approved %}
                 <div id="eh-account">
+                
+                    <a class="account-link" href="/add_home">
+                        <button class="account-btn">
+                            <svg class="h-6 w-6" width="25" height="24" viewBox="0 0 25 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.62 12.78C12.55 12.77 12.46 12.77 12.38 12.78C10.62 12.72 9.22 11.28 9.22 9.50998C9.22 7.69998 10.68 6.22998 12.5 6.22998C14.31 6.22998 15.78 7.69998 15.78 9.50998C15.77 11.28 14.38 12.72 12.62 12.78Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M19.24 19.3801C17.46 21.0101 15.1 22.0001 12.5 22.0001C9.90001 22.0001 7.54001 21.0101 5.76001 19.3801C5.86001 18.4401 6.46001 17.5201 7.53001 16.8001C10.27 14.9801 14.75 14.9801 17.47 16.8001C18.54 17.5201 19.14 18.4401 19.24 19.3801Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M12.5 22C18.0228 22 22.5 17.5228 22.5 12C22.5 6.47715 18.0228 2 12.5 2C6.97715 2 2.5 6.47715 2.5 12C2.5 17.5228 6.97715 22 12.5 22Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg>
+                            <span>Add Home</span>
+                        </button>
+                    </a>
+                    <!-- profile button -->
+                    <div class="dropdown">
+                        <button class="profile-btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <svg class="h-6 w-6" width="25" height="24" viewBox="0 0 25 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.62 12.78C12.55 12.77 12.46 12.77 12.38 12.78C10.62 12.72 9.22 11.28 9.22 9.50998C9.22 7.69998 10.68 6.22998 12.5 6.22998C14.31 6.22998 15.78 7.69998 15.78 9.50998C15.77 11.28 14.38 12.72 12.62 12.78Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M19.24 19.3801C17.46 21.0101 15.1 22.0001 12.5 22.0001C9.90001 22.0001 7.54001 21.0101 5.76001 19.3801C5.86001 18.4401 6.46001 17.5201 7.53001 16.8001C10.27 14.9801 14.75 14.9801 17.47 16.8001C18.54 17.5201 19.14 18.4401 19.24 19.3801Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M12.5 22C18.0228 22 22.5 17.5228 22.5 12C22.5 6.47715 18.0228 2 12.5 2C6.97715 2 2.5 6.47715 2.5 12C2.5 17.5228 6.97715 22 12.5 22Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                        
+                    </div>
+                </div>
+                {% else %}
+                    
+                    
+
+                {% endif %}
+                <div id="eh-account">
+                    <a class="account-link mx-2" href="/apply_owner">
+                        <button class="account-btn">
+                            <svg class="h-6 w-6" width="25" height="24" viewBox="0 0 25 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.62 12.78C12.55 12.77 12.46 12.77 12.38 12.78C10.62 12.72 9.22 11.28 9.22 9.50998C9.22 7.69998 10.68 6.22998 12.5 6.22998C14.31 6.22998 15.78 7.69998 15.78 9.50998C15.77 11.28 14.38 12.72 12.62 12.78Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M19.24 19.3801C17.46 21.0101 15.1 22.0001 12.5 22.0001C9.90001 22.0001 7.54001 21.0101 5.76001 19.3801C5.86001 18.4401 6.46001 17.5201 7.53001 16.8001C10.27 14.9801 14.75 14.9801 17.47 16.8001C18.54 17.5201 19.14 18.4401 19.24 19.3801Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M12.5 22C18.0228 22 22.5 17.5228 22.5 12C22.5 6.47715 18.0228 2 12.5 2C6.97715 2 2.5 6.47715 2.5 12C2.5 17.5228 6.97715 22 12.5 22Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg>
+                            <span>Apply owner</span>
+                        </button>
+                    </a>
                     <a class="account-link" href="/login">
                         <button class="account-btn">
                             <svg class="h-6 w-6" width="25" height="24" viewBox="0 0 25 24" fill="none"
@@ -128,14 +200,12 @@
                                             </svg>
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="locationButton">
-                                            <li><a class="dropdown-item" href="#" data-location="Rajkot">Rajkot</a></li>
-                                            <li><a class="dropdown-item" href="#" data-location="Surat">Surat</a></li>
-                                            <li><a class="dropdown-item" href="#"
-                                                    data-location="Ahmedabad">Ahmedabad</a></li>
-                                            <li><a class="dropdown-item" href="#" data-location="Vadodara">Vadodara</a>
-                                            </li>
-                                            <li><a class="dropdown-item" href="#"
-                                                    data-location="Gandhinagar">Gandhinagar</a></li>
+                                            <li><a class="dropdown-item" href="#" data-location="Mumbai">Mumbai</a></li>
+                                            <li><a class="dropdown-item" href="#" data-location="Bengaluru">Bengaluru</a></li>
+                                            <li><a class="dropdown-item" href="#"  data-location="Ahmedabad">Hyderabad</li>
+                                            <li><a class="dropdown-item" href="#" data-location="Delhi">Delhi</a></li>
+                                            <li><a class="dropdown-item" href="#" data-location="Kolkata">Kolkata</a></li>
+                                            <li><a class="dropdown-item" href="#" data-location="Udaipur">Udaipur</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -183,18 +253,18 @@
                                         </button>
                                         <!-- Dropdown menu for Buy price options -->
                                         <ul id="buyPriceDropdown" class="dropdown-menu" aria-labelledby="priceButton">
-                                            <li><a class="dropdown-item" href="#" data-price="buy">Buy Price 1</a></li>
-                                            <li><a class="dropdown-item" href="#" data-price="buy">Buy Price 2</a></li>
-                                            <li><a class="dropdown-item" href="#" data-price="buy">Buy Price 3</a></li>
+                                            <li><a class="dropdown-item" href="#" data-price="buy">20,00,000 - 50,00,000</a></li>
+                                            <li><a class="dropdown-item" href="#" data-price="buy">50,00,000 - 80,00,000</a></li>
+                                            <li><a class="dropdown-item" href="#" data-price="buy">80,00,000 - 1,00,00,000+</a></li>
                                         </ul>
                                         <!-- Dropdown menu for Rent price options (hidden by default) -->
                                         <ul id="rentPriceDropdown" class="dropdown-menu" aria-labelledby="priceButton"
                                             style="display: none;">
-                                            <li><a class="dropdown-item" href="#" data-price="rent">Rent Price 1</a>
+                                            <li><a class="dropdown-item" href="#" data-price="rent">5,000 - 20,000</a>
                                             </li>
-                                            <li><a class="dropdown-item" href="#" data-price="rent">Rent Price 2</a>
+                                            <li><a class="dropdown-item" href="#" data-price="rent">20,000 - 30,000</a>
                                             </li>
-                                            <li><a class="dropdown-item" href="#" data-price="rent">Rent Price 3</a>
+                                            <li><a class="dropdown-item" href="#" data-price="rent">30,000 - 50,000+</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -402,27 +472,27 @@
                     </div>
                     <div class="city-temp">
                         <div class="city city1">
-                            <a href="/rent_home" class="city-links"></a>
+                            <a href="{% url 'cities' 'mumbai' %}" class="city-links"></a>
                             <h2>Mumbai</h2>
                         </div>
                         <div class="city city2">
-                            <a href="/rent_home" class="city-links"></a>
+                            <a href="{% url 'cities' 'bengluru' %}" class="city-links"></a>
                             <h2>Bengaluru</h2>
                         </div>
                         <div class="city city3">
-                            <a href="/rent_home" class="city-links"></a>
+                            <a href="{% url 'cities' 'hyderabad' %}" class="city-links"></a>
                             <h2>Hyderabad</h2>
                         </div>
                         <div class="city city4">
-                            <a href="/rent_home" class="city-links"></a>
+                            <a href="{% url 'cities' 'delhi' %}" class="city-links"></a>
                             <h2>Delhi</h2>
                         </div>
                         <div class="city city5">
-                            <a href="/rent_home" class="city-links"></a>
+                            <a href="{% url 'cities' 'kolkata' %}" class="city-links"></a>
                             <h2>Kolkata</h2>
                         </div>
                         <div class="city city6">
-                            <a href="/rent_home" class="city-links"></a>
+                            <a href="{% url 'cities' 'udaipur' %}" class="city-links"></a>
                             <h2>Udaipur</h2>
                         </div>
                     </div>

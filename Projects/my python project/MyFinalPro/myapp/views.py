@@ -1,35 +1,103 @@
 from django.shortcuts import render,redirect
 from .forms import *
+from .models import *
 from django.contrib import messages
-import re
 from django.contrib.auth import logout
 from django.core.mail import send_mail
 from MyFinalPro import settings
+import random
+import string
 
 # Create your views here.
 
 def index(request):
-    return render(request, 'index.html')
+    user = request.user.email if request.user.is_authenticated else None
+    approved = False
+
+    user = request.session.get("user")
+    if user :
+        try: 
+            isapp=Owner.objects.get(email=user)
+            approved = isapp.is_approved
+        except Owner.DoesNotExist:
+            approved= False
+    else:
+            approved= False
+    return render(request, 'index.html', {'user':user, 'approved':approved})
+
+# def login(request):
+#     msg = ""
+#     user = request.session.get("user")
+#     if request.method == 'POST':
+#         unm = request.POST["email"]
+#         password = request.POST['password']
+#         user = UserSignUp.objects.filter(email=unm, password=password)
+#         userid = UserSignUp.objects.get(email=unm)
+#         print("UserID:", userid.id)
+#         if user:
+#             print("Login Successfully!")
+#             request.session["user"]= unm # session
+#             request.session["userid"]=userid.id
+#             return redirect("/")
+#         else:
+#             print("Error! Login Faild...PLZ Try Again...")
+#             msg = "Error! Login Faild...PLZ Try Again..."
+#     return render(request, 'login.html', {'msg': msg})
 
 def login(request):
     msg = ""
     user = request.session.get("user")
+
     if request.method == 'POST':
-        unm = request.POST["email"]
-        password = request.POST['password']
-        user = UserSignUp.objects.filter(email=unm, password=password)
-        userid = UserSignUp.objects.get(email=unm)
-        print("UserID:", userid.id)
-        if user:
-            print("Login Successfully!")
-            request.session["user"]= unm # session
-            request.session["userid"]=userid.id
-            return redirect("/")
-        else:
-            print("Error! Login Faild...PLZ Try Again...")
-            msg = "Error! Login Faild...PLZ Try Again..."
+        if 'password' in request.POST:
+            unm = request.POST.get("email")
+            password = request.POST.get('password')
+            try:
+                user = UserSignUp.objects.get(email=unm, password=password)
+                request.session["user"] = unm
+                request.session["userid"] = user.id
+                print("Login Successfully!")
+                return redirect("/")
+            except UserSignUp.DoesNotExist:
+                msg = "Error! Login Failed. Please Try Again."
+              # Email Sending Code
+            send_mail(
+                subject="Reset Password!",
+                message=f"Hello User!\n\nClick here to reset your password{reset_password} \nReset Password \n\n\Thanks & Regards!\nShivkali\n+91 9876543210 | shivkali690@gmail.com",
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[request.POST['email']],
+            )
     return render(request, 'login.html', {'msg': msg})
 
+
+# def forgot_password(request):
+    msg = ''
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        try:
+            user = UserSignUp.objects.get(email=email)
+
+            # Generate a random reset code
+            reset_pwd = ''.join(random.choice(string.ascii_letters + string.digits, k=8))
+            user.reset_pwd = reset_pwd
+            user.save()
+
+            # Send email with reset code
+            send_mail(
+                'Password Reset Request',
+                f'Hello {user.email},\n\nYour password reset code is: {reset_pwd}\nUse this code to reset your password.\n\nThank you!',
+                'shivkali690@gmail.com',
+                [email],
+            )
+            msg = "A reset code has been sent to your email."
+            return redirect('/login')
+        except UserSignUp.DoesNotExist:
+            msg = 'Email not found. Please enter a registered email.'
+
+    return render(request, 'login.html', {'msg':msg})
+
+
+   
 def signUp(request):
     msg = ''
     if request.method == "POST":
@@ -99,10 +167,42 @@ def add_home(request):
 
 
 def buy_home(request):
-    return render(request, 'buy_home.html')
+    shome = AddHome.objects.filter(htype = 'sell')
+    return render(request, 'buy_home.html',{'shome':shome})
 
 def rent_home(request):
-    return render(request, 'rent_home.html')
+    shome = AddHome.objects.filter(htype = 'rent')
+    return render(request, 'rent_home.html',{'shome':shome})
+
+def search_home(request):
+    location = request.GET.get('location', '')
+    bedrooms = request.GET.get('bedroom', '')
+    price_type = request.GET.get('price', '')
+    
+    # Filter based on input
+    homes = AddHome.objects.all()
+
+    if location:
+        homes = homes.filter(location__iexact=location)
+
+    if bedrooms:
+        if bedrooms == '4':
+            homes = homes.filter(bedrooms__gte=4)
+        else:
+            homes = homes.filter(bedrooms=bedrooms)
+
+    if price_type == 'buy':
+        homes = homes.filter(sell=True)
+    elif price_type == 'rent':
+        homes = homes.filter(sell=False)
+    return render(request, 'search_home.html', {'homes': homes})
+
+def cities(request, city):
+    homes = AddHome.objects.filter(city__iexact=city)
+
+    return render(request,'cities.html',{'homes':homes})
+
+  
 
 def about_us(request):
     return render(request, 'about_us.html')
@@ -142,6 +242,25 @@ def page404(request):
 
 def page500(request):
     return render(request, 'page500.html')
+
+def apply_owner(request):
+    msg=''
+    if request.method == 'POST':
+        own=apply_ownerForm(request.POST)
+        if own.is_valid():
+            ownerr=own.save()
+            ownerr.user = request.user
+            ownerr.approval_status = 'Pending'
+            ownerr.save()
+            msg="Applied successfully!"
+            print('Applied successfully!')
+            redirect('/')
+        else:
+            print(own.errors)
+            msg='Error! Something went wrong...'
+            print('Error! Something went wrong...')
+    return render(request, 'apply_owner.html', {'msg':msg})
+
 
 
 def userlogout(request):

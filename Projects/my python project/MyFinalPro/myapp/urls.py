@@ -17,6 +17,9 @@ urlpatterns = [
     path('page404/', views.page404, name='page404'),
     path('page500/', views.page500, name='page500'),
     path('reset_password/', views.reset_password, name='reset_password'),
+    path('search_home/', views.search_home, name='search_home'),
+    path('cities/<str:city>', views.cities, name='cities'),
+    path('apply_owner/', views.apply_owner, name='aplly_owner'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

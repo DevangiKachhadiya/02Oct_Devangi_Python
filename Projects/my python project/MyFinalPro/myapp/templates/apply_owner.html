@@ -21,7 +21,7 @@
 
     <!-- our css -->
     <link rel="stylesheet" href="/static/css/style.css">
-    <title>Login</title>
+    <title>Apply Owner</title>
 </head>
 
 <body>
@@ -90,76 +90,41 @@
                         </svg>
                     </div>
                     <div class="sl-heading">
-                        <h1>Sign in your account</h1>
-                        <p>Enter your details to access your account</p>
+                        <h1>Apply Owner</h1>
+                        <p>Enter your details to apply for owner</p>
                     </div>
                     <form method="post" id="lin-form">
                         {% csrf_token %}
                         <div class="lin-in">
                             <div class="lin-email">
-                                <label class="sl-label" for="email">Email</label>
+                                <label class="sl-label" for="name">Name</label>
                                 <div class="sl-in-pos-rel">
-                                    <input class="form-input" type="email" id="email" placeholder="Email" name="email">
+                                    <input class="form-input" type="text" id="email" placeholder="Name" name="name">
                                 </div>
                             </div>
-                            <div class="lin-pswrd">
-                                <label class="sl-label" for="password">Password</label>
-                                <div class="sl-in-pos-rel">
-                                    <input class="form-input" type="password" id="password" placeholder="Password"
-                                        name="password">
+                            <div class="lin-in">
+                                <div class="lin-email">
+                                    <label class="sl-label" for="email">Email</label>
+                                    <div class="sl-in-pos-rel">
+                                        <input class="form-input" type="email" id="email" placeholder="Email" name="email">
+                                    </div>
                                 </div>
+                                <div class="lin-pswrd">
+                                    <label class="sl-label" for="number">Number</label>
+                                    <div class="sl-in-pos-rel">
+                                        <input class="form-input" type="text" id="password" placeholder="number"
+                                            name="number">
+                                    </div>
+                                </div>
+
                             </div>
-
-                            <a class="sl-forgot-link" href="#" data-bs-toggle="modal"
-                                data-bs-target="#forgotPassword">Forgot your password?</a>
-
-                        </div>
-                        <button class="btn-sl" type="submit">Log in</button>
-                        <div class="sl-link">
-                            Don’t have an account?
-                            <a class="sl-links" href="/signUp">Sign up</a>.
-                        </div>
+                            
+                        <button class="btn-sl" type="submit">Apply Owner</button>
+                        
                     </form>
                 </div>
             </div>
-            <!-- forgot password modal -->
-            <div class="modal fade" id="forgotPassword" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-body text-center">
-                            <div class="lock-img mt-2">
-                                <svg aria-label="Trouble logging in?" class="x1lliihq x1n2onr6 x5n08af"
-                                    fill="currentColor" height="96" role="img" viewBox="0 0 96 96" width="96">
-                                    <title>Trouble logging in?</title>
-                                    <circle cx="48" cy="48" fill="none" r="47" stroke="currentColor"
-                                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle>
-                                    <path
-                                        d="M60.931 70.001H35.065a5.036 5.036 0 0 1-5.068-5.004V46.005A5.036 5.036 0 0 1 35.065 41H60.93a5.035 5.035 0 0 1 5.066 5.004v18.992A5.035 5.035 0 0 1 60.93 70ZM37.999 39.996v-6.998a10 10 0 0 1 20 0v6.998"
-                                        fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"></path>
-                                </svg>
-                            </div>
-                            <div class="forgot-text p-4">
-                                <h3>Trouble logging in?</h3>
-                                <span>Enter your email and we'll send you a link to get back into your account.</span>
-                            </div>
-                            <form method="post">
-                                {% csrf_token %}
-                                <div class="email-info">
-                                    <input class="form-input" style="background-color: rgb(205, 202, 202);" type="email"
-                                        id="fp-email" placeholder="Email" name="email" required>
-                                </div>
-
-                                <button type="submit" class="btn-sl mt-3">Send Reset link</button>
-                            </form>
-                            {% if msg %}
-                            <p class="text-danger mt-3">{{ msg }}</p>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
+          
         </main>
 
     </div>
