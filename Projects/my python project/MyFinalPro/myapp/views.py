@@ -60,50 +60,46 @@ def login(request):
                 return redirect("/")
             except UserSignUp.DoesNotExist:
                 msg = "Error! Login Failed. Please Try Again."
-              # Email Sending Code
-            send_mail(
-                subject="Reset Password!",
-                message=f"Hello User!\n\nClick here to reset your password{reset_password} \nReset Password \n\n\Thanks & Regards!\nShivkali\n+91 9876543210 | shivkali690@gmail.com",
-                from_email=settings.EMAIL_HOST_USER,
-                recipient_list=[request.POST['email']],
-            )
-    return render(request, 'login.html', {'msg': msg})
+                         
+    return render(request, 'login.html', {'msg': msg,'user':user})
 
 
-# def forgot_password(request):
-    msg = ''
-    if request.method == 'POST':
+def forgot_password(request):
+    if request.method == "POST":
         email = request.POST.get('email')
         try:
             user = UserSignUp.objects.get(email=email)
-
-            # Generate a random reset code
-            reset_pwd = ''.join(random.choice(string.ascii_letters + string.digits, k=8))
-            user.reset_pwd = reset_pwd
-            user.save()
-
-            # Send email with reset code
+            reset_url = f'http://localhost:8000/reset_password/{user.pk}/'
+            
+            # Send Email
             send_mail(
-                'Password Reset Request',
-                f'Hello {user.email},\n\nYour password reset code is: {reset_pwd}\nUse this code to reset your password.\n\nThank you!',
-                'shivkali690@gmail.com',
-                [email],
+                subject="Reset Your Password",
+                message=f"Hello! Click here to reset your password: {reset_url}",
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[email],
             )
-            msg = "A reset code has been sent to your email."
-            return redirect('/login')
-        except UserSignUp.DoesNotExist:
-            msg = 'Email not found. Please enter a registered email.'
+            print("yes")
+        
+        except user.DoesNotExist:
+            print("no")
+    return render(request, 'reset_password.html')
 
-    return render(request, 'login.html', {'msg':msg})
-
-
-   
+       
+        
 def signUp(request):
     msg = ''
     if request.method == "POST":
         newuser = signupForm(request.POST)
         email = ''
-        if newuser.is_valid():
+
+        password = request.POST['password']
+        confirm_password = request.POST['confpass']
+
+        if password != confirm_password:
+            msg = "Your Password doesn't match Try again..."
+            print("Your Password doesn't match Try again...")
+
+        elif newuser.is_valid():
             # Username verification
             try :
                 email = newuser.cleaned_data.get('email')
@@ -123,6 +119,9 @@ def signUp(request):
 
     return render(request, 'signUp.html', {'msg': msg, 'newuser':newuser})
 
+
+def edit_profile(request):
+    return render(request,'edit_profile.html')
 
 def add_home(request):
     msg = ""
@@ -200,7 +199,7 @@ def search_home(request):
 def cities(request, city):
     homes = AddHome.objects.filter(city__iexact=city)
 
-    return render(request,'cities.html',{'homes':homes})
+    return render(request,'cities.html',{'homes':homes, 'city_iexact':city})
 
   
 
@@ -231,17 +230,20 @@ def contact_us(request):
     return render(request, 'contact_us.html',{'user':user,'msg':msg})
 
 def reset_password(request):
-    return render(request, 'reset_password.html')
+    user=request.session.get('user')
+    fp=UserSignUp.objects.filter(email=user).first()
+    if request.method=='POST':
+        ups=pas(request.POST, instance=fp)
+        if ups.is_valid():
+            ups.save()
+            return redirect('/')
+        else:
+            print(ups.errors)
+    return render(request, 'reset_password.html',{'fp':fp})
 
 def show_home(request):
     home = AddHome.objects.prefetch_related('images').all()
     return render(request, 'show_home.html',{'home':home})
-
-def page404(request):
-    return render(request, 'page404.html')
-
-def page500(request):
-    return render(request, 'page500.html')
 
 def apply_owner(request):
     msg=''

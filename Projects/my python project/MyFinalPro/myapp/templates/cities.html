@@ -121,10 +121,10 @@
                 <div class="container-fluid mt-3 p-3">
                    
                     <div class="row">
-                        {% for i in homes %}
-                        <h2 style="text-align: center;">You searched for {{i.city}}  </h2>
-                      
                        
+                        <h2 style="text-align: center;">You searched for {{city_iexact}}  </h2>
+                      
+                        {% for i in homes %}
                         <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
                             <div class="card h-100">
                                 <a class="redirect-sh" href="/show_home" target="_blank"></a>

@@ -98,11 +98,11 @@
                                 <div class="sl-in-pos-rel">
                                     <input class="form-input" type="text" id="first name" placeholder="First name"
                                         name="fnm" required>
-                                        <div class="invalid-feedback">
+                                        
                                             {% for error in newuser.fnm.errors %}
                                                 {{ error }}
                                             {% endfor %}
-                                        </div>
+                                        
                                 </div>
                                 
                             </div>
@@ -111,11 +111,11 @@
                                 <div class="sl-in-pos-rel">
                                     <input class="form-input" type="text" id="last name" placeholder="Last name"
                                         name="lnm" required>
-                                        <div class="invalid-feedback">
+                                       
                                             {% for error in newuser.lnm.errors %}
                                                 {{ error }}
                                             {% endfor %}
-                                        </div>
+                                        
                                 </div>
                                 
                             </div>
@@ -123,11 +123,11 @@
                                 <label class="sl-label" for="email">Email</label>
                                 <div class="sl-in-pos-rel">
                                     <input class="form-input" type="email" id="email" placeholder="Email" name="email" required>
-                                    <div class="invalid-feedback">
+                                    
                                         {% for error in newuser.email.errors %}
                         {{ error }}
                     {% endfor %}
-                                    </div>
+                                   
                                 </div>
                                 
                             </div>
@@ -136,11 +136,11 @@
                                 <div class="sl-in-pos-rel">
                                     <input class="form-input" type="password" id="password" placeholder="Password"
                                         name="password" required>
-                                        <div class="invalid-feedback">
+                                       
                                             {% for error in newuser.password.errors %}
                                                 {{ error }}
                                             {% endfor %}
-                                        </div>
+                                        
                                 </div>      
                             </div>
                             <div class="lin-cnfrm-pswrd">
@@ -148,14 +148,15 @@
                                 <div class="sl-in-pos-rel">
                                     <input class="form-input" type="password" id="confirm password"
                                         placeholder="confpass" name="confpass" required>
-                                        <div class="invalid-feedback">
+                                       
                                             {% for error in newuser.confpass.errors %}
                                                 {{ error }}
                                             {% endfor %}
-                                        </div>
+                                        
                                 </div>
                             </div>
                         </div>
+                        
                         <button class="btn-sl" type="submit">Create Account</button>
                         <div class="sl-link">
                             Already have an account?

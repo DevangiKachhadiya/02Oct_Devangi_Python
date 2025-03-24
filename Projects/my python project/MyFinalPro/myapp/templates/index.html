@@ -42,82 +42,13 @@
                     <a class="nav-links" href="/buy_home">Buy</a>
                     <a class="nav-links" href="/rent_home">Rent</a>
                     <a class="nav-links" href="/contact_us">Contact Us</a>
-                    
+
                 </div>
                 <!-- this is for account button -->
-               
-                 {% if approved %}
-                <div id="eh-account">
-                
-                    <a class="account-link" href="/add_home">
-                        <button class="account-btn">
-                            <svg class="h-6 w-6" width="25" height="24" viewBox="0 0 25 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M12.62 12.78C12.55 12.77 12.46 12.77 12.38 12.78C10.62 12.72 9.22 11.28 9.22 9.50998C9.22 7.69998 10.68 6.22998 12.5 6.22998C14.31 6.22998 15.78 7.69998 15.78 9.50998C15.77 11.28 14.38 12.72 12.62 12.78Z"
-                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                                <path
-                                    d="M19.24 19.3801C17.46 21.0101 15.1 22.0001 12.5 22.0001C9.90001 22.0001 7.54001 21.0101 5.76001 19.3801C5.86001 18.4401 6.46001 17.5201 7.53001 16.8001C10.27 14.9801 14.75 14.9801 17.47 16.8001C18.54 17.5201 19.14 18.4401 19.24 19.3801Z"
-                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                                <path
-                                    d="M12.5 22C18.0228 22 22.5 17.5228 22.5 12C22.5 6.47715 18.0228 2 12.5 2C6.97715 2 2.5 6.47715 2.5 12C2.5 17.5228 6.97715 22 12.5 22Z"
-                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                            </svg>
-                            <span>Add Home</span>
-                        </button>
-                    </a>
-                    <!-- profile button -->
-                    <div class="dropdown">
-                        <button class="profile-btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <svg class="h-6 w-6" width="25" height="24" viewBox="0 0 25 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M12.62 12.78C12.55 12.77 12.46 12.77 12.38 12.78C10.62 12.72 9.22 11.28 9.22 9.50998C9.22 7.69998 10.68 6.22998 12.5 6.22998C14.31 6.22998 15.78 7.69998 15.78 9.50998C15.77 11.28 14.38 12.72 12.62 12.78Z"
-                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                                <path
-                                    d="M19.24 19.3801C17.46 21.0101 15.1 22.0001 12.5 22.0001C9.90001 22.0001 7.54001 21.0101 5.76001 19.3801C5.86001 18.4401 6.46001 17.5201 7.53001 16.8001C10.27 14.9801 14.75 14.9801 17.47 16.8001C18.54 17.5201 19.14 18.4401 19.24 19.3801Z"
-                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                                <path
-                                    d="M12.5 22C18.0228 22 22.5 17.5228 22.5 12C22.5 6.47715 18.0228 2 12.5 2C6.97715 2 2.5 6.47715 2.5 12C2.5 17.5228 6.97715 22 12.5 22Z"
-                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                            </svg>
-                        </button>
-                        
-                    </div>
-                </div>
-                {% else %}
-                    
-                    
 
-                {% endif %}
+
+                {% if user is none %}
                 <div id="eh-account">
-                    <a class="account-link mx-2" href="/apply_owner">
-                        <button class="account-btn">
-                            <svg class="h-6 w-6" width="25" height="24" viewBox="0 0 25 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M12.62 12.78C12.55 12.77 12.46 12.77 12.38 12.78C10.62 12.72 9.22 11.28 9.22 9.50998C9.22 7.69998 10.68 6.22998 12.5 6.22998C14.31 6.22998 15.78 7.69998 15.78 9.50998C15.77 11.28 14.38 12.72 12.62 12.78Z"
-                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                                <path
-                                    d="M19.24 19.3801C17.46 21.0101 15.1 22.0001 12.5 22.0001C9.90001 22.0001 7.54001 21.0101 5.76001 19.3801C5.86001 18.4401 6.46001 17.5201 7.53001 16.8001C10.27 14.9801 14.75 14.9801 17.47 16.8001C18.54 17.5201 19.14 18.4401 19.24 19.3801Z"
-                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                                <path
-                                    d="M12.5 22C18.0228 22 22.5 17.5228 22.5 12C22.5 6.47715 18.0228 2 12.5 2C6.97715 2 2.5 6.47715 2.5 12C2.5 17.5228 6.97715 22 12.5 22Z"
-                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                            </svg>
-                            <span>Apply owner</span>
-                        </button>
-                    </a>
                     <a class="account-link" href="/login">
                         <button class="account-btn">
                             <svg class="h-6 w-6" width="25" height="24" viewBox="0 0 25 24" fill="none"
@@ -135,36 +66,61 @@
                                     stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                                     stroke-linejoin="round"></path>
                             </svg>
-                            <span>My account</span>
+                            <span>My Account</span>
                         </button>
                     </a>
-                    <!-- profile button -->
-                    <div class="dropdown">
-                        <button class="profile-btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <svg class="h-6 w-6" width="25" height="24" viewBox="0 0 25 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M12.62 12.78C12.55 12.77 12.46 12.77 12.38 12.78C10.62 12.72 9.22 11.28 9.22 9.50998C9.22 7.69998 10.68 6.22998 12.5 6.22998C14.31 6.22998 15.78 7.69998 15.78 9.50998C15.77 11.28 14.38 12.72 12.62 12.78Z"
-                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                                <path
-                                    d="M19.24 19.3801C17.46 21.0101 15.1 22.0001 12.5 22.0001C9.90001 22.0001 7.54001 21.0101 5.76001 19.3801C5.86001 18.4401 6.46001 17.5201 7.53001 16.8001C10.27 14.9801 14.75 14.9801 17.47 16.8001C18.54 17.5201 19.14 18.4401 19.24 19.3801Z"
-                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                                <path
-                                    d="M12.5 22C18.0228 22 22.5 17.5228 22.5 12C22.5 6.47715 18.0228 2 12.5 2C6.97715 2 2.5 6.47715 2.5 12C2.5 17.5228 6.97715 22 12.5 22Z"
-                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                            </svg>
-                        </button>
-                        <!-- Dropdown Menu -->
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item" href="#">Edit Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Logout</a></li>
-                        </ul>
-                    </div>
                 </div>
+
+                {% else %}
+                {% if approved %}
+                <div id="eh-account">
+                    <a class="account-link" href="/add_home">
+                        <button class="account-btn">Add Home</button>
+                    </a>
+                </div>
+                {% else %}
+                <div id="eh-account">
+                    <a class="account-link" href="/apply_owner">
+                        <button class="account-btn">Apply Owner</button>
+                    </a>
+                </div>
+                {% endif %}
+
+                <!-- Profile Dropdown Button -->
+                <div class="dropdown">
+                    <button class="profile-btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <svg class="h-6 w-6" width="25" height="24" viewBox="0 0 25 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12.62 12.78C12.55 12.77 12.46 12.77 12.38 12.78C10.62 12.72 9.22 11.28 9.22 9.50998C9.22 7.69998 10.68 6.22998 12.5 6.22998C14.31 6.22998 15.78 7.69998 15.78 9.50998C15.77 11.28 14.38 12.72 12.62 12.78Z"
+                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                            <path
+                                d="M19.24 19.3801C17.46 21.0101 15.1 22.0001 12.5 22.0001C9.90001 22.0001 7.54001 21.0101 5.76001 19.3801C5.86001 18.4401 6.46001 17.5201 7.53001 16.8001C10.27 14.9801 14.75 14.9801 17.47 16.8001C18.54 17.5201 19.14 18.4401 19.24 19.3801Z"
+                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                            <path
+                                d="M12.5 22C18.0228 22 22.5 17.5228 22.5 12C22.5 6.47715 18.0228 2 12.5 2C6.97715 2 2.5 6.47715 2.5 12C2.5 17.5228 6.97715 22 12.5 22Z"
+                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                        </svg>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
+                </div>
+                {% endif %}
+
+
+
+
+
+
+
+
+
             </div>
         </header>
         <main>
@@ -201,11 +157,15 @@
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="locationButton">
                                             <li><a class="dropdown-item" href="#" data-location="Mumbai">Mumbai</a></li>
-                                            <li><a class="dropdown-item" href="#" data-location="Bengaluru">Bengaluru</a></li>
-                                            <li><a class="dropdown-item" href="#"  data-location="Ahmedabad">Hyderabad</li>
+                                            <li><a class="dropdown-item" href="#"
+                                                    data-location="Bengaluru">Bengaluru</a></li>
+                                            <li><a class="dropdown-item" href="#" data-location="Ahmedabad">Hyderabad
+                                            </li>
                                             <li><a class="dropdown-item" href="#" data-location="Delhi">Delhi</a></li>
-                                            <li><a class="dropdown-item" href="#" data-location="Kolkata">Kolkata</a></li>
-                                            <li><a class="dropdown-item" href="#" data-location="Udaipur">Udaipur</a></li>
+                                            <li><a class="dropdown-item" href="#" data-location="Kolkata">Kolkata</a>
+                                            </li>
+                                            <li><a class="dropdown-item" href="#" data-location="Udaipur">Udaipur</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -253,9 +213,12 @@
                                         </button>
                                         <!-- Dropdown menu for Buy price options -->
                                         <ul id="buyPriceDropdown" class="dropdown-menu" aria-labelledby="priceButton">
-                                            <li><a class="dropdown-item" href="#" data-price="buy">20,00,000 - 50,00,000</a></li>
-                                            <li><a class="dropdown-item" href="#" data-price="buy">50,00,000 - 80,00,000</a></li>
-                                            <li><a class="dropdown-item" href="#" data-price="buy">80,00,000 - 1,00,00,000+</a></li>
+                                            <li><a class="dropdown-item" href="#" data-price="buy">20,00,000 -
+                                                    50,00,000</a></li>
+                                            <li><a class="dropdown-item" href="#" data-price="buy">50,00,000 -
+                                                    80,00,000</a></li>
+                                            <li><a class="dropdown-item" href="#" data-price="buy">80,00,000 -
+                                                    1,00,00,000+</a></li>
                                         </ul>
                                         <!-- Dropdown menu for Rent price options (hidden by default) -->
                                         <ul id="rentPriceDropdown" class="dropdown-menu" aria-labelledby="priceButton"
@@ -300,165 +263,267 @@
 
                             <div class="card" onmouseover="showControls(event)" onmouseleave="hideControls(event)">
                                 <a class="redirect-sh" href="/show_home" target="_blank">
+                                </a>
+                                <!-- Carousel Component -->
+                                <div id="productCarousel1" class="carousel slide" data-bs-ride="carousel">
+                                    <!-- Indicators -->
+                                    <ol class="carousel-indicators">
+                                        <!-- loop for indicators of images -->
+                                        <li data-bs-target="#productCarousel1" data-bs-slide-to="0" class="active"></li>
+                                        <li data-bs-target="#productCarousel1" data-bs-slide-to="1"></li>
+                                        <li data-bs-target="#productCarousel1" data-bs-slide-to="2"></li>
+                                        <li data-bs-target="#productCarousel1" data-bs-slide-to="3"></li>
+                                        <li data-bs-target="#productCarousel1" data-bs-slide-to="4"></li>
+                                        <li data-bs-target="#productCarousel1" data-bs-slide-to="5"></li>
+                                        <li data-bs-target="#productCarousel1" data-bs-slide-to="6"></li>
+                                        <li data-bs-target="#productCarousel1" data-bs-slide-to="7"></li>
+                                    </ol>
+
+                                    <!-- Carousel Images -->
+                                    <div class="carousel-inner">
+                                        <!-- loop for images that come from database -->
+                                        <div class="carousel-item active">
+                                            <img src="/static/images/img1.webp" class="d-block w-100"
+                                                alt="Product Image 1">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/static/images/img2.webp" class="d-block w-100"
+                                                alt="Product Image 2">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/static/images/img3.webp" class="d-block w-100"
+                                                alt="Product Image 3">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/static/images/img4.webp" class="d-block w-100"
+                                                alt="Product Image 4">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/static/images/img5.webp" class="d-block w-100"
+                                                alt="Product Image 5">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/static/images/img6.webp" class="d-block w-100"
+                                                alt="Product Image 6">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/static/images/img7.webp" class="d-block w-100"
+                                                alt="Product Image 7">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/static/images/img8.webp" class="d-block w-100"
+                                                alt="Product Image 8">
+                                        </div>
+                                    </div>
+
+                                    <!-- Carousel Controls -->
+                                    <a class="carousel-control-prev" href="#productCarousel1" role="button"
+                                        data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
                                     </a>
-                                    <!-- Carousel Component -->
-                                    <div id="productCarousel1" class="carousel slide" data-bs-ride="carousel">
-                                        <!-- Indicators -->
-                                        <ol class="carousel-indicators">
-                                            <!-- loop for indicators of images -->
-                                            <li data-bs-target="#productCarousel1" data-bs-slide-to="0" class="active"></li>
-                                            <li data-bs-target="#productCarousel1" data-bs-slide-to="1"></li>
-                                            <li data-bs-target="#productCarousel1" data-bs-slide-to="2"></li>
-                                            <li data-bs-target="#productCarousel1" data-bs-slide-to="3"></li>
-                                            <li data-bs-target="#productCarousel1" data-bs-slide-to="4"></li>
-                                            <li data-bs-target="#productCarousel1" data-bs-slide-to="5"></li>
-                                            <li data-bs-target="#productCarousel1" data-bs-slide-to="6"></li>
-                                            <li data-bs-target="#productCarousel1" data-bs-slide-to="7"></li>
-                                        </ol>
-    
-                                        <!-- Carousel Images -->
-                                        <div class="carousel-inner">
-                                            <!-- loop for images that come from database -->
-                                            <div class="carousel-item active">
-                                                <img src="/static/images/img1.webp" class="d-block w-100" alt="Product Image 1">
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="/static/images/img2.webp" class="d-block w-100" alt="Product Image 2">
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="/static/images/img3.webp" class="d-block w-100" alt="Product Image 3">
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="/static/images/img4.webp" class="d-block w-100" alt="Product Image 4">
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="/static/images/img5.webp" class="d-block w-100" alt="Product Image 5">
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="/static/images/img6.webp" class="d-block w-100" alt="Product Image 6">
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="/static/images/img7.webp" class="d-block w-100" alt="Product Image 7">
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="/static/images/img8.webp" class="d-block w-100" alt="Product Image 8">
-                                            </div>
-                                        </div>
-    
-                                        <!-- Carousel Controls -->
-                                        <a class="carousel-control-prev" href="#productCarousel1" role="button"
-                                            data-bs-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span class="visually-hidden">Previous</span>
-                                        </a>
-                                        <a class="carousel-control-next" href="#productCarousel1" role="button"
-                                            data-bs-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="visually-hidden">Next</span>
-                                        </a>
+                                    <a class="carousel-control-next" href="#productCarousel1" role="button"
+                                        data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </a>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="bi bi-currency-rupee"></i>23,000 <span
+                                            class="rent-title">/ month</span></h5>
+                                    <p class="card-text"> 19-A, Perry Cross Rd, Bandra West, Mumbai, Maharashtra</p>
+                                </div>
+                                <div class="card-foot mb-2">
+                                    <div class="hm-area">
+                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M6.75 16.5H11.25C15 16.5 16.5 15 16.5 11.25V6.75C16.5 3 15 1.5 11.25 1.5H6.75C3 1.5 1.5 3 1.5 6.75V11.25C1.5 15 3 16.5 6.75 16.5Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round"></path>
+                                            <path d="M13.5 4.5L4.5 13.5" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M13.5 7.5V4.5H10.5" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M4.5 10.5V13.5H7.5" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                        <span>85 m²</span>
                                     </div>
-                                    <!-- Card Body -->
-                                    <div class="card-body">
-                                        <h5 class="card-title"><i class="bi bi-currency-rupee"></i>23,000 <span class="rent-title">/ month</span></h5>
-                                        <p class="card-text"> 19-A, Perry Cross Rd, Bandra West, Mumbai, Maharashtra</p>
+                                    <div class="hm-ldk">
+                                        <svg width="19" height="18" viewBox="0 0 19 18" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M17 8.175V3.075C17 1.95 16.52 1.5 15.3275 1.5H12.2975C11.105 1.5 10.625 1.95 10.625 3.075V8.175C10.625 9.3 11.105 9.75 12.2975 9.75H15.3275C16.52 9.75 17 9.3 17 8.175Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round"></path>
+                                            <path
+                                                d="M17 14.925V13.575C17 12.45 16.52 12 15.3275 12H12.2975C11.105 12 10.625 12.45 10.625 13.575V14.925C10.625 16.05 11.105 16.5 12.2975 16.5H15.3275C16.52 16.5 17 16.05 17 14.925Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round"></path>
+                                            <path
+                                                d="M8.375 9.825V14.925C8.375 16.05 7.895 16.5 6.7025 16.5H3.6725C2.48 16.5 2 16.05 2 14.925V9.825C2 8.7 2.48 8.25 3.6725 8.25H6.7025C7.895 8.25 8.375 8.7 8.375 9.825Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round"></path>
+                                            <path
+                                                d="M8.375 3.075V4.425C8.375 5.55 7.895 6 6.7025 6H3.6725C2.48 6 2 5.55 2 4.425V3.075C2 1.95 2.48 1.5 3.6725 1.5H6.7025C7.895 1.5 8.375 1.95 8.375 3.075Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round"></path>
+                                        </svg>
+                                        <span>2LDK</span>
                                     </div>
-                                    <div class="card-foot mb-2">
-                                        <div class="hm-area">
-                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.75 16.5H11.25C15 16.5 16.5 15 16.5 11.25V6.75C16.5 3 15 1.5 11.25 1.5H6.75C3 1.5 1.5 3 1.5 6.75V11.25C1.5 15 3 16.5 6.75 16.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M13.5 4.5L4.5 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M13.5 7.5V4.5H10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4.5 10.5V13.5H7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                                            <span>85 m²</span>
-                                        </div>
-                                        <div class="hm-ldk">
-                                            <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 8.175V3.075C17 1.95 16.52 1.5 15.3275 1.5H12.2975C11.105 1.5 10.625 1.95 10.625 3.075V8.175C10.625 9.3 11.105 9.75 12.2975 9.75H15.3275C16.52 9.75 17 9.3 17 8.175Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M17 14.925V13.575C17 12.45 16.52 12 15.3275 12H12.2975C11.105 12 10.625 12.45 10.625 13.575V14.925C10.625 16.05 11.105 16.5 12.2975 16.5H15.3275C16.52 16.5 17 16.05 17 14.925Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8.375 9.825V14.925C8.375 16.05 7.895 16.5 6.7025 16.5H3.6725C2.48 16.5 2 16.05 2 14.925V9.825C2 8.7 2.48 8.25 3.6725 8.25H6.7025C7.895 8.25 8.375 8.7 8.375 9.825Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8.375 3.075V4.425C8.375 5.55 7.895 6 6.7025 6H3.6725C2.48 6 2 5.55 2 4.425V3.075C2 1.95 2.48 1.5 3.6725 1.5H6.7025C7.895 1.5 8.375 1.95 8.375 3.075Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                                            <span>2LDK</span>
-                                        </div>
-                                        <div class="hm-beds">
-                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.25 10.3727C2.25 9.26817 3.14543 8.37274 4.25 8.37274H13.75C14.8546 8.37274 15.75 9.26817 15.75 10.3727V12.7727C15.75 13.325 15.3023 13.7727 14.75 13.7727H3.25C2.69772 13.7727 2.25 13.325 2.25 12.7727V10.3727Z" stroke="currentColor" stroke-width="1.5"></path><path d="M3.59998 7.32275C3.59998 5.6659 4.94312 4.32275 6.59998 4.32275H11.4C13.0568 4.32275 14.4 5.6659 14.4 7.32275V8.37275H3.59998V7.32275Z" stroke="currentColor" stroke-width="1.5"></path><path d="M15.75 12.4841V14.6319" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path><path d="M2.25 12.4841V14.6319" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
-                                            <span>2Bed</span>
-                                        </div>
+                                    <div class="hm-beds">
+                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M2.25 10.3727C2.25 9.26817 3.14543 8.37274 4.25 8.37274H13.75C14.8546 8.37274 15.75 9.26817 15.75 10.3727V12.7727C15.75 13.325 15.3023 13.7727 14.75 13.7727H3.25C2.69772 13.7727 2.25 13.325 2.25 12.7727V10.3727Z"
+                                                stroke="currentColor" stroke-width="1.5"></path>
+                                            <path
+                                                d="M3.59998 7.32275C3.59998 5.6659 4.94312 4.32275 6.59998 4.32275H11.4C13.0568 4.32275 14.4 5.6659 14.4 7.32275V8.37275H3.59998V7.32275Z"
+                                                stroke="currentColor" stroke-width="1.5"></path>
+                                            <path d="M15.75 12.4841V14.6319" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round"></path>
+                                            <path d="M2.25 12.4841V14.6319" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round"></path>
+                                        </svg>
+                                        <span>2Bed</span>
                                     </div>
                                 </div>
-                                <!-- card 1 over -->
+                            </div>
+                            <!-- card 1 over -->
 
-                                <div class="card" onmouseover="showControls(event)" onmouseleave="hideControls(event)">
-                                    <a class="redirect-sh" href="/show_home" target="_blank">
-                                        </a>
-                                        <!-- Carousel Component -->
-                                        <div id="productCarousel1" class="carousel slide" data-bs-ride="carousel">
-                                            <!-- Indicators -->
-                                            <ol class="carousel-indicators">
-                                                <!-- loop for indicators of images -->
-                                                <li data-bs-target="#productCarousel1" data-bs-slide-to="0" class="active"></li>
-                                                <li data-bs-target="#productCarousel1" data-bs-slide-to="1"></li>
-                                                <li data-bs-target="#productCarousel1" data-bs-slide-to="2"></li>
-                                                <li data-bs-target="#productCarousel1" data-bs-slide-to="3"></li>
-                                                <li data-bs-target="#productCarousel1" data-bs-slide-to="4"></li>
-                                                <li data-bs-target="#productCarousel1" data-bs-slide-to="5"></li>
-                                                <li data-bs-target="#productCarousel1" data-bs-slide-to="6"></li>
-                                                <li data-bs-target="#productCarousel1" data-bs-slide-to="7"></li>
-                                            </ol>
-        
-                                            <!-- Carousel Images -->
-                                            <div class="carousel-inner">
-                                                <!-- loop for images that come from database -->
-                                                <div class="carousel-item active">
-                                                    <img src="/static/images/img1.webp" class="d-block w-100" alt="Product Image 1">
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img src="/static/images/img2.webp" class="d-block w-100" alt="Product Image 2">
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img src="/static/images/img3.webp" class="d-block w-100" alt="Product Image 3">
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img src="/static/images/img4.webp" class="d-block w-100" alt="Product Image 4">
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img src="/static/images/img5.webp" class="d-block w-100" alt="Product Image 5">
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img src="/static/images/img6.webp" class="d-block w-100" alt="Product Image 6">
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img src="/static/images/img7.webp" class="d-block w-100" alt="Product Image 7">
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img src="/static/images/img8.webp" class="d-block w-100" alt="Product Image 8">
-                                                </div>
-                                            </div>
-        
-                                            <!-- Carousel Controls -->
-                                            <a class="carousel-control-prev" href="#productCarousel1" role="button"
-                                                data-bs-slide="prev">
-                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Previous</span>
-                                            </a>
-                                            <a class="carousel-control-next" href="#productCarousel1" role="button"
-                                                data-bs-slide="next">
-                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Next</span>
-                                            </a>
+                            <div class="card" onmouseover="showControls(event)" onmouseleave="hideControls(event)">
+                                <a class="redirect-sh" href="/show_home" target="_blank">
+                                </a>
+                                <!-- Carousel Component -->
+                                <div id="productCarousel1" class="carousel slide" data-bs-ride="carousel">
+                                    <!-- Indicators -->
+                                    <ol class="carousel-indicators">
+                                        <!-- loop for indicators of images -->
+                                        <li data-bs-target="#productCarousel1" data-bs-slide-to="0" class="active"></li>
+                                        <li data-bs-target="#productCarousel1" data-bs-slide-to="1"></li>
+                                        <li data-bs-target="#productCarousel1" data-bs-slide-to="2"></li>
+                                        <li data-bs-target="#productCarousel1" data-bs-slide-to="3"></li>
+                                        <li data-bs-target="#productCarousel1" data-bs-slide-to="4"></li>
+                                        <li data-bs-target="#productCarousel1" data-bs-slide-to="5"></li>
+                                        <li data-bs-target="#productCarousel1" data-bs-slide-to="6"></li>
+                                        <li data-bs-target="#productCarousel1" data-bs-slide-to="7"></li>
+                                    </ol>
+
+                                    <!-- Carousel Images -->
+                                    <div class="carousel-inner">
+                                        <!-- loop for images that come from database -->
+                                        <div class="carousel-item active">
+                                            <img src="/static/images/img1.webp" class="d-block w-100"
+                                                alt="Product Image 1">
                                         </div>
-                                        <!-- Card Body -->
-                                        <div class="card-body">
-                                            <h5 class="card-title"><i class="bi bi-currency-rupee"></i>23,000 <span class="rent-title">/ month</span></h5>
-                                            <p class="card-text"> 19-A, Perry Cross Rd, Bandra West, Mumbai, Maharashtra</p>
+                                        <div class="carousel-item">
+                                            <img src="/static/images/img2.webp" class="d-block w-100"
+                                                alt="Product Image 2">
                                         </div>
-                                        <div class="card-foot mb-2">
-                                            <div class="hm-area">
-                                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.75 16.5H11.25C15 16.5 16.5 15 16.5 11.25V6.75C16.5 3 15 1.5 11.25 1.5H6.75C3 1.5 1.5 3 1.5 6.75V11.25C1.5 15 3 16.5 6.75 16.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M13.5 4.5L4.5 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M13.5 7.5V4.5H10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4.5 10.5V13.5H7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                                                <span>85 m²</span>
-                                            </div>
-                                            <div class="hm-ldk">
-                                                <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 8.175V3.075C17 1.95 16.52 1.5 15.3275 1.5H12.2975C11.105 1.5 10.625 1.95 10.625 3.075V8.175C10.625 9.3 11.105 9.75 12.2975 9.75H15.3275C16.52 9.75 17 9.3 17 8.175Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M17 14.925V13.575C17 12.45 16.52 12 15.3275 12H12.2975C11.105 12 10.625 12.45 10.625 13.575V14.925C10.625 16.05 11.105 16.5 12.2975 16.5H15.3275C16.52 16.5 17 16.05 17 14.925Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8.375 9.825V14.925C8.375 16.05 7.895 16.5 6.7025 16.5H3.6725C2.48 16.5 2 16.05 2 14.925V9.825C2 8.7 2.48 8.25 3.6725 8.25H6.7025C7.895 8.25 8.375 8.7 8.375 9.825Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8.375 3.075V4.425C8.375 5.55 7.895 6 6.7025 6H3.6725C2.48 6 2 5.55 2 4.425V3.075C2 1.95 2.48 1.5 3.6725 1.5H6.7025C7.895 1.5 8.375 1.95 8.375 3.075Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                                                <span>2LDK</span>
-                                            </div>
-                                            <div class="hm-beds">
-                                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.25 10.3727C2.25 9.26817 3.14543 8.37274 4.25 8.37274H13.75C14.8546 8.37274 15.75 9.26817 15.75 10.3727V12.7727C15.75 13.325 15.3023 13.7727 14.75 13.7727H3.25C2.69772 13.7727 2.25 13.325 2.25 12.7727V10.3727Z" stroke="currentColor" stroke-width="1.5"></path><path d="M3.59998 7.32275C3.59998 5.6659 4.94312 4.32275 6.59998 4.32275H11.4C13.0568 4.32275 14.4 5.6659 14.4 7.32275V8.37275H3.59998V7.32275Z" stroke="currentColor" stroke-width="1.5"></path><path d="M15.75 12.4841V14.6319" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path><path d="M2.25 12.4841V14.6319" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
-                                                <span>2Bed</span>
-                                            </div>
+                                        <div class="carousel-item">
+                                            <img src="/static/images/img3.webp" class="d-block w-100"
+                                                alt="Product Image 3">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/static/images/img4.webp" class="d-block w-100"
+                                                alt="Product Image 4">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/static/images/img5.webp" class="d-block w-100"
+                                                alt="Product Image 5">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/static/images/img6.webp" class="d-block w-100"
+                                                alt="Product Image 6">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/static/images/img7.webp" class="d-block w-100"
+                                                alt="Product Image 7">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/static/images/img8.webp" class="d-block w-100"
+                                                alt="Product Image 8">
                                         </div>
                                     </div>
-                                    <!-- card 1 over -->
+
+                                    <!-- Carousel Controls -->
+                                    <a class="carousel-control-prev" href="#productCarousel1" role="button"
+                                        data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#productCarousel1" role="button"
+                                        data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </a>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="bi bi-currency-rupee"></i>23,000 <span
+                                            class="rent-title">/ month</span></h5>
+                                    <p class="card-text"> 19-A, Perry Cross Rd, Bandra West, Mumbai, Maharashtra</p>
+                                </div>
+                                <div class="card-foot mb-2">
+                                    <div class="hm-area">
+                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M6.75 16.5H11.25C15 16.5 16.5 15 16.5 11.25V6.75C16.5 3 15 1.5 11.25 1.5H6.75C3 1.5 1.5 3 1.5 6.75V11.25C1.5 15 3 16.5 6.75 16.5Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round"></path>
+                                            <path d="M13.5 4.5L4.5 13.5" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M13.5 7.5V4.5H10.5" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M4.5 10.5V13.5H7.5" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                        <span>85 m²</span>
+                                    </div>
+                                    <div class="hm-ldk">
+                                        <svg width="19" height="18" viewBox="0 0 19 18" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M17 8.175V3.075C17 1.95 16.52 1.5 15.3275 1.5H12.2975C11.105 1.5 10.625 1.95 10.625 3.075V8.175C10.625 9.3 11.105 9.75 12.2975 9.75H15.3275C16.52 9.75 17 9.3 17 8.175Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round"></path>
+                                            <path
+                                                d="M17 14.925V13.575C17 12.45 16.52 12 15.3275 12H12.2975C11.105 12 10.625 12.45 10.625 13.575V14.925C10.625 16.05 11.105 16.5 12.2975 16.5H15.3275C16.52 16.5 17 16.05 17 14.925Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round"></path>
+                                            <path
+                                                d="M8.375 9.825V14.925C8.375 16.05 7.895 16.5 6.7025 16.5H3.6725C2.48 16.5 2 16.05 2 14.925V9.825C2 8.7 2.48 8.25 3.6725 8.25H6.7025C7.895 8.25 8.375 8.7 8.375 9.825Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round"></path>
+                                            <path
+                                                d="M8.375 3.075V4.425C8.375 5.55 7.895 6 6.7025 6H3.6725C2.48 6 2 5.55 2 4.425V3.075C2 1.95 2.48 1.5 3.6725 1.5H6.7025C7.895 1.5 8.375 1.95 8.375 3.075Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round"></path>
+                                        </svg>
+                                        <span>2LDK</span>
+                                    </div>
+                                    <div class="hm-beds">
+                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M2.25 10.3727C2.25 9.26817 3.14543 8.37274 4.25 8.37274H13.75C14.8546 8.37274 15.75 9.26817 15.75 10.3727V12.7727C15.75 13.325 15.3023 13.7727 14.75 13.7727H3.25C2.69772 13.7727 2.25 13.325 2.25 12.7727V10.3727Z"
+                                                stroke="currentColor" stroke-width="1.5"></path>
+                                            <path
+                                                d="M3.59998 7.32275C3.59998 5.6659 4.94312 4.32275 6.59998 4.32275H11.4C13.0568 4.32275 14.4 5.6659 14.4 7.32275V8.37275H3.59998V7.32275Z"
+                                                stroke="currentColor" stroke-width="1.5"></path>
+                                            <path d="M15.75 12.4841V14.6319" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round"></path>
+                                            <path d="M2.25 12.4841V14.6319" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round"></path>
+                                        </svg>
+                                        <span>2Bed</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- card 1 over -->
                         </div>
                     </div>
 
@@ -472,27 +537,27 @@
                     </div>
                     <div class="city-temp">
                         <div class="city city1">
-                            <a href="{% url 'cities' 'mumbai' %}" class="city-links"></a>
+                            <a href="{% url 'cities' 'Mumbai' %}" class="city-links"></a>
                             <h2>Mumbai</h2>
                         </div>
                         <div class="city city2">
-                            <a href="{% url 'cities' 'bengluru' %}" class="city-links"></a>
+                            <a href="{% url 'cities' 'Bengaluru' %}" class="city-links"></a>
                             <h2>Bengaluru</h2>
                         </div>
                         <div class="city city3">
-                            <a href="{% url 'cities' 'hyderabad' %}" class="city-links"></a>
+                            <a href="{% url 'cities' 'Hyderabad' %}" class="city-links"></a>
                             <h2>Hyderabad</h2>
                         </div>
                         <div class="city city4">
-                            <a href="{% url 'cities' 'delhi' %}" class="city-links"></a>
+                            <a href="{% url 'cities' 'Delhi' %}" class="city-links"></a>
                             <h2>Delhi</h2>
                         </div>
                         <div class="city city5">
-                            <a href="{% url 'cities' 'kolkata' %}" class="city-links"></a>
+                            <a href="{% url 'cities' 'Kolkata' %}" class="city-links"></a>
                             <h2>Kolkata</h2>
                         </div>
                         <div class="city city6">
-                            <a href="{% url 'cities' 'udaipur' %}" class="city-links"></a>
+                            <a href="{% url 'cities' 'Udaipur' %}" class="city-links"></a>
                             <h2>Udaipur</h2>
                         </div>
                     </div>
@@ -507,12 +572,28 @@
                         <div class="serve-card">
                             <div class="serve-head">
                                 <div class="logos color-orange">
-                                    <svg class="size-5 md:size-6" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.7901 14.9303C17.7301 16.9803 14.7801 17.6103 12.1901 16.8003L7.48015 21.5003C7.14015 21.8503 6.47015 22.0603 5.99015 21.9903L3.81015 21.6903C3.09015 21.5903 2.42015 20.9103 2.31015 20.1903L2.01015 18.0103C1.94015 17.5303 2.17015 16.8603 2.50015 16.5203L7.20015 11.8203C6.40015 9.22031 7.02015 6.27031 9.08015 4.22031C12.0301 1.27031 16.8201 1.27031 19.7801 4.22031C22.7401 7.17031 22.7401 11.9803 19.7901 14.9303Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M6.89014 17.4902L9.19014 19.7902" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.5 11C15.3284 11 16 10.3284 16 9.5C16 8.67157 15.3284 8 14.5 8C13.6716 8 13 8.67157 13 9.5C13 10.3284 13.6716 11 14.5 11Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                    <svg class="size-5 md:size-6" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M19.7901 14.9303C17.7301 16.9803 14.7801 17.6103 12.1901 16.8003L7.48015 21.5003C7.14015 21.8503 6.47015 22.0603 5.99015 21.9903L3.81015 21.6903C3.09015 21.5903 2.42015 20.9103 2.31015 20.1903L2.01015 18.0103C1.94015 17.5303 2.17015 16.8603 2.50015 16.5203L7.20015 11.8203C6.40015 9.22031 7.02015 6.27031 9.08015 4.22031C12.0301 1.27031 16.8201 1.27031 19.7801 4.22031C22.7401 7.17031 22.7401 11.9803 19.7901 14.9303Z"
+                                            stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"
+                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M6.89014 17.4902L9.19014 19.7902" stroke="currentColor"
+                                            stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                                            stroke-linejoin="round"></path>
+                                        <path
+                                            d="M14.5 11C15.3284 11 16 10.3284 16 9.5C16 8.67157 15.3284 8 14.5 8C13.6716 8 13 8.67157 13 9.5C13 10.3284 13.6716 11 14.5 11Z"
+                                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round"></path>
+                                    </svg>
                                 </div>
                                 <h2 class="serve-name">Rent</h2>
                             </div>
                             <div class="serve-body">
-                                <p>Our advanced search filters allow you to narrow your search to find exactly what you want, such as 'rooftop balcony' or pet-friendly options. Save time and discover your perfect rental with our daily updated listings—all foreigner-friendly and up-to-date.</p>
+                                <p>Our advanced search filters allow you to narrow your search to find exactly what you
+                                    want, such as 'rooftop balcony' or pet-friendly options. Save time and discover your
+                                    perfect rental with our daily updated listings—all foreigner-friendly and
+                                    up-to-date.</p>
                             </div>
                         </div>
                         <!-- rent card over -->
@@ -520,12 +601,21 @@
                         <div class="serve-card">
                             <div class="serve-head">
                                 <div class="logos color-orange">
-                                    <svg class="size-5 md:size-6" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 20.9999H23M20.8 11.5851V21L14.2 20.9999V16.5942C14.2 15.3776 13.215 14.3913 12 14.3913C10.785 14.3913 9.8 15.3776 9.8 16.5942V20.9999H3.2V11.5851C3.2 10.9965 3.2 10.7022 3.27147 10.4284C3.3348 10.1857 3.43903 9.95555 3.57974 9.74801C3.73851 9.51381 3.9597 9.32009 4.40205 8.93254L9.68205 4.30655C10.5033 3.587 10.9137 3.22728 11.3759 3.09043C11.7831 2.96986 12.2169 2.96986 12.6241 3.09043C13.0863 3.22728 13.4969 3.587 14.3182 4.30655L19.5982 8.93254C20.0405 9.32009 20.2615 9.51381 20.4202 9.74801C20.5609 9.95555 20.6652 10.1857 20.7286 10.4284C20.8 10.7022 20.8 10.9965 20.8 11.5851Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                    <svg class="size-5 md:size-6" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M1 20.9999H23M20.8 11.5851V21L14.2 20.9999V16.5942C14.2 15.3776 13.215 14.3913 12 14.3913C10.785 14.3913 9.8 15.3776 9.8 16.5942V20.9999H3.2V11.5851C3.2 10.9965 3.2 10.7022 3.27147 10.4284C3.3348 10.1857 3.43903 9.95555 3.57974 9.74801C3.73851 9.51381 3.9597 9.32009 4.40205 8.93254L9.68205 4.30655C10.5033 3.587 10.9137 3.22728 11.3759 3.09043C11.7831 2.96986 12.2169 2.96986 12.6241 3.09043C13.0863 3.22728 13.4969 3.587 14.3182 4.30655L19.5982 8.93254C20.0405 9.32009 20.2615 9.51381 20.4202 9.74801C20.5609 9.95555 20.6652 10.1857 20.7286 10.4284C20.8 10.7022 20.8 10.9965 20.8 11.5851Z"
+                                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round"></path>
+                                    </svg>
                                 </div>
                                 <h2 class="serve-name">Buy</h2>
                             </div>
                             <div class="serve-body">
-                                <p>At E-Housing, we guide buyers from all backgrounds to find homes they'll cherish. From securing financing to the final closing, our dedicated team is here to clarify all your options, represent your interests, and support you through every step of your home-buying journey.</p>
+                                <p>At E-Housing, we guide buyers from all backgrounds to find homes they'll cherish.
+                                    From securing financing to the final closing, our dedicated team is here to clarify
+                                    all your options, represent your interests, and support you through every step of
+                                    your home-buying journey.</p>
                             </div>
                         </div>
                         <!-- buy card over -->
@@ -533,12 +623,29 @@
                         <div class="serve-card">
                             <div class="serve-head">
                                 <div class="logos color-orange">
-                                    <svg class="size-5 md:size-6" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.0101 18.5106L15.0601 13.5605" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15.0602 13.56L11.5202 17.1C10.7402 17.88 9.47024 17.88 8.69024 17.1L4.45023 12.86C3.67023 12.08 3.67023 10.81 4.45023 10.03L11.5202 2.96C12.3002 2.18 13.5702 2.18 14.3502 2.96L18.5902 7.20002C19.3702 7.98002 19.3702 9.25001 18.5902 10.03L15.0602 13.56Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M2 21H8" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M6.56006 7.91992L13.6301 14.9899" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                    <svg class="size-5 md:size-6" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20.0101 18.5106L15.0601 13.5605" stroke="currentColor"
+                                            stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                                            stroke-linejoin="round"></path>
+                                        <path
+                                            d="M15.0602 13.56L11.5202 17.1C10.7402 17.88 9.47024 17.88 8.69024 17.1L4.45023 12.86C3.67023 12.08 3.67023 10.81 4.45023 10.03L11.5202 2.96C12.3002 2.18 13.5702 2.18 14.3502 2.96L18.5902 7.20002C19.3702 7.98002 19.3702 9.25001 18.5902 10.03L15.0602 13.56Z"
+                                            stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"
+                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M2 21H8" stroke="currentColor" stroke-width="1.5"
+                                            stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                        <path d="M6.56006 7.91992L13.6301 14.9899" stroke="currentColor"
+                                            stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                                            stroke-linejoin="round"></path>
+                                    </svg>
                                 </div>
                                 <h2 class="serve-name">Sell</h2>
                             </div>
                             <div class="serve-body">
-                                <p>Selling a home can be both emotional and stressful. With our deep local expertise, effective marketing strategies, and compassionate advice, we ensure your selling experience is smooth and stress-free.</p>
+                                <p>Selling a home can be both emotional and stressful. With our deep local expertise,
+                                    effective marketing strategies, and compassionate advice, we ensure your selling
+                                    experience is smooth and stress-free.</p>
                             </div>
                         </div>
                         <!-- sell card over -->
@@ -546,12 +653,29 @@
                         <div class="serve-card">
                             <div class="serve-head">
                                 <div class="logos color-orange">
-                                    <svg class="size-5 md:size-6" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 8.25V18C20 21 18.21 22 16 22H8C5.79 22 4 21 4 18V8.25C4 5 5.79 4.25 8 4.25C8 4.87 8.24997 5.43 8.65997 5.84C9.06997 6.25 9.63 6.5 10.25 6.5H13.75C14.99 6.5 16 5.49 16 4.25C18.21 4.25 20 5 20 8.25Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M16 4.25C16 5.49 14.99 6.5 13.75 6.5H10.25C9.63 6.5 9.06997 6.25 8.65997 5.84C8.24997 5.43 8 4.87 8 4.25C8 3.01 9.01 2 10.25 2H13.75C14.37 2 14.93 2.25 15.34 2.66C15.75 3.07 16 3.63 16 4.25Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8 13H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8 17H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                    <svg class="size-5 md:size-6" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M20 8.25V18C20 21 18.21 22 16 22H8C5.79 22 4 21 4 18V8.25C4 5 5.79 4.25 8 4.25C8 4.87 8.24997 5.43 8.65997 5.84C9.06997 6.25 9.63 6.5 10.25 6.5H13.75C14.99 6.5 16 5.49 16 4.25C18.21 4.25 20 5 20 8.25Z"
+                                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round"></path>
+                                        <path
+                                            d="M16 4.25C16 5.49 14.99 6.5 13.75 6.5H10.25C9.63 6.5 9.06997 6.25 8.65997 5.84C8.24997 5.43 8 4.87 8 4.25C8 3.01 9.01 2 10.25 2H13.75C14.37 2 14.93 2.25 15.34 2.66C15.75 3.07 16 3.63 16 4.25Z"
+                                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round"></path>
+                                        <path d="M8 13H12" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M8 17H16" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
                                 </div>
                                 <h2 class="serve-name">Management</h2>
                             </div>
                             <div class="serve-body">
-                                <p>Finding the right tenant requires precise pricing, strategic advertising, property showings, thorough document screening, reference checks, negotiations, and lease preparation. Trust our experienced brokerage firm to expertly guide you through this comprehensive process.</p>
+                                <p>Finding the right tenant requires precise pricing, strategic advertising, property
+                                    showings, thorough document screening, reference checks, negotiations, and lease
+                                    preparation. Trust our experienced brokerage firm to expertly guide you through this
+                                    comprehensive process.</p>
                             </div>
                         </div>
                         <!-- management card over -->
@@ -565,8 +689,37 @@
             <!-- eh main ends -->
         </main>
     </div>
+
     <!-- eh body ends -->
     <script src="/static/js/main.js"></script>
 </body>
+<!-- footer stars -->
+<footer class="eh-footer">
+    <div class="eh-footer-wrapper">
+        <div class="footer-head">
+            <a href="/" class="ft-logo-link">
+                <img width="157" height="36" src="/static/images/e-housing-foot-logo.svg" alt="logo">
+            </a>
+            <div class="contact-location">
+                <p>Contact Us &nbsp;
+                    <a href="#">Devangikachhadiya37@gmail.com</a>
+                </p>
+                <p>Location Gujrat, India</p>
+            </div>
+        </div>
+        <div class="footer-body">
+            <div class="footer-navbar">
+                <a href="/" class="foot-nav-links">Home</a>
+                <a href="/about_us" class="foot-nav-links">About us</a>
+                <a href="/buy_home" class="foot-nav-links">Buy</a>
+                <a href="/rent_home" class="foot-nav-links">Rent</a>
+                <a href="/contact_us" class="foot-nav-links">Contact us</a>
+            </div>
+        </div>
+        <div class="footer-rights">
+            <p>2025 © All rights Reserved.&nbsp;<a href="/">E-housing</a></p>
+        </div>
+    </div>
+</footer>
 
 </html>

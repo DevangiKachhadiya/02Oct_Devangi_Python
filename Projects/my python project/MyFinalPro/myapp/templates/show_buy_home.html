@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Show Buy Home</title>
+    <style>
+
+        /* Modal/Slider Styling */
+        .slider-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .slider-container {
+            position: relative;
+            text-align: center;
+            max-width: 90%;
+        }
+
+        .main-image img {
+            width: 600px; /* Increased size of the main image */
+            height: 600px; /* Increased size of the main image */
+            object-fit: contain;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Navigation Buttons */
+        .nav-btn {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: transparent;
+            color: white;
+            font-size: 40px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-btn.left {
+            left: 10px; /* Fixed to left side of the screen */
+        }
+
+        .nav-btn.right {
+            right: 10px; /* Fixed to right side of the screen */
+        }
+
+        /* .nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        } */
+
+        .slider-thumbnails {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .slider-thumbnails img {
+            width: 70px; /* Increased size of thumbnails in the modal */
+            height: 70px; /* Increased size of thumbnails in the modal */
+            margin: 5px;
+            cursor: pointer;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            transition: transform 0.3s ease, border 0.3s ease;
+        }
+
+        .slider-thumbnails img:hover {
+            transform: scale(1.4);
+            border-color: #f44336;
+        }
+
+        /* Close Button Styling */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: #f44336;
+            transform: scale(1.9);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="eh-body">
+        <!-- Header Section -->
+        <header>
+            <div id="eh-header">
+                <div id="eh-logo">
+                    <a class="eh-logo-link" href="/index.html">
+                        <img src="/images/m2PU182hr5-1721715715718.svg" alt="">
+                    </a>
+                </div>
+                <div id="eh-navbar">
+                    <a class="nav-links" href="/index.html">Home</a>
+                    <a class="nav-links active-link" href="/buy_home.html">Buy</a>
+                    <a class="nav-links" href="/rent_home.html">Rent</a>
+                    <a class="nav-links" href="/contact_us.html">Contact Us</a>
+                    <a class="nav-links" href="/about_us.html">About</a>
+                </div>
+                <div id="eh-account">
+                    <a class="account-link" href="log_in.html">
+                        <button class="account-btn">
+                            <svg class="h-6 w-6" width="25" height="24" viewBox="0 0 25 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.62 12.78C12.55 12.77 12.46 12.77 12.38 12.78C10.62 12.72 9.22 11.28 9.22 9.50998C9.22 7.69998 10.68 6.22998 12.5 6.22998C14.31 6.22998 15.78 7.69998 15.78 9.50998C15.77 11.28 14.38 12.72 12.62 12.78Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M19.24 19.3801C17.46 21.0101 15.1 22.0001 12.5 22.0001C9.90001 22.0001 7.54001 21.0101 5.76001 19.3801C5.86001 18.4401 6.46001 17.5201 7.53001 16.8001C10.27 14.9801 14.75 14.9801 17.47 16.8001C18.54 17.5201 19.14 18.4401 19.24 19.3801Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M12.5 22C18.0228 22 22.5 17.5228 22.5 12C22.5 6.47715 18.0228 2 12.5 2C6.97715 2 2.5 6.47715 2.5 12C2.5 17.5228 6.97715 22 12.5 22Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg>
+                            <span>My account</span>
+                        </button>
+                    </a>
+                    <!-- profile button -->
+                    <div class="dropdown">
+                        <button class="profile-btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <svg class="h-6 w-6" width="25" height="24" viewBox="0 0 25 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.62 12.78C12.55 12.77 12.46 12.77 12.38 12.78C10.62 12.72 9.22 11.28 9.22 9.50998C9.22 7.69998 10.68 6.22998 12.5 6.22998C14.31 6.22998 15.78 7.69998 15.78 9.50998C15.77 11.28 14.38 12.72 12.62 12.78Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M19.24 19.3801C17.46 21.0101 15.1 22.0001 12.5 22.0001C9.90001 22.0001 7.54001 21.0101 5.76001 19.3801C5.86001 18.4401 6.46001 17.5201 7.53001 16.8001C10.27 14.9801 14.75 14.9801 17.47 16.8001C18.54 17.5201 19.14 18.4401 19.24 19.3801Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M12.5 22C18.0228 22 22.5 17.5228 22.5 12C22.5 6.47715 18.0228 2 12.5 2C6.97715 2 2.5 6.47715 2.5 12C2.5 17.5228 6.97715 22 12.5 22Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                        <!-- Dropdown Menu -->
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="/edit_profile.html">Edit Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Section -->
+        <main class="eh-sh-main">
+            <!-- main content of page -->
+            <div class="eh-sh-container">
+                <div class="eh-sh-wrapper">
+                    <div class="home-details">
+                        <div class="home-images">
+                            <div class="hm-image-wrapper">
+                                <div class="image1-div">
+                                    <!-- <a href="" class="slider-link"> -->
+                                        <img class="image1" src="/images/img1.webp" alt="" data-full="/images/img1.webp">
+                                    <!-- </a> -->
+                                </div>
+                                <div class="image2-div">
+                                    <!-- <a href="" class="slider-link"> -->
+                                        <img src="/images/img2.webp" alt="" class="image2" data-full="/images/img2.webp">
+                                    <!-- </a> -->
+                                </div>
+                                <div class="image3-div">
+                                    <!-- <a href="" class="slider-link"> -->
+                                        <img src="/images/img3.webp" alt="" class="image3" data-full="/images/img3.webp">
+                                    <!-- </a> -->
+                                </div>
+                                <div class="image4-div">
+                                    <!-- <a href="" class="slider-link"> -->
+                                        <img src="images/img4.webp" alt="" class="image4" data-full="/images/img4.webp">
+                                    <!-- </a> -->
+                                </div>
+                                <div class="image5-div">
+                                    <!-- <a href="" class="slider-link"> -->
+                                        <img src="/images/img5.webp" alt="" class="image5" data-full="/images/img5.webp">
+                                        <div class="image5-cover"> + <span>17</span> Photos</div>
+                                    <!-- </a> -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- home image ends -->
+
+                        <div class="name-address">
+                            <div class="home-name-inner">
+                                <h1 class="home-name">kohinoor Mansion</h1>
+                                <span class="home-address">360 West Building, Birla Aurora, Hanuman Nagar, Worli, mumbai</span>
+                            </div>
+                        </div>
+                        <!-- home name & address ends -->
+
+                        <!-- home information starts -->
+                        <div class="home-info">
+                            <div class="info-details">
+                                <div class="info-name">Sale Price</div>
+                                <div class="info">￥2,22,000</div>
+                            </div>
+                            <div class="info-details">
+                                <div class="info-name">Layout</div>
+                                <div class="info">3LDK</div>
+                            </div>
+                            <div class="info-details">
+                                <div class="info-name">Bedrooms</div>
+                                <div class="info">3</div>
+                            </div>
+                            <div class="info-details info-details-last">
+                                <div class="info-name">Size</div>
+                                <div class="info">120m²</div>
+                            </div>
+                        </div>
+                        <!-- home information over -->
+
+                        <!-- home description starts -->
+
+                        <div class="home-desc-container">
+                            <h3 class="home-desc-heading">Property information</h3>
+                            <div class="home-desc-text">
+                                <p>
+                                    THE CONOE〈Daikanyama〉offers a spacious 120.34 sqm apartment with a convenient 3LDK (3 bedrooms, living, dining, and kitchen) layout, tailored for comfort and style. Located within a minute’s walk from Daikanyama Station and close to Ebisu and Nakameguro stations, its prime location combines suburban tranquility with city living, perfect for young professionals or families seeking proximity to Tokyo’s vibrant lifestyle hubs.
+                                    <br>
+                                    <br>
+                                    The apartment incorporates a generous living/dining area, approximately 38.25 sqm, fostering a harmonious open-plan layout that encourages family interaction and entertaining. Each bedroom ensures privacy and ample space, supplemented with storage solutions such as a walk-in closet and additional closet space, providing a clutter-free living environment.
+                                    <br>
+                                    <br>
+                                    The interior features high-quality finishes including floor heating, a system kitchen with an induction cooker and dishwasher, and a separate washroom enhancing functionality and convenience. The inclusion of natural light is optimized through thoughtful placement of windows, creating a warm and welcoming atmosphere. Modern amenities such as a bathroom with a reheating function, and a dedicated laundry area with a dryer, add to the home's luxury feel.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- home description over -->
+                    </div>
+                    <!-- HOME DETAILS OVER -->
+
+                    <!-- Request tour section start  -->
+                    <div class="requst-tour">
+                        <form action="" class="tour-form">
+                            <div class="form-inner">
+                                <div class="form-heading">
+                                    <h3 class="rt-head">Request a Tour</h3>
+                                </div>
+                                <div class="form-body">
+                                    <div class="form-body-inner">
+                                        <div>
+                                            <label for="" class="sh-label">Select date</label>
+                                            <div>
+                                                <input type="date" class="date-btn input-btn">
+                                                </div>
+                                            </div>
+                                            <div class="mt-2">
+                                                <label for="full-name" class="sh-label">Full name</label>
+                                                <div>
+                                                    <input type="text" class="input-btn" id="full-name" name="full-name" placeholder="Devangi kachhadiya">
+                                                </div>
+                                            </div>
+                                            <div class="mt-2">
+                                                <label for="phone-num" class="sh-label">Phone</label>
+                                                <div>
+                                                    <input type="text" class="input-btn" id="phone-num" name="phone" placeholder="+91 (xx) xxxx-xxxx">
+                                                </div>
+                                            </div>
+                                            <div class="mt-2">
+                                                <label for="tour-email" class="sh-label">Full name</label>
+                                                <div>
+                                                    <input type="email" class="input-btn" id="tour-email" name="temail" placeholder="Devangikachhadiya37@gmail.com">
+                                                </div>
+                                            </div>
+                                            <div class="tour-btn">
+                                                <button type="submit" class="btn-sl mt-5">Send Request</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Image Slider Modal -->
+        <div class="slider-modal">
+            <div class="slider-container">
+                <span class="close-btn">&times;</span>
+                <div class="main-image">
+                    <img src="/images/img1.webp" alt="Main Product Image" id="main-image">
+                </div>
+                <button class="nav-btn left">&#10094;</button>
+                <button class="nav-btn right">&#10095;</button>
+                <div class="slider-thumbnails">
+                    <img src="/images/img1.webp" alt="Thumbnail 1" class="slider-thumbnail" data-full="/images/img1.webp">
+                    <img src="/images/img2.webp" alt="Thumbnail 2" class="slider-thumbnail" data-full="/images/img2.webp">
+                    <img src="/images/img3.webp" alt="Thumbnail 3" class="slider-thumbnail" data-full="/images/img3.webp">
+                    <img src="/images/img4.webp" alt="Thumbnail 4" class="slider-thumbnail" data-full="/images/img4.webp">
+                    <img src="/images/img5.webp" alt="Thumbnail 5" class="slider-thumbnail" data-full="/images/img5.webp">
+                </div>
+            </div>
+        </div>
+    </div>
+        </main>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+        const thumbnails = document.querySelectorAll('.hm-image-wrapper img');
+        const modal = document.querySelector('.slider-modal');
+        const mainImage = document.getElementById('main-image');
+        const sliderThumbnails = document.querySelector('.slider-thumbnails');
+        const closeBtn = document.querySelector('.close-btn');
+        const navButtons = document.querySelectorAll('.nav-btn');
+        const sliderImages = [
+            "/images/img1.webp",
+            "/images/img2.webp",
+            "/images/img3.webp",
+            "/images/img4.webp",
+            "/images/img5.webp"
+        ];
+        let currentIndex = 0;
+
+        // Function to update the main image in the modal
+        function updateMainImage(index) {
+            mainImage.src = sliderImages[index];
+        }
+
+        // Open the image slider modal when clicking on a thumbnail image
+        thumbnails.forEach((thumbnail, index) => {
+            thumbnail.addEventListener('click', (e) => {
+                currentIndex = index;
+                updateMainImage(currentIndex);
+                modal.style.display = 'flex';
+            });
+        });
+
+        // Close the modal when clicking the close button
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        // Switch the main image when clicking a thumbnail inside the slider modal
+        sliderThumbnails.addEventListener('click', (e) => {
+            if (e.target.classList.contains('slider-thumbnail')) {
+                const newImageSrc = e.target.getAttribute('data-full');
+                mainImage.src = newImageSrc;
+                currentIndex = sliderImages.indexOf(newImageSrc); // Update index
+            }
+        });
+
+        // Navigate images when clicking on the left or right buttons
+        navButtons.forEach((button) => {
+            button.addEventListener('click', (e) => {
+                if (e.target.classList.contains('left')) {
+                    currentIndex = (currentIndex > 0) ? currentIndex - 1 : sliderImages.length - 1;
+                } else {
+                    currentIndex = (currentIndex < sliderImages.length - 1) ? currentIndex + 1 : 0;
+                }
+                updateMainImage(currentIndex);
+            });
+        });
+
+        // Close the modal when clicking outside of the image (on the modal overlay)
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
+</body>
+</html>

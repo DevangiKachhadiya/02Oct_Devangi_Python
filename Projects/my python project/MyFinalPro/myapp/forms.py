@@ -116,3 +116,9 @@ class apply_ownerForm(forms.ModelForm):
         model = Owner
         fields = ['name', 'email', 'number']
 
+    
+class pas(forms.ModelForm):
+    class Meta:
+        model = UserSignUp
+        fields = ['password']
+
