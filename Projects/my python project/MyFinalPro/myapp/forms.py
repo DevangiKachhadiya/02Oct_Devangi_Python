@@ -144,3 +144,7 @@ class fpass(forms.ModelForm):
     class Meta:
         model = UserSignUp
         fields = ['email','password','confpass']
+
+class search(forms.ModelForm):
+    model = AddHome
+    fields = ['city', 'bedroom', 'rprice', 'sprice' ]

@@ -259,3 +259,23 @@ function showHome(homeId) {
 }
 
 
+document.querySelectorAll('.dropdown-item').forEach(item => {
+    item.addEventListener('click', function () {
+      const dataType = this.getAttribute('data-price') || this.getAttribute('data-bedroom') || this.getAttribute('data-location');
+      const value = this.textContent.trim();
+  
+      if (this.getAttribute('data-location')) {
+        document.getElementById('cityInput').value = this.getAttribute('data-location');
+        document.getElementById('locationText').innerText = value;
+      }
+      if (this.getAttribute('data-bedroom')) {
+        document.getElementById('bedroomInput').value = this.getAttribute('data-bedroom');
+        document.getElementById('bedroomText').innerText = value;
+      }
+      if (this.getAttribute('data-price')) {
+        document.getElementById('priceInput').value = value.replace(/\s+/g, '');
+        document.getElementById('priceText').innerText = value;
+      }
+    });
+  });
+  

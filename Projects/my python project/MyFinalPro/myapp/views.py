@@ -11,26 +11,7 @@ import string
 # Create your views here.
 
 def index(request):
-    city = request.GET.get('city', '')
-    bedrooms = request.GET.get('bedrooms', '')
-    price_range = request.GET.get('price', '')
-
-    # Build the query
-    homes = AddHome.objects.all()
-
-    if city:
-        homes = homes.filter(location__icontains=city)
-    if bedrooms:
-        homes = homes.filter(bedrooms=bedrooms)
-    if price_range:
-     try:
-        min_price, max_price = map(int, price_range.split('-'))
-        homes = homes.filter(sprice__gte=min_price, sprice__lte=max_price)
-     except (ValueError, TypeError):
-        print(f"Invalid price range: {price_range}")
-   
-    print(f"Total homes found: {homes.count()}")
-
+    
     user = request.user.email if request.user.is_authenticated else None
     approved = False
 
@@ -43,7 +24,7 @@ def index(request):
             approved= False
     else:
             approved= False
-    return render(request, 'index.html', {'user':user, 'approved':approved,'homes':homes})
+    return render(request, 'index.html', {'user':user, 'approved':approved})
 
 # def login(request):
 #     msg = ""
@@ -231,27 +212,39 @@ def rent_home(request):
     return render(request, 'rent_home.html',{'shome':shome, 'user':user})
 
 def search_home(request):
-    location = request.GET.get('location', '')
-    bedrooms = request.GET.get('bedroom', '')
-    price_type = request.GET.get('price', '')
-    
-    # Filter based on input
-    homes = AddHome.objects.all()
+    city = request.GET.get('city', '')
+    bedroom = request.GET.get('bedroom', '')
+    price_range = request.GET.get('price', '')
+    search_type = request.GET.get('type', '')
 
-    if location:
-        homes = homes.filter(location__iexact=location)
+    print(f"city: {city}, Bedroom: {bedroom}, Price: {price_range}, Type: {search_type}")
 
-    if bedrooms:
-        if bedrooms == '4':
-            homes = homes.filter(bedrooms__gte=4)
-        else:
-            homes = homes.filter(bedrooms=bedrooms)
+    filters = {}
 
-    if price_type == 'buy':
-        homes = homes.filter(sell=True)
-    elif price_type == 'rent':
-        homes = homes.filter(sell=False)
-    return render(request, 'search_home.html', {'homes': homes})
+    if city:
+        filters['city__icontains'] = city
+    if bedroom:
+        filters['bedroom'] = bedroom
+    if search_type == 'buy' and price_range:
+        try:
+            min_price, max_price = map(lambda x: int(x.replace(',', '').strip()), price_range.split('-'))
+            filters['sprice__gte'] = min_price
+            filters['sprice__lte'] = max_price
+        except ValueError:
+            print("Invalid price format for buy")
+    elif search_type == 'rent' and price_range:
+        try:
+            min_price, max_price = map(lambda x: int(x.replace(',', '').strip()), price_range.split('-'))
+            filters['rprice__gte'] = min_price
+            filters['rprice__lte'] = max_price
+        except ValueError:
+            print("Invalid price format for rent")
+
+    print(f"Filters Applied: {filters}")
+
+    results = AddHome.objects.filter(**filters)
+    return render(request, 'search_home.html', {'results': results})
+
 
 def cities(request, city):
     homes = AddHome.objects.filter(city__iexact=city)
