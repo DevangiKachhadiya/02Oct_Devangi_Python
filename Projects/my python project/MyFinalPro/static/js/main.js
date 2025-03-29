@@ -246,4 +246,16 @@ rentButton.addEventListener('click', function () {
 
 // Initialize with Buy price options (by default)
 updatePriceDropdown(true); // Default to "Buy" price options
+function showHome(homeId) {
+    // Hide all homes
+    const homes = document.querySelectorAll('.home-div');
+    homes.forEach(home => home.style.display = 'none');
+
+    // Show only the selected home
+    const selectedHome = document.getElementById(`home-${homeId}`);
+    if (selectedHome) {
+        selectedHome.style.display = 'block';
+    }
+}
+
 

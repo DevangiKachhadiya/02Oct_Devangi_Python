@@ -11,6 +11,26 @@ import string
 # Create your views here.
 
 def index(request):
+    city = request.GET.get('city', '')
+    bedrooms = request.GET.get('bedrooms', '')
+    price_range = request.GET.get('price', '')
+
+    # Build the query
+    homes = AddHome.objects.all()
+
+    if city:
+        homes = homes.filter(location__icontains=city)
+    if bedrooms:
+        homes = homes.filter(bedrooms=bedrooms)
+    if price_range:
+     try:
+        min_price, max_price = map(int, price_range.split('-'))
+        homes = homes.filter(sprice__gte=min_price, sprice__lte=max_price)
+     except (ValueError, TypeError):
+        print(f"Invalid price range: {price_range}")
+   
+    print(f"Total homes found: {homes.count()}")
+
     user = request.user.email if request.user.is_authenticated else None
     approved = False
 
@@ -23,7 +43,7 @@ def index(request):
             approved= False
     else:
             approved= False
-    return render(request, 'index.html', {'user':user, 'approved':approved})
+    return render(request, 'index.html', {'user':user, 'approved':approved,'homes':homes})
 
 # def login(request):
 #     msg = ""
@@ -54,40 +74,46 @@ def login(request):
             password = request.POST.get('password')
             try:
                 user = UserSignUp.objects.get(email=unm, password=password)
-                request.session["user"] = unm
+                request.session["user"] = user.fnm
                 request.session["userid"] = user.id
                 print("Login Successfully!")
                 return redirect("/")
             except UserSignUp.DoesNotExist:
+                print("Error! Login Failed. Please Try Again.")
                 msg = "Error! Login Failed. Please Try Again."
                          
     return render(request, 'login.html', {'msg': msg,'user':user})
 
 
-def forgot_password(request):
-    if request.method == "POST":
-        email = request.POST.get('email')
-        try:
-            user = UserSignUp.objects.get(email=email)
-            reset_url = f'http://localhost:8000/reset_password/{user.pk}/'
-            
-            # Send Email
-            send_mail(
-                subject="Reset Your Password",
-                message=f"Hello! Click here to reset your password: {reset_url}",
-                from_email=settings.EMAIL_HOST_USER,
-                recipient_list=[email],
-            )
-            print("yes")
-        
-        except user.DoesNotExist:
-            print("no")
-    return render(request, 'reset_password.html')
 
+def reset_password(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        new_password = request.POST.get('password')
+        confirm_password = request.POST.get('confpass')
+
+        # Validate Email
+        user = UserSignUp.objects.filter(email=email).first()
+        if not user:
+            return render(request, 'reset_password.html')
+
+        # Validate Password Match
+        if new_password != confirm_password:
+            
+            return render(request, 'reset_password.html')
+
+        # Update Password without Hashing
+        user.password = new_password
+        user.save()
+
+       
+        return redirect("/login/")
+    return render(request, 'reset_password.html')
        
         
 def signUp(request):
     msg = ''
+    user = request.session.get("user")
     if request.method == "POST":
         newuser = signupForm(request.POST)
         email = ''
@@ -117,11 +143,24 @@ def signUp(request):
     else:
         newuser = signupForm()       
 
-    return render(request, 'signUp.html', {'msg': msg, 'newuser':newuser})
+    return render(request, 'signUp.html', {'msg': msg, 'newuser':newuser, 'user':user})
 
 
 def edit_profile(request):
-    return render(request,'edit_profile.html')
+    user = request.session.get("user")
+    userid = request.session.get("userid")
+    upid = UserSignUp.objects.get(id=userid)
+    print("Current User ID:",upid)
+    if request.method == "POST":
+        updateReq = updateprofileForm(request.POST, instance = upid)
+        if updateReq.is_valid():
+            updateReq.save()
+            request.session.delete()
+            return redirect('/login')
+        else:
+            print(updateReq.errors)
+            msg = "Error! Something went wrong...."
+    return render(request,'edit_profile.html', {"user": user, "upid":upid})
 
 def add_home(request):
     msg = ""
@@ -130,10 +169,10 @@ def add_home(request):
     if request.method == 'POST':
         form = addhomeForm(request.POST)
         images = request.FILES.getlist('image')
-
+       
         # Form validation
         if form.is_valid():
-            # Image Validation
+           
             if not images:
                 errors.append("Please upload at least one image.")
             elif len(images) > 10:
@@ -158,20 +197,38 @@ def add_home(request):
         else:
             errors.extend(form.errors.values())
             msg = 'Form has errors. Please check the fields.'
+            print(form.errors)
 
     else:
         form = addhomeForm()
 
     return render(request, "add_home.html", {'msg': msg, 'errors': errors, 'form': form})
 
+def update_home(request):
+    user = request.session.get('user')
+    userid = request.session.get('userid')
+    updid = AddHome.objects.get(id=userid)
+    print("Current User ID:",updid)
+    if request.method == 'POST':
+        updReq = updatehomeForm(request.POST, instance=updid)
+        if updReq.is_valid():
+            updReq.save()
+            request.session.delete()
+            return redirect('/')
+        else:
+            print(updReq.errors)
+            msg = 'Opps! Something went wrong...'
+    return render(request, 'update_home.html',{'user':user, 'updid':updid})
 
 def buy_home(request):
+    user = request.session.get("user")
     shome = AddHome.objects.filter(htype = 'sell')
-    return render(request, 'buy_home.html',{'shome':shome})
+    return render(request, 'buy_home.html',{'shome':shome, 'user':user})
 
 def rent_home(request):
+    user = request.session.get('user')
     shome = AddHome.objects.filter(htype = 'rent')
-    return render(request, 'rent_home.html',{'shome':shome})
+    return render(request, 'rent_home.html',{'shome':shome, 'user':user})
 
 def search_home(request):
     location = request.GET.get('location', '')
@@ -204,7 +261,8 @@ def cities(request, city):
   
 
 def about_us(request):
-    return render(request, 'about_us.html')
+    user = request.session.get("user")
+    return render(request, 'about_us.html', {'user':user})
 
 def contact_us(request):
     msg = ''
@@ -229,24 +287,16 @@ def contact_us(request):
             msg = 'Error! Plz try again'
     return render(request, 'contact_us.html',{'user':user,'msg':msg})
 
-def reset_password(request):
-    user=request.session.get('user')
-    fp=UserSignUp.objects.filter(email=user).first()
-    if request.method=='POST':
-        ups=pas(request.POST, instance=fp)
-        if ups.is_valid():
-            ups.save()
-            return redirect('/')
-        else:
-            print(ups.errors)
-    return render(request, 'reset_password.html',{'fp':fp})
+
 
 def show_home(request):
+    user = request.session.get('user')
     home = AddHome.objects.prefetch_related('images').all()
-    return render(request, 'show_home.html',{'home':home})
+    return render(request, 'show_home.html',{'home':home, 'user':user})
 
 def apply_owner(request):
     msg=''
+    user = request.session.get('user')
     if request.method == 'POST':
         own=apply_ownerForm(request.POST)
         if own.is_valid():
@@ -261,10 +311,22 @@ def apply_owner(request):
             print(own.errors)
             msg='Error! Something went wrong...'
             print('Error! Something went wrong...')
-    return render(request, 'apply_owner.html', {'msg':msg})
+    return render(request, 'apply_owner.html', {'msg':msg, 'user':user})
 
 
 
 def userlogout(request):
     logout(request)
     return redirect('/')
+
+def show_buy_home(request,id):
+    sbh=AddHome.objects.get(id=id)
+    images = HomeImage.objects.filter(home=sbh)[:5]  # Get first 5 images
+    remaining_images_count = HomeImage.objects.filter(home=sbh) 
+    selected_home = request.GET.get('home', '1')  
+    print("id",id)
+  
+
+    
+    return render(request, 'show_buy_home.html',{'sbh':sbh, 'images':images, 'remaining_images_count':remaining_images_count , '':selected_home})
+

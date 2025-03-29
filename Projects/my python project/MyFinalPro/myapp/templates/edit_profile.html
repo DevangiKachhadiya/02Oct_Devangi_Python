@@ -14,7 +14,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 
     <!-- our css -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
     <title>Edit Profile</title>
 </head>
 <body>
@@ -57,32 +57,40 @@
                         <h1>Update your profile</h1>
                         <p>Stay Updated</p>
                     </div>
-                    <form action="" id="sin-form">
+                    <form method="post" action="" id="sin-form">
+                        {% csrf_token %}
                         <div class="sin-in">
                             <div class="lin-first-name">
                                 <label class="sl-label" for="first name">First Name</label>
                                 <div class="sl-in-pos-rel">
-                                    <input class="form-input" type="text" id="first name" placeholder="First name" name="fnm">
+                                    <input class="form-input" value="{{upid.fnm}}" type="text" id="first name" placeholder="First name" name="fnm">
                                 </div>
                             </div>
                             <div class="lin-last-name">
                                 <label class="sl-label" for="last name">Lsat Name</label>
                                 <div class="sl-in-pos-rel">
-                                    <input class="form-input" type="text" id="last name" placeholder="Last name" name="lnm">
+                                    <input class="form-input" value="{{upid.lnm}}" type="text" id="last name" placeholder="Last name" name="lnm">
                                 </div>
                             </div>
                                 <div class="lin-email">
                                     <label class="sl-label" for="email">Email</label>
                                     <div class="sl-in-pos-rel">
-                                        <input class="form-input" type="email" id="email" placeholder="Email" name="email">
+                                        <input class="form-input" value="{{upid.email}}" type="email" id="email" placeholder="Email" name="email">
                                     </div>
                                 </div>
                                 <div class="lin-pswrd">
                                     <label class="sl-label" for="password">Password</label>
                                     <div class="sl-in-pos-rel">
-                                        <input class="form-input" type="password" id="password" placeholder="Password" name="password">
+                                        <input class="form-input" value="{{upid.password}}" type="password" id="password" placeholder="Password" name="password">
                                     </div>
                                 </div>
+                                <div class="lin-pswrd">
+                                    <label class="sl-label" for="password">Confirm Password</label>
+                                    <div class="sl-in-pos-rel">
+                                        <input class="form-input" value="{{upid.confpass}}" type="password" id="password" placeholder="Confirm Password" name="confpass">
+                                    </div>
+                                </div>
+
                         </div>
                         <button class="btn-sl" type="submit"> Save </button>
                     </form>

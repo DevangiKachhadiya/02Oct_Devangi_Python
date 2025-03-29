@@ -119,13 +119,13 @@
                 <div class="container-fluid mt-3 p-3">
                     <h2>You searched for </h2>
                     <div class="row">
-                        {% for i in home %}
+                        {% if homes %}
                         <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
                             <div class="card h-100">
                                 <a class="redirect-sh" href="/show_home" target="_blank"></a>
 
                                 <!-- Carousel Component -->
-                                <div id="productCarousel{{ i.id }}" class="carousel slide" data-bs-ride="carousel">
+                                <div id="productCarousel{{ homes.id }}" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-indicators">
                                         {% for image in i.images.all %}
                                         <button type="button" data-bs-target="#productCarousel{{ i.id }}"
@@ -163,15 +163,15 @@
                                 <div class="card-body">
                                     <h5 class="card-title">
                                         <i class="bi bi-currency-rupee"></i>
-                                        {% if i.sprice %}
-                                        {{ i.sprice }}
-                                        {% elif i.rprice %}
-                                        {{ i.rprice }}/month
+                                        {% if homes.sprice %}
+                                        {{ homes.sprice }}
+                                        {% elif homes.rprice %}
+                                        {{ homes.rprice }}/month
                                         {% else %}
                                         Not Available
                                         {% endif %}
                                     </h5>
-                                    <p class="card-text"> {{i.address}}</p>
+                                    <p class="card-text"> {{homes.address}}</p>
                                     <div class="card-foot mb-2">
                                         <div class="hm-area">
                                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
@@ -187,7 +187,7 @@
                                                 <path d="M4.5 10.5V13.5H7.5" stroke="currentColor" stroke-width="1.5"
                                                     stroke-linecap="round" stroke-linejoin="round"></path>
                                             </svg>
-                                            <span>{{i.size}}m²</span>
+                                            <span>{{homes.size}}m²</span>
                                         </div>
                                         <div class="hm-ldk">
                                             <svg width="19" height="18" viewBox="0 0 19 18" fill="none"
@@ -209,7 +209,7 @@
                                                     stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                                                     stroke-linejoin="round"></path>
                                             </svg>
-                                            <span>{{i.bedroom}}BHK</span>
+                                            <span>{{homes.bedroom}}BHK</span>
                                         </div>
                                         <div class="hm-beds">
                                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
@@ -225,14 +225,14 @@
                                                 <path d="M2.25 12.4841V14.6319" stroke="currentColor" stroke-width="1.5"
                                                     stroke-linecap="round"></path>
                                             </svg>
-                                            <span>{{i.bedroom}}</span>
+                                            <span>{{homes.bedroom}}</span>
                                         </div>
                                     </div>
 
                                 </div>
                             </div>
                         </div>
-                        {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
 
@@ -248,4 +248,4 @@
     </html>
 </body>
 
-</html>
+</html> 

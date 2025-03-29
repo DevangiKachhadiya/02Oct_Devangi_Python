@@ -17,9 +17,12 @@ urlpatterns = [
     path('search_home/', views.search_home, name='search_home'),
     path('cities/<str:city>', views.cities, name='cities'),
     path('apply_owner/', views.apply_owner, name='aplly_owner'),
-    path('forgot_password/', views.forgot_password, name='forgot_password'),
     path('reset_password/', views.reset_password, name='reset_password'),
     path('edit_profile/', views.edit_profile, name='edit_profile'),
+    path('update_home/',views.update_home, name='update_home'),
+    path('userlogout/',views.userlogout),
+    path('show_buy_home/<int:id>',views.show_buy_home, name='show_buy_home'),
+    
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

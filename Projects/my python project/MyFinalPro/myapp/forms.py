@@ -122,3 +122,25 @@ class pas(forms.ModelForm):
         model = UserSignUp
         fields = ['password']
 
+
+class updatehomeForm(forms.ModelForm):
+    class Meta:
+        model = AddHome
+        fields = ['hname','address','city','size','bedroom','desc','htype','sprice','rprice']
+
+
+class updateprofileForm(forms.ModelForm):
+    class Meta:
+        model = UserSignUp
+        fields = ['fnm','lnm','email','password','confpass']
+
+
+class reqtourForm(forms.ModelForm):
+    class Meta:
+        model = reqtour
+        fields = '__all__'
+
+class fpass(forms.ModelForm):
+    class Meta:
+        model = UserSignUp
+        fields = ['email','password','confpass']

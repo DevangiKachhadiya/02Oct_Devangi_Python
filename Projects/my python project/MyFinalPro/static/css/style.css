@@ -118,15 +118,16 @@
 }
 
 .dropdown .profile-btn {
-    width: 50px;
+    
+    width: auto;
     height: 50px;
     border-radius: 999px;
-    /* padding: .25rem; */
+    padding: .5rem;
     background-color: transparent;
     border: 1px solid var(--border-dark-gray);
     cursor: pointer;
     color: var(--color-black);
-    display: none;
+    display: inline-block;
 }
 
 .dropdown-menu .dropdown-item:hover {
@@ -1648,7 +1649,6 @@ border-right: none;
     text-decoration: underline;
     color: var(--color-orange);
 }
-
 
 
 
