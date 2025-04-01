@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Show Your Propertice</title>
+    <style>
+        /* Modal/Slider Styling */
+        .slider-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .slider-container {
+            position: relative;
+            text-align: center;
+            max-width: 90%;
+        }
+
+        .main-image img {
+            width: 600px;
+            /* Increased size of the main image */
+            height: 600px;
+            /* Increased size of the main image */
+            object-fit: contain;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Navigation Buttons */
+        .nav-btn {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: transparent;
+            color: white;
+            font-size: 40px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-btn.left {
+            left: 10px;
+            /* Fixed to left side of the screen */
+        }
+
+        .nav-btn.right {
+            right: 10px;
+            /* Fixed to right side of the screen */
+        }
+
+        /* .nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        } */
+
+        .slider-thumbnails {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .slider-thumbnails img {
+            width: 70px;
+            /* Increased size of thumbnails in the modal */
+            height: 70px;
+            /* Increased size of thumbnails in the modal */
+            margin: 5px;
+            cursor: pointer;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            transition: transform 0.3s ease, border 0.3s ease;
+        }
+
+        .slider-thumbnails img:hover {
+            transform: scale(1.4);
+            border-color: #f44336;
+        }
+
+        /* Close Button Styling */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: #f44336;
+            transform: scale(1.9);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="eh-body">
+        <!-- Header Section -->
+        <header>
+            <div id="eh-header">
+                <div id="eh-logo">
+                    <a class="eh-logo-link" href="/">
+                        <img src="/static/images/m2PU182hr5-1721715715718.svg" alt="">
+                    </a>
+                </div>
+                <div id="eh-navbar">
+                    <a class="nav-links" href="/">Home</a>
+                    <a class="nav-links" href="/buy_home">Buy</a>
+                    <a class="nav-links" href="/rent_home">Rent</a>
+                    <a class="nav-links" href="/contact_us">Contact Us</a>
+                    <a class="nav-links" href="/about_us">About</a>
+                </div>
+                <div id="eh-account">
+                    <a class="account-link" href="log_in">
+                        <button class="account-btn">
+                            <svg class="h-6 w-6" width="25" height="24" viewBox="0 0 25 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.62 12.78C12.55 12.77 12.46 12.77 12.38 12.78C10.62 12.72 9.22 11.28 9.22 9.50998C9.22 7.69998 10.68 6.22998 12.5 6.22998C14.31 6.22998 15.78 7.69998 15.78 9.50998C15.77 11.28 14.38 12.72 12.62 12.78Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M19.24 19.3801C17.46 21.0101 15.1 22.0001 12.5 22.0001C9.90001 22.0001 7.54001 21.0101 5.76001 19.3801C5.86001 18.4401 6.46001 17.5201 7.53001 16.8001C10.27 14.9801 14.75 14.9801 17.47 16.8001C18.54 17.5201 19.14 18.4401 19.24 19.3801Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M12.5 22C18.0228 22 22.5 17.5228 22.5 12C22.5 6.47715 18.0228 2 12.5 2C6.97715 2 2.5 6.47715 2.5 12C2.5 17.5228 6.97715 22 12.5 22Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg>
+                            <span>My account</span>
+                        </button>
+                    </a>
+                    <!-- profile button -->
+                    <div class="dropdown">
+                        <button class="profile-btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <svg class="h-6 w-6" width="25" height="24" viewBox="0 0 25 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.62 12.78C12.55 12.77 12.46 12.77 12.38 12.78C10.62 12.72 9.22 11.28 9.22 9.50998C9.22 7.69998 10.68 6.22998 12.5 6.22998C14.31 6.22998 15.78 7.69998 15.78 9.50998C15.77 11.28 14.38 12.72 12.62 12.78Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M19.24 19.3801C17.46 21.0101 15.1 22.0001 12.5 22.0001C9.90001 22.0001 7.54001 21.0101 5.76001 19.3801C5.86001 18.4401 6.46001 17.5201 7.53001 16.8001C10.27 14.9801 14.75 14.9801 17.47 16.8001C18.54 17.5201 19.14 18.4401 19.24 19.3801Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M12.5 22C18.0228 22 22.5 17.5228 22.5 12C22.5 6.47715 18.0228 2 12.5 2C6.97715 2 2.5 6.47715 2.5 12C2.5 17.5228 6.97715 22 12.5 22Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                        <!-- Dropdown Menu -->
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="/edit_profile">Edit Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Section -->
+        <main class="eh-sh-main">
+            {% if sbh %}
+
+
+            <!-- main content of page -->
+            <div class="eh-sh-container">
+                <div class="eh-sh-wrapper">
+                    <div class="home-details">
+                        <div class="home-images">
+                            <div class="hm-image-wrapper">
+                                {% for image in images %}
+                                <div class="image{{ forloop.counter }}-div">
+                                    <img class="image{{ forloop.counter }}" src="{{ image.image.url }}"
+                                        alt="Image {{ forloop.counter }}" data-full="{{ image.image.url }}">
+
+                                    {% if forloop.last and remaining_images_count > 0 %}
+                                    <div class="image5-cover"> + <span>{{ remaining_images_count }}</span> Photos</div>
+                                    {% endif %}
+                                </div>
+                                {% endfor %}
+                            </div>
+
+
+                        </div>
+                        <!-- home image ends -->
+
+                        <div class="name-address">
+                            <div class="home-name-inner">
+                                <h1 class="home-name">{{sbh.hname}}</h1>
+                                <span class="home-address">{{sbh.address}}</span>
+                            </div>
+                        </div>
+                        <!-- home name & address ends -->
+
+                        <!-- home information starts -->
+                        <div class="home-info">
+                            <div class="info-details">
+                                <div class="info-name">Sale Price</div>
+                                <div class="info">{{sbh.sprice}}</div>
+                            </div>
+                            <div class="info-details">
+                                <div class="info-name">Layout</div>
+                                <div class="info">{{sbh.bedroom}}BHK</div>
+                            </div>
+                            <div class="info-details">
+                                <div class="info-name">Bedrooms</div>
+                                <div class="info">{{sbh.bedroom}}</div>
+                            </div>
+                            <div class="info-details info-details-last">
+                                <div class="info-name">Size</div>
+                                <div class="info">{{sbh.size}}m²</div>
+                            </div>
+                        </div>
+                        <!-- home information over -->
+
+                        <!-- home description starts -->
+
+                        <div class="home-desc-container">
+                            <h3 class="home-desc-heading">Property information</h3>
+                            <div class="home-desc-text">
+                                <p>
+                                    {{sbh.desc}}
+                                </p>
+                            </div>
+                        </div>
+                        <!-- home description over -->
+                    </div>
+                    <!-- HOME DETAILS OVER -->
+
+                    <!-- Request tour section start  -->
+                    <div class="requst-tour">
+                        <form method="post" action="" class="tour-form">
+                            {% csrf_token %}
+                            <div class="form-inner">
+                                <div class="form-heading">
+                                    <h3 class="rt-head">Request a Tour</h3>
+                                </div>
+                                <div class="form-body">
+                                    <div class="form-body-inner">
+                                        <div>
+                                            <label for="" class="sh-label">Select date</label>
+                                            <div>
+                                                <input type="date" name="date" class="date-btn input-btn">
+                                            </div>
+                                        </div>
+                                        <div class="mt-2">
+                                            <label for="full-name" class="sh-label">Full name</label>
+                                            <div>
+                                                <input type="text" class="input-btn" id="full-name" name="name"
+                                                    placeholder="Devangi kachhadiya">
+                                            </div>
+                                        </div>
+                                        <div class="mt-2">
+                                            <label for="phone-num" class="sh-label">Phone</label>
+                                            <div>
+                                                <input type="text" class="input-btn" id="phone-num" name="contact"
+                                                    placeholder="+91 (xx) xxxx-xxxx">
+                                            </div>
+                                        </div>
+                                        <div class="mt-2">
+                                            <label for="tour-email" class="sh-label">Email </label>
+                                            <div>
+                                                <input type="email" class="input-btn" id="tour-email" name="rtuemail"
+                                                    placeholder="devangikachhadiya37@gmail.com">
+                                            </div>
+                                        </div>
+                                        <div class="tour-btn">
+                                            <button type="submit" class="btn-sl mt-5">Send Request</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+
+    </div>
+
+<!-- Buttons for Update and Delete -->
+<div class="d-flex justify-content-center mt-4">
+    <!-- Update Button -->
+    <a href="/update_home/{{ sbh.id }}" class="btn btn-outline-primary btn-lg rounded-pill px-5 py-3 shadow-lg me-4" 
+       style="font-weight: bold; 
+              transition: all 0.3s ease; 
+              background: linear-gradient(135deg, #007bff, #00d4ff); 
+              color: white; 
+              border: none; 
+              box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);">
+      <i class="bi bi-pencil-square me-2" style="font-size: 1.3rem;"></i> Update Property
+    </a>
+  
+    <!-- Delete Button -->
+    <a href="/delete_home/{{ sbh.id }}" class="btn btn-outline-danger btn-lg rounded-pill px-5 py-3 shadow-lg" 
+       onclick="return confirm('Are you sure you want to delete this property? This action cannot be undone.')" 
+       style="font-weight: bold; 
+              transition: all 0.3s ease; 
+              background: linear-gradient(135deg, #ff416c, #ff4b2b); 
+              color: white; 
+              border: none; 
+              box-shadow: 0 10px 20px rgba(255, 65, 108, 0.3);">
+      <i class="bi bi-trash me-2" style="font-size: 1.3rem;"></i> Delete Property
+    </a>
+  </div>
+  
+    {% endif %}
+    <!-- Image Slider Modal -->
+    <div class="slider-modal">
+        <div class="slider-container">
+            <span class="close-btn">&times;</span>
+
+            <!-- Main Image Section -->
+            <div class="main-image">
+                {% if images %}
+                <img src="{{ images.0.image.url }}" alt="Main Product Image" id="main-image">
+                {% endif %}
+            </div>
+
+            <!-- <button class="nav-btn left">&#10094;</button>
+            <button class="nav-btn right">&#10095;</button> -->
+
+            
+            <!-- Thumbnail Section -->
+            <div class="slider-thumbnails">
+                {% for image in images %}
+                <img src="{{ image.image.url }}" alt="Thumbnail {{ forloop.counter }}" class="slider-thumbnail"
+                    data-full="{{ image.image.url }}">
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    </div>
+    </main>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const modal = document.querySelector('.slider-modal');
+            const mainImage = document.getElementById('main-image');
+            const sliderThumbnails = document.querySelector('.slider-thumbnails');
+            const closeBtn = document.querySelector('.close-btn');
+            const navButtons = document.querySelectorAll('.nav-btn');
+            let currentIndex = 0;
+            let sliderImages = [];
+
+            // Fetch images dynamically from Django backend
+            fetch('/slider-images/')
+                .then(response => response.json())
+                .then(data => {
+                    sliderImages = data.images;
+                    updateMainImage(currentIndex);
+                });
+
+            function updateMainImage(index) {
+                if (sliderImages.length > 0) {
+                    mainImage.src = sliderImages[index];
+                }
+            }
+
+            document.querySelectorAll('.hm-image-wrapper img').forEach((thumbnail, index) => {
+                thumbnail.addEventListener('click', (e) => {
+                    currentIndex = index;
+                    updateMainImage(currentIndex);
+                    modal.style.display = 'flex';
+                });
+            });
+
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            sliderThumbnails.addEventListener('click', (e) => {
+                if (e.target.classList.contains('slider-thumbnail')) {
+                    const newImageSrc = e.target.getAttribute('data-full');
+                    mainImage.src = newImageSrc;
+                    currentIndex = sliderImages.indexOf(newImageSrc);
+                }
+            });
+
+            navButtons.forEach((button) => {
+                button.addEventListener('click', (e) => {
+                    if (sliderImages.length === 0) return; // Ensure images are loaded
+
+                    if (button.classList.contains('left')) {
+                        currentIndex = (currentIndex > 0) ? currentIndex - 1 : sliderImages.length - 1;
+                    } else {
+                        currentIndex = (currentIndex < sliderImages.length - 1) ? currentIndex + 1 : 0;
+                    }
+                    updateMainImage(currentIndex);
+                });
+            });
+
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
+</body>
+
+</html>

@@ -16,6 +16,30 @@ class owneradmin(admin.ModelAdmin):
         queryset.update(STATUS_CHOICE= 'Rejected')
     approved_owners.short_description = "Reject selected owners"
 
-
-
 admin.site.register(Owner,owneradmin)
+
+
+class AddHomeAdmin(admin.ModelAdmin):
+    list_display = ('hname','address','city','size','bedroom','desc','htype','sprice','rprice')
+admin.site.register(AddHome)
+
+
+class HomeImageAdmin(admin.ModelAdmin):
+    list_display = ('home','image')
+admin.site.register(HomeImage)
+
+
+class UserSignUpAdmin(admin.ModelAdmin):
+    list_display = ('fnm','lnm','email','password','confpass')
+admin.site.register(UserSignUp)
+
+
+
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('name','email','phoneno','imessage')
+admin.site.register(Contact)
+
+
+class reqtourAdmin(admin.ModelAdmin):
+    list_display = ('date','name','rtuemail','contact')
+admin.site.register(reqtour)

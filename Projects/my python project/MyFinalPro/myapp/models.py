@@ -37,7 +37,7 @@ class AddHome(models.Model):
     sprice = models.BigIntegerField(null=True, blank=True)
     rprice = models.BigIntegerField(null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
-    owner = models.ForeignKey(Owner, on_delete=models.CASCADE, null=True)
+    owner = models.ForeignKey(Owner, on_delete=models.CASCADE, null=True, related_name='addhome_set')
 
 class HomeImage(models.Model):
     home = models.ForeignKey(AddHome, on_delete=models.CASCADE, related_name='images')

@@ -55,7 +55,7 @@ def login(request):
             password = request.POST.get('password')
             try:
                 user = UserSignUp.objects.get(email=unm, password=password)
-                request.session["user"] = user.fnm
+                request.session["user"] = user.email
                 request.session["userid"] = user.id
                 print("Login Successfully!")
                 return redirect("/")
@@ -144,8 +144,18 @@ def edit_profile(request):
     return render(request,'edit_profile.html', {"user": user, "upid":upid})
 
 def add_home(request):
+    user = request.session.get("user")
     msg = ""
     errors = []
+
+    if not user:
+        return redirect('/login/')  
+    
+    try:
+        owner = Owner.objects.get(email=user)  
+    except Owner.DoesNotExist:
+        return render(request, "add_home.html", {'msg': 'Owner not found. Please contact support.', 'user': user})
+
     
     if request.method == 'POST':
         form = addhomeForm(request.POST)
@@ -166,7 +176,12 @@ def add_home(request):
                         errors.append(f"File {image.name} is not a valid image.")
             
             if not errors:
-                home_instance = form.save()
+                if not errors:
+                # ✅ Create Home and Link Owner
+                 home_instance = form.save(commit=False)
+                 home_instance.owner = owner
+                 home_instance.save()
+
 
                 # Save images
                 for image in images:
@@ -183,12 +198,12 @@ def add_home(request):
     else:
         form = addhomeForm()
 
-    return render(request, "add_home.html", {'msg': msg, 'errors': errors, 'form': form})
+    return render(request, "add_home.html", {'msg': msg, 'errors': errors, 'form': form,'user':user})
 
-def update_home(request):
+def update_home(request,id):
     user = request.session.get('user')
     userid = request.session.get('userid')
-    updid = AddHome.objects.get(id=userid)
+    updid = AddHome.objects.get(id=id)
     print("Current User ID:",updid)
     if request.method == 'POST':
         updReq = updatehomeForm(request.POST, instance=updid)
@@ -199,7 +214,7 @@ def update_home(request):
         else:
             print(updReq.errors)
             msg = 'Opps! Something went wrong...'
-    return render(request, 'update_home.html',{'user':user, 'updid':updid})
+    return render(request, 'update_home.html',{'user':user, 'updid':updid ,'userid':userid})
 
 def buy_home(request):
     user = request.session.get("user")
@@ -323,3 +338,58 @@ def show_buy_home(request,id):
     
     return render(request, 'show_buy_home.html',{'sbh':sbh, 'images':images, 'remaining_images_count':remaining_images_count , '':selected_home})
 
+
+
+def show_rent_home(request,id):
+    sbh=AddHome.objects.get(id=id)
+    images = HomeImage.objects.filter(home=sbh)[:5]  # Get first 5 images
+    remaining_images_count = HomeImage.objects.filter(home=sbh) 
+    selected_home = request.GET.get('home', '1')  
+    print("id",id)
+  
+
+    
+    return render(request, 'show_rent_home.html',{'sbh':sbh, 'images':images, 'remaining_images_count':remaining_images_count , '':selected_home})
+
+def your_properties(request):
+    user = request.session.get('user')
+    
+    if not user:
+        print("User not logged in. Redirecting to login page.")
+        return render(request, 'your_properties.html', {'error': 'Please log in to view your properties.'})
+
+    try:
+        owner = Owner.objects.get(email=user)
+        print(f"Owner Found: {owner}")
+
+        # Check if properties are linked
+        properties = AddHome.objects.filter(owner=owner)
+        if properties.exists():
+            print(f"Properties Linked: {properties}")
+            for prop in properties:
+             print(f"Name: {prop.hname}, Address: {prop.address}, Type: {prop.htype}")
+        else:
+            print("No properties linked to this owner.")
+            return render(request, 'your_properties.html', {'error': 'No properties found.'})
+
+    except Owner.DoesNotExist:
+        print("Owner does not exist. Please register.")
+        return render(request, 'your_properties.html', {'error': 'Owner not found. Please register.'})
+
+    return render(request, 'your_properties.html', {'properties': properties, 'user': user})
+
+
+def delete_home(request, id):
+   dh=AddHome.objects.get(id=id)
+   AddHome.delete(dh)
+   return redirect('your_properties')
+
+def show_your_properties(request,id):
+    sbh=AddHome.objects.get(id=id)
+    images = HomeImage.objects.filter(home=sbh)[:5]  # Get first 5 images
+    remaining_images_count = HomeImage.objects.filter(home=sbh) 
+    selected_home = request.GET.get('home', '1')  
+    print("id",id)
+  
+    return render(request, 'show_your_properties.html',{'sbh':sbh, 'images':images, 'remaining_images_count':remaining_images_count , '':selected_home}
+)

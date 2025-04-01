@@ -19,9 +19,13 @@ urlpatterns = [
     path('apply_owner/', views.apply_owner, name='aplly_owner'),
     path('reset_password/', views.reset_password, name='reset_password'),
     path('edit_profile/', views.edit_profile, name='edit_profile'),
-    path('update_home/',views.update_home, name='update_home'),
+    path('update_home/<int:id>',views.update_home, name='update_home'),
     path('userlogout/',views.userlogout),
     path('show_buy_home/<int:id>',views.show_buy_home, name='show_buy_home'),
+    path('show_rent_home/<int:id>',views.show_rent_home, name='show_rent_home'),
+    path('your_properties/',views.your_properties),
+    path('delete_home/<int:id>',views.delete_home, name='delete_home'),
+    path('show_your_properties/<int:id>', views.show_your_properties),
     
 ]
 
