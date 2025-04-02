@@ -210,7 +210,6 @@ def update_home(request,id):
         updReq = updatehomeForm(request.POST, instance=updid)
         if updReq.is_valid():
             updReq.save()
-            request.session.delete()
             return redirect('/')
         else:
             print(updReq.errors)
@@ -219,8 +218,13 @@ def update_home(request,id):
 
 def buy_home(request):
     user = request.session.get("user")
+    query=request.GET.get('query','').strip()
+    que=request.GET.get('que','').strip()
+    res=AddHome.objects.filter(city_incointains = query) if query else AddHome.objects.none()
+    results=AddHome.objects.filter(bedroom_incointains = que) if que else AddHome.objects.none()
     shome = AddHome.objects.filter(htype = 'sell')
-    return render(request, 'buy_home.html',{'shome':shome, 'user':user})
+    return render(request, 'buy_home.html',{'shome':shome, 'user':user,'query':query, 'que':que, 'res':res, 'results':results})
+    
 
 def rent_home(request):
     user = request.session.get('user')
@@ -228,6 +232,7 @@ def rent_home(request):
     return render(request, 'rent_home.html',{'shome':shome, 'user':user})
 
 def search_home(request):
+    user = request.session.get('user')
     city = request.GET.get('city', '')
     bedroom = request.GET.get('bedroom', '')
     price_range = request.GET.get('price', '')
@@ -259,13 +264,14 @@ def search_home(request):
     print(f"Filters Applied: {filters}")
 
     results = AddHome.objects.filter(**filters)
-    return render(request, 'search_home.html', {'results': results})
+    return render(request, 'search_home.html', {'results': results, 'user':user})
 
 
 def cities(request, city):
+    user = request.session.get('user')
     homes = AddHome.objects.filter(city__iexact=city)
 
-    return render(request,'cities.html',{'homes':homes, 'city_iexact':city})
+    return render(request,'cities.html',{'homes':homes, 'city_iexact':city,  'user':user})
 
   
 
@@ -329,6 +335,7 @@ def userlogout(request):
     return redirect('/')
 
 def show_buy_home(request,id):
+    user = request.session.get('user')
     sbh=AddHome.objects.get(id=id)
     images = HomeImage.objects.filter(home=sbh)[:5]  # Get first 5 images
     remaining_images_count = HomeImage.objects.filter(home=sbh) 
@@ -337,7 +344,7 @@ def show_buy_home(request,id):
   
 
     
-    return render(request, 'show_buy_home.html',{'sbh':sbh, 'images':images, 'remaining_images_count':remaining_images_count , '':selected_home})
+    return render(request, 'show_buy_home.html',{ 'user':user, 'sbh':sbh, 'images':images, 'remaining_images_count':remaining_images_count , '':selected_home})
 
 
 
@@ -386,11 +393,20 @@ def delete_home(request, id):
    return redirect('your_properties')
 
 def show_your_properties(request,id):
+    user = request.session.get('user')
     sbh=AddHome.objects.get(id=id)
     images = HomeImage.objects.filter(home=sbh)[:5]  # Get first 5 images
     remaining_images_count = HomeImage.objects.filter(home=sbh) 
     selected_home = request.GET.get('home', '1')  
     print("id",id)
   
-    return render(request, 'show_your_properties.html',{'sbh':sbh, 'images':images, 'remaining_images_count':remaining_images_count , '':selected_home}
+    return render(request, 'show_your_properties.html',{'sbh':sbh, 'images':images, 'remaining_images_count':remaining_images_count , '':selected_home, 'user':user}
 )
+
+def rs_search(request):
+    user = request.session.get('user')
+    query=request.GET.get('query','').strip()
+    res=AddHome.objects.filter(city__icontains = query) if query else AddHome.objects.none()
+
+    
+    return render(request, 'rs_search.html',{'query':query, 'user':user, 'res':res})

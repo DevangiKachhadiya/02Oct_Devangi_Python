@@ -26,6 +26,7 @@ urlpatterns = [
     path('your_properties/',views.your_properties, name='your_properties'),
     path('delete_home/<int:id>',views.delete_home, name='delete_home'),
     path('show_your_properties/<int:id>', views.show_your_properties),
+    path('rs_search/',views.rs_search),
     
 ]
 

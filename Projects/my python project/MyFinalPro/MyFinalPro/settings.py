@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-wh+v3%1_wq$1_=(1qqc-=g0z3tjdr1n+x+*or-3*%m2zq(a05q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False 
 
 ALLOWED_HOSTS = ['*']
 
@@ -119,9 +119,12 @@ USE_TZ = False
 
 STATIC_URL = 'static/'
 
+STATIC_ROOT = BASE_DIR / 'newstatic/'
+
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -140,3 +143,5 @@ EMAIL_HOST_PASSWORD="kxeb oxkz esly erbl"
 # Media Setting
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
+
+STATIC_ROOT = BASE_DIR / 'newmedia/'

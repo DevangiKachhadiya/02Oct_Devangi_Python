@@ -50,13 +50,16 @@
         <main class="sl-main">
             <div id="" class="width-100">
                 <div class="sl-container">
+
+                    <div class="sl-head">
                     <div class="sl-logo">
                         <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.1601 11.37C12.0601 11.36 11.9401 11.36 11.8301 11.37C9.45006 11.29 7.56006 9.34 7.56006 6.94C7.56006 4.49 9.54006 2.5 12.0001 2.5C14.4501 2.5 16.4401 4.49 16.4401 6.94C16.4301 9.34 14.5401 11.29 12.1601 11.37Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7.16021 15.06C4.74021 16.68 4.74021 19.32 7.16021 20.93C9.91021 22.77 14.4202 22.77 17.1702 20.93C19.5902 19.31 19.5902 16.67 17.1702 15.06C14.4302 13.23 9.92021 13.23 7.16021 15.06Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                     </div>
                     <div class="sl-heading">
                         <h1>Update your profile</h1>
-                        <p>Stay Updated</p>
                     </div>
+                </div>
+                <!-- <p class="text-center">Stay Updated</p> -->
                     <form method="post" action="" id="sin-form">
                         {% csrf_token %}
                         <div class="sin-in">
@@ -78,18 +81,7 @@
                                         <input class="form-input" value="{{upid.email}}" type="email" id="email" placeholder="Email" name="email">
                                     </div>
                                 </div>
-                                <div class="lin-pswrd">
-                                    <label class="sl-label" for="password">Password</label>
-                                    <div class="sl-in-pos-rel">
-                                        <input class="form-input" value="{{upid.password}}" type="password" id="password" placeholder="Password" name="password">
-                                    </div>
-                                </div>
-                                <div class="lin-pswrd">
-                                    <label class="sl-label" for="password">Confirm Password</label>
-                                    <div class="sl-in-pos-rel">
-                                        <input class="form-input" value="{{upid.confpass}}" type="password" id="password" placeholder="Confirm Password" name="confpass">
-                                    </div>
-                                </div>
+                                
 
                         </div>
                         <button class="btn-sl" type="submit"> Save </button>

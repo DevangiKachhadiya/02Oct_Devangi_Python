@@ -21,25 +21,33 @@ admin.site.register(Owner,owneradmin)
 
 class AddHomeAdmin(admin.ModelAdmin):
     list_display = ('hname','address','city','size','bedroom','desc','htype','sprice','rprice')
-admin.site.register(AddHome)
+
+
+admin.site.register(AddHome, AddHomeAdmin)
 
 
 class HomeImageAdmin(admin.ModelAdmin):
     list_display = ('home','image')
-admin.site.register(HomeImage)
+
+admin.site.register(HomeImage,HomeImageAdmin)
 
 
 class UserSignUpAdmin(admin.ModelAdmin):
     list_display = ('fnm','lnm','email','password','confpass')
-admin.site.register(UserSignUp)
+
+admin.site.register(UserSignUp,UserSignUpAdmin)
 
 
 
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('name','email','phoneno','imessage')
-admin.site.register(Contact)
+
+
+admin.site.register(Contact, ContactAdmin)
 
 
 class reqtourAdmin(admin.ModelAdmin):
     list_display = ('date','name','rtuemail','contact')
+
+
 admin.site.register(reqtour)
