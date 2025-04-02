@@ -7,6 +7,7 @@ from django.core.mail import send_mail
 from MyFinalPro import settings
 import random
 import string
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 

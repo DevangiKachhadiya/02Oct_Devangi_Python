@@ -74,6 +74,7 @@
                     {% if msg %}
                     <div class="alert alert-info">{{ msg }}</div>
                     {% endif %}
+                    <div class="sl-head">
                     <div class="sl-logo">
                         <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -88,8 +89,9 @@
                     </div>
                     <div class="sl-heading">
                         <h1>Create an account</h1>
-                        <p>Start your journey</p>
                     </div>
+                </div>
+                    <p class="text-center">Start your journey</p>
                     <form method="post" id="sin-form">
                         {% csrf_token %}
                         <div class="sin-in">

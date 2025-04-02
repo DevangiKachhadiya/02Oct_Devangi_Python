@@ -23,7 +23,7 @@ urlpatterns = [
     path('userlogout/',views.userlogout),
     path('show_buy_home/<int:id>',views.show_buy_home, name='show_buy_home'),
     path('show_rent_home/<int:id>',views.show_rent_home, name='show_rent_home'),
-    path('your_properties/',views.your_properties),
+    path('your_properties/',views.your_properties, name='your_properties'),
     path('delete_home/<int:id>',views.delete_home, name='delete_home'),
     path('show_your_properties/<int:id>', views.show_your_properties),
     

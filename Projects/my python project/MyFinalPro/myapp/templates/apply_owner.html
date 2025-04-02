@@ -77,7 +77,7 @@
                         <strong>{{ msg }}</strong>
                     </div>
                     {% endif %}
-                    
+                    <div class="sl-head">
                     <div class="sl-logo">
                         <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -92,8 +92,9 @@
                     </div>
                     <div class="sl-heading">
                         <h1>Apply Owner</h1>
-                        <p>Enter your details to apply for owner</p>
                     </div>
+                </div>
+                    <p class="text-center">Enter your details to apply for owner</p>
                     <form method="post" id="lin-form">
                         {% csrf_token %}
                         <div class="lin-in">
