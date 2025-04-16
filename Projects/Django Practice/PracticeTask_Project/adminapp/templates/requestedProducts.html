@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Requested Products</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      display: flex;
+      min-height: 100vh;
+      background: linear-gradient(to right, #d1c4e9, #bbdefb);
+    }
+
+    .sidebar {
+      width: 240px;
+      background-color: #5a3390;
+      color: #fff;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      height: 100vh;
+    }
+
+    .sidebar h2 {
+      font-size: 24px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .sidebar a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 12px;
+      border-radius: 8px;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .sidebar a:hover {
+      background-color: #7e3b9d;
+      transform: translateX(5px);
+    }
+
+    .main-content {
+      margin-left: 240px;
+      padding: 40px 50px;
+      width: calc(100% - 240px);
+    }
+
+    .header {
+      background-color: #7E57C2;
+      color: white;
+      padding: 16px 30px;
+      font-size: 24px;
+      font-weight: bold;
+      margin: -40px -50px 35px -50px;
+      border-radius: 0 0 12px 12px;
+    }
+
+    h1 {
+      color: #5a3390;
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+      padding: 14px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #5a3390;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    img {
+      max-height: 100px;
+      max-width: 100px;
+      border-radius: 10px;
+    }
+
+    .action-btn {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .approve {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .reject {
+      background-color: #f44336;
+      color: white;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .empty-row {
+      text-align: center;
+      font-style: italic;
+      padding: 20px;
+    }
+
+    .message-list {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 20px;
+    }
+
+    .alert {
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      color: #333;
+      border-left: 5px solid;
+    }
+
+    .alert.success {
+      background-color: #d4edda;
+      border-color: #28a745;
+    }
+
+    .alert.warning {
+      background-color: #f8d7da;
+      border-color: #dc3545;
+    }
+
+    .alert.info {
+      background-color: #d1ecf1;
+      border-color: #17a2b8;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="sidebar">
+    <h2>Admin Panel</h2>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/addProduct">Add Product</a>
+    <a href="/requestedProducts">Requested Products</a>
+    <a href="/addCategory">Add Category</a>
+    <a href="/logout">Logout</a>
+  </div>
+
+  <div class="main-content">
+    <div class="header">
+      Welcome, Admin
+    </div>
+
+    {% if messages %}
+    <ul class="message-list">
+      {% for message in messages %}
+      <li class="alert {{ message.tags }}">
+        {{ message }}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    <h1>Requested Products (Pending Approval)</h1>
+
+    <form method="post">
+      {% csrf_token %}
+      <table>
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Category</th>
+            <th>Requested By</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for product in rp %}
+          <tr>
+            <td><img src="{{ product.image.url }}" alt="{{ product.name }}"></td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.stock }}</td>
+            <td>{{ product.category.name }}</td>
+            <td>{{ product.user.username }}</td>
+            <td>
+              <div class="action-buttons">
+                <a href="/approveProduct/{{product.id}}" class="action-btn approve">Approve</a>
+                <a href="/rejectProduct/{{product.id}}" class="action-btn reject">Reject</a>
+              </div>
+            </td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="7" class="empty-row">No product requests found.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </form>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      document.querySelectorAll('.alert').forEach(el => el.style.display = 'none');
+    }, 4000);
+  </script>
+</body>
+
+</html>

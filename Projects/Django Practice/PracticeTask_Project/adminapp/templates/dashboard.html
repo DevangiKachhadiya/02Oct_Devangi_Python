@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      display: flex;
+      min-height: 100vh;
+      background: linear-gradient(to right, #e0c3fc, #8ec5fc);
+    }
+
+    .sidebar {
+      width: 240px;
+      background-color: #5a3390;
+      color: #fff;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar h2 {
+      font-size: 24px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .sidebar a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 12px;
+      border-radius: 8px;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .sidebar a:hover {
+      background-color: #7e3b9d;
+      transform: translateX(5px);
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 40px 50px;
+    }
+
+    .header {
+      font-size: 28px;
+      font-weight: 700;
+      color: #5a3390;
+      margin-bottom: 35px;
+    }
+
+    .cards {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      width: 280px;
+      border: 1px solid #e6ddf7;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      font-size: 20px;
+      color: #5a3390;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      font-size: 16px;
+      color: #6b4b7f;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .sidebar {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 20px 0;
+      }
+
+      .sidebar h2 {
+        display: none;
+      }
+
+      .main-content {
+        padding: 20px;
+      }
+
+      .card {
+        width: 90%;
+      }
+    }
+
+    .view-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #5a3390;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s, transform 0.2s;
+      font-size: 14px;
+    }
+
+    .view-btn:hover {
+      background-color: #7e3b9d;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="sidebar">
+    <h2>Admin Panel</h2>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/addProduct">Add Product</a>
+    <a href="/requestedProducts">Requested Product</a>
+    <a href="/addCategory">Add Category</a>
+    <a href="/userlogout">Logout</a>
+  </div>
+
+  <div class="main-content">
+    <div class="header">Welcome, Admin</div>
+    <div class="cards">
+      <div class="card">
+        <h3>Total Products</h3>
+        <p>{{tcp}}</p>
+        <a href="/viewProducts" class="view-btn">View Products</a>
+      </div>
+      <div class="card">
+        <h3>Total Categories</h3>
+        <p>{{total_category}}</p>
+        <a href="/viewCategories" class="view-btn">View Categories</a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

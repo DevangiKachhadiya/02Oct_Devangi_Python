@@ -38,13 +38,13 @@
                         </a>
                     </div>
                     <div id="eh-navbar">
-                        <a class="nav-links active-link" href="/">Home</a>
+                        <a class="nav-links" href="/">Home</a>
                     <a class="nav-links" href="/about_us">About Us</a>
                     <a class="nav-links" href="/buy_home">Buy</a>
                     <a class="nav-links" href="/rent_home">Rent</a>
                     <a class="nav-links" href="/contact_us">Contact Us</a>
                     </div>
-                   
+
                     {% if user is none %}
         <div id="eh-account">
             <a class="account-link" href="/login">
@@ -107,18 +107,18 @@
                 </div>
 
                 <!-- Product Section -->
-              
+
                 <form action="" method="get">
                 <div class="container-fluid mt-3 p-3">
-                   
+
                     <div class="row">
-                       
+
                         <h2 style="text-align: center;">You searched for {{city_iexact}}  </h2>
-                      
+
                         {% for i in homes %}
                         <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
                             <div class="card h-100">
-                                <a class="redirect-sh" href="/show_home" target="_blank"></a>
+                                <a class="redirect-sh" href="/" target="_blank"></a>
 
                                 <!-- Carousel Component -->
                                 <div id="productCarousel{{ i.id }}" class="carousel slide" data-bs-ride="carousel">
@@ -167,7 +167,8 @@
                                         Not Available
                                         {% endif %}
                                     </h5>
-                                    <p class="card-text"> {{i.city}}</p>
+                                    <p class="card-text"> {{i.hname}}</p>
+                                    <p class="card-text"> {{i.address}}</p>
                                     <div class="card-foot mb-2">
                                         <div class="hm-area">
                                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
@@ -224,12 +225,11 @@
                                             <span>{{i.bedroom}}</span>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                         {% endfor %}
-                       
+
                     </div>
                 </div>
             </form>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Page Title Here</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      display: flex;
+      min-height: 100vh;
+      background: linear-gradient(to right, #e0c3fc, #8ec5fc);
+    }
+
+    .sidebar {
+      width: 240px;
+      background-color: #5a3390;
+      color: #fff;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar h2 {
+      font-size: 24px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .sidebar a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 12px;
+      border-radius: 8px;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .sidebar a:hover {
+      background-color: #7e3b9d;
+      transform: translateX(5px);
+    }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .form-wrapper {
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .header {
+      font-size: 28px;
+      font-weight: 700;
+      color: #5a3390;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .form-container {
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      border: 1px solid #e6ddf7;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 500;
+      color: #6b4b7f;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="file"],
+    textarea {
+      padding: 12px;
+      border: 1px solid #d6c5e9;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .btn {
+      padding: 12px;
+      background: #9b59b6;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background: #7e3b9d;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 20px 0;
+      }
+
+      .sidebar h2 {
+        display: none;
+      }
+
+      .main-content {
+        padding: 20px;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+
+      .form-wrapper {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2>Admin Panel</h2>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/addProduct">Add Product</a>
+    <a href="/requestedProducts">Requested Product</a>
+    <a href="/addCategory">Add Category</a>
+    <a href="/userlogout">Logout</a>
+  </div>
+
+  <div class="main-content">
+    <div class="form-wrapper">
+      <div class="header">Add New Product</div>
+      <div class="form-container">
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+
+          <!-- EXAMPLE FIELDS -->
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="price">Price</label>
+          <input type="number" id="price" name="price" required>
+
+          <label for="stock">Stock</label>
+          <input type="number" id="stock" name="stock" required>
+
+          <label for="desc">Description</label>
+          <textarea id="desc" name="desc" required></textarea>
+
+          <label for="pic">Product Image</label>
+          <input type="file" id="pic" name="pic">
+
+          <button type="submit" class="btn">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
