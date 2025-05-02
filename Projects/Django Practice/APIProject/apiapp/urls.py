@@ -4,6 +4,7 @@ from apiapp import views
 
 
 urlpatterns = [
+    path('',views.index),
     path('getall/',views.getall),
     path('getid/<int:id>',views.getid),
     path('deleteid/<int:id>',views.deleteid),

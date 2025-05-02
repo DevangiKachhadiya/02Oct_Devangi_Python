@@ -1,3 +1,5 @@
+
+
 #Write a Python program to create a file and write a string into it.
 
 open("newfile.txt","x")

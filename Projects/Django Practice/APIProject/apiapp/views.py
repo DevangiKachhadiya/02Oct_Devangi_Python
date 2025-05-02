@@ -8,6 +8,9 @@ from rest_framework import status
 
 # Create your views here.
 
+def index(request):
+    return render(request, 'index.html')
+
 @api_view(["GET"])
 def getall(request):
     stdata = StudInfo.objects.all()

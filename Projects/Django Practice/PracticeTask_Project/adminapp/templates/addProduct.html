@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Page Title Here</title>
   <style>
     * {
@@ -147,6 +148,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <div class="sidebar">
@@ -175,11 +177,16 @@
           <label for="stock">Stock</label>
           <input type="number" id="stock" name="stock" required>
 
-          <label for="desc">Description</label>
-          <textarea id="desc" name="desc" required></textarea>
+          <label for="category">Category</label>
+          <select id="category" name="category" required>
+            <option value="">-- Select Category --</option>
+            {% for i in cat %}
+            <option value="{{ i.id }}">{{i.name}}</option>
+            {% endfor %}
+          </select>
 
           <label for="pic">Product Image</label>
-          <input type="file" id="pic" name="pic">
+          <input type="file" id="pic" name="image">
 
           <button type="submit" class="btn">Submit</button>
         </form>
@@ -188,4 +195,5 @@
   </div>
 
 </body>
+
 </html>
